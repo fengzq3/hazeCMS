@@ -1,0 +1,2 @@
+# hazeCMS
+a javascript cms
