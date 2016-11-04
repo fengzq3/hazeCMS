@@ -20,6 +20,8 @@ webpackJsonp([1],[
 	    var width = window.innerWidth; //窗口宽度
 	    var height = window.innerHeight; //窗口高度
 	    var $fixed = $('.js-fixed'); //pin功能，固定底部
+	    //user 变量
+	    var $ajaxForm = $('.js-form-ajax');
 
 	    //dropdown
 	    $dropDown.hover(function () {
@@ -96,6 +98,12 @@ webpackJsonp([1],[
 	            });
 	        })();
 	    }
+
+	    //users 页面
+	    $ajaxForm.on('submit', function (e) {
+	        e.stopPropagation();
+	        e.parseDefault();
+	    });
 
 	    //function END
 	});

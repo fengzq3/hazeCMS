@@ -1,0 +1,29 @@
+//
+   Created by feng on 2016/11/4.
+
+extends ../layout
+
+block content
+    .container
+        h1.add-article-title 添加一篇文章
+        hr
+        form.form-horizontal.add-form.js-form-ajax(role='form' method='post' action='#')
+            .form-group
+                label.col-sm-2.control-label 文章标题
+                .col-sm-5
+                    input.form-control(name="title")
+            .form-group
+                label.col-sm-2.control-label 作者
+                .col-sm-5
+                    input.form-control(name='author')
+            .form-group
+                label.col-sm-2.control-label 标签
+                .col-sm-5
+                    input.form-control(name='tag')
+            .form-group
+                label.col-sm-2.control-label
+                .col-sm-10
+                    textarea.form-control(name='body' rows='5')
+            .form-group
+                .col-sm-5.col-sm-offset-2
+                    button.btn.btn-success(type='submit') 提交

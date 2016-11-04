@@ -2,6 +2,7 @@
 combined files : 
 
 bootstrap.css
+users.css
 */
 
 
@@ -4578,6 +4579,10 @@ button.close {
   }
 }
 
+
+
+.add-form{margin-top:20px;}
+.add-article-title{text-align: center;color:#B9B9B9;}
 
 
 @font-face {

@@ -7,7 +7,7 @@ html
         link(rel='stylesheet', href='/stylesheets/style.css')
         script(src='/javascripts/common.bundle.js')
         script(src='/javascripts/main.bundle.js')
-        title= title
+        title= webName
     body
         header.header
             nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
@@ -77,105 +77,10 @@ html
                     button.mobile-search-btn(type='submit')
                         span.iconfont.icon-fangdajing
                 // 移动 end
-        // banner
-        a.main-banner(href='#')
-            .banner-bg
-                img(src='https://isux.tencent.com/wp-content/uploads/2016/02/20160202111209544.jpg', alt='标题标题标题标题一个测试标题')
-                // 内层
-                .banner-des
-                    .main-title
-                        h1 标题标题标题标题一个测试标题
-                        p
-                            small
-                                span.iconfont.icon-rili
-                                |  2016.10.22
-                            small
-                                span.iconfont.icon-discuss
-                                | 122
-        // 主内容
-        .container-fluid.main-list
-            .row
-                .col-lg-3.col-md-4.col-sm-6
-                    a.main-list-item(href='#')
-                        .list-img
-                            img(src='https://isux.tencent.com/wp-content/uploads/2016/07/mobile-phone-photography.jpg', alt='标题')
-                        .list-con
-                            h3 标题内容标题item标题标题item标题标题item标题
-                            p.list-con-des
-                                small
-                                    span.iconfont.icon-date
-                                    | 2016.10.20
-                                small
-                                    span.iconfont.icon-discuss
-                                    | 122
-                .col-lg-3.col-md-4.col-sm-6
-                    a.main-list-item(href='#')
-                        .list-img
-                            img(src='https://isux.tencent.com/wp-content/uploads/2016/07/mobile-phone-photography.jpg', alt='标题')
-                        .list-con
-                            h3 标题内容标题item标题标题item标题标题item标题
-                            p.list-con-des
-                                small
-                                    span.iconfont.icon-date
-                                    | 2016.10.20
-                                small
-                                    span.iconfont.icon-discuss
-                                    | 122
-                .col-lg-3.col-md-4.col-sm-6
-                    a.main-list-item(href='#')
-                        .list-img
-                            img(src='https://isux.tencent.com/wp-content/uploads/2016/07/mobile-phone-photography.jpg', alt='标题')
-                        .list-con
-                            h3 标题内容标题item标题标题item标题标题item标题
-                            p.list-con-des
-                                small
-                                    span.iconfont.icon-date
-                                    | 2016.10.20
-                                small
-                                    span.iconfont.icon-discuss
-                                    | 122
-                .col-lg-3.col-md-4.col-sm-6
-                    a.main-list-item(href='#')
-                        .list-img
-                            img(src='https://isux.tencent.com/wp-content/uploads/2016/07/mobile-phone-photography.jpg', alt='标题')
-                        .list-con
-                            h3 标题内容标题item标题标题item标题标题item标题
-                            p.list-con-des
-                                small
-                                    span.iconfont.icon-date
-                                    | 2016.10.20
-                                small
-                                    span.iconfont.icon-discuss
-                                    | 122
-                .col-lg-3.col-md-4.col-sm-6
-                    a.main-list-item(href='#')
-                        .list-img
-                            img(src='https://isux.tencent.com/wp-content/uploads/2016/07/mobile-phone-photography.jpg', alt='标题')
-                        .list-con
-                            h3 标题内容标题item标题标题item标题标题item标题
-                            p.list-con-des
-                                small
-                                    span.iconfont.icon-date
-                                    | 2016.10.20
-                                small
-                                    span.iconfont.icon-discuss
-                                    | 122
-                .col-lg-3.col-md-4.col-sm-6
-                    a.main-list-item(href='#')
-                        .list-img
-                            img(src='https://isux.tencent.com/wp-content/uploads/2016/07/mobile-phone-photography.jpg', alt='标题')
-                        .list-con
-                            h3 标题内容标题item标题标题item标题标题item标题
-                            p.list-con-des
-                                small
-                                    span.iconfont.icon-date
-                                    | 2016.10.20
-                                small
-                                    span.iconfont.icon-discuss
-                                    | 122
-            // row END page navigation 开始
-            .page-more
-                a.btn.btn-block.btn-lg.btn-default(href='#') 下一页
+
+        block content
+
+
         // footer
         footer.page-foot
             .container

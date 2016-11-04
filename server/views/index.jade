@@ -1,5 +1,38 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    //banner
+    a.main-banner(href='#')
+        .banner-bg
+            img(src='https://isux.tencent.com/wp-content/uploads/2016/02/20160202111209544.jpg', alt='标题标题标题标题一个测试标题')
+            // 内层
+            .banner-des
+                .main-title
+                    h1 标题标题标题标题一个测试标题
+                    p
+                        small
+                            span.iconfont.icon-rili
+                            |  2016.10.22
+                        small
+                            span.iconfont.icon-discuss
+                            | 122
+    // 主内容
+    .container-fluid.main-list
+        .row
+            for item in list
+                .col-lg-3.col-md-4.col-sm-6
+                    a.main-list-item(href='/article/#{item.id}')
+                        .list-img
+                            img(src='https://isux.tencent.com/wp-content/uploads/2016/07/mobile-phone-photography.jpg', alt='#{item.title}')
+                        .list-con
+                            h3 #{item.title}
+                            p.list-con-des
+                                small
+                                    span.iconfont.icon-date
+                                    | #{item.date}
+                                small
+                                    span.iconfont.icon-discuss
+                                    | #{item.comments}
+        // row END page navigation 开始
+        .page-more
+            a.btn.btn-block.btn-lg.btn-default(href='#') 下一页

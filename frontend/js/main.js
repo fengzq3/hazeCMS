@@ -16,6 +16,8 @@ $(function () {
     let width = window.innerWidth;  //窗口宽度
     let height = window.innerHeight;  //窗口高度
     let $fixed = $('.js-fixed');    //pin功能，固定底部
+    //user 变量
+    let $ajaxForm = $('.js-form-ajax');
 
     //dropdown
     $dropDown.hover(function () {
@@ -88,6 +90,14 @@ $(function () {
             }
         });
     }
+
+    //users 页面
+    console.log($ajaxForm);
+    $ajaxForm.on('submit', function (e) {
+        e.stopPropagation();
+        e.parseDefault();
+
+    });
 
     //function END
 })

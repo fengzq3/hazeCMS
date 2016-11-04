@@ -1,0 +1,59 @@
+//
+   Created by feng on 2016/11/4.
+extends layout
+
+block content
+
+    // banner
+    .article-title
+        img(src='https://isux.tencent.com/wp-content/uploads/2016/02/20160202111209544.jpg', alt='{title}')
+        .article-des
+            // 内层
+            .container
+                .article-des-title
+                    h1= title
+                    p
+                        small
+                            span.iconfont.icon-rili
+                            |  2016.10.22
+                        small
+                            span.iconfont.icon-discuss
+                            | 122
+    // 主内容
+    .container
+        // 内容部分
+        .article-con
+            p= content
+            .clearfix
+            hr
+            .article-info.js-fixed
+                .article-info-l
+                    p
+                        span.iconfont.icon-riqi
+                        |  2016.10.22
+                    p
+                        span.iconfont.icon-lanmu
+                        a(href='#') 用户体验
+                    p
+                        span.iconfont.icon-tag
+                        a(href='#') 用户
+                        | 、
+                        a(href='#') 体验
+                        | 、
+                        a(href='#') 前端
+                    p.pull-right
+                        a(href='#')
+                            span.iconfont.icon-discuss
+                            | 122
+                .article-info-r
+                    p
+                        a(href='#') 上一篇
+                    p
+                        a(href='#') 下一篇
+        // 推荐部分
+        .article-relate
+            h3 相关推荐
+            .article-relate-con
+                .col-xs-4
+                    a(href='#')
+                        img(src='https://isux.tencent.com/wp-content/uploads/2016/03/20160303124431993.jpg', alt='标题标题')
