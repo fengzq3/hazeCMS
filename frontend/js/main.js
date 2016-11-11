@@ -16,6 +16,7 @@ $(function () {
     let width = window.innerWidth;  //窗口宽度
     let height = window.innerHeight;  //窗口高度
     let $fixed = $('.js-fixed');    //pin功能，固定底部
+    let $date = $('.js-date');  //date
     //user 变量
     let $ajaxForm = $('.js-form-ajax');
 
@@ -90,6 +91,9 @@ $(function () {
             }
         });
     }
+
+    //格式化时间
+
 
     //users 页面
     console.log($ajaxForm);
