@@ -28,11 +28,11 @@ block content
                             h3 #{item.title}
                             p.list-con-des
                                 small
-                                    span.iconfont.icon-date
+                                    span.iconfont.icon-date.js-date
                                     | #{item.date}
                                 small
                                     span.iconfont.icon-discuss
-                                    | #{item.comments}
+                                    | #{item.comments.length}
         // row END page navigation 开始
         .page-more
             a.btn.btn-block.btn-lg.btn-default(href='#') 下一页

@@ -1,17 +1,11 @@
-var express = require('express');
-var router = express.Router();
+"use strict";
+const express = require('express');
+const router = express.Router();
 
-
-//todo 这里应该使用 control 不建议直接使用model
-var add = require('../model/db.server.model');
+//使用 control
+const index = require('../control/index.server.control.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-
-  add.showList(10, function (arts) {
-    res.render('index', {webName:'这是一个网站头部标题',list:arts});
-  });
-
-});
+router.get('/', index.index);
 
 module.exports = router;

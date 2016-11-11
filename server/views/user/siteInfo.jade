@@ -1,0 +1,24 @@
+//
+   Created by feng on 2016/11/11.
+
+extends ../layout
+block content
+    .container
+        h1.add-article-title 网站基本信息
+        hr
+        form.form-horizontal.add-form.js-form-ajax(role='form' method='post' action='#')
+            .form-group
+                label.col-sm-2.control-label 网站名称
+                .col-sm-5
+                    input.form-control(name="site_name")
+            .form-group
+                label.col-sm-2.control-label 描述
+                .col-sm-5
+                    input.form-control(name='site_description')
+            .form-group
+                label.col-sm-2.control-label 关键词
+                .col-sm-5
+                    input.form-control(name='site_keyword')
+            .form-group
+                .col-sm-5.col-sm-offset-2
+                    button.btn.btn-success(type='submit') 提交
