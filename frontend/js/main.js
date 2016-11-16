@@ -3,6 +3,8 @@
  */
 "use strict";
 // require('./index.slide.js');
+const fTime = require('./date.format');
+
 
 $(function () {
     //变量
@@ -93,15 +95,17 @@ $(function () {
     }
 
     //格式化时间
-
+    const thisDate = (new Date($date.attr('date'))).format('yyyy-MM-dd');
+    $date.text(thisDate);
+    // fTime.relTime();
 
     //users 页面
     console.log($ajaxForm);
     $ajaxForm.on('submit', function (e) {
         e.stopPropagation();
-        e.parseDefault();
+        e.preventDefault();
 
     });
 
     //function END
-})
+});

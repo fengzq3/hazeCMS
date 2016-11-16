@@ -8,6 +8,8 @@ webpackJsonp([1],[
 	"use strict";
 	// require('./index.slide.js');
 
+	var fTime = __webpack_require__(4);
+
 	$(function () {
 	    //变量
 	    var $dropDown = $('.js-dropdown'); //下拉
@@ -20,6 +22,7 @@ webpackJsonp([1],[
 	    var width = window.innerWidth; //窗口宽度
 	    var height = window.innerHeight; //窗口高度
 	    var $fixed = $('.js-fixed'); //pin功能，固定底部
+	    var $date = $('.js-date'); //date
 	    //user 变量
 	    var $ajaxForm = $('.js-form-ajax');
 
@@ -99,15 +102,78 @@ webpackJsonp([1],[
 	        })();
 	    }
 
+	    //格式化时间
+	    var thisDate = new Date($date.attr('date')).format('yyyy-MM-dd');
+	    $date.text(thisDate);
+	    // fTime.relTime();
+
 	    //users 页面
+	    console.log($ajaxForm);
 	    $ajaxForm.on('submit', function (e) {
 	        e.stopPropagation();
-	        e.parseDefault();
+	        e.preventDefault();
 	    });
 
 	    //function END
 	});
+
+	//扩展时间格式化
+	// Date.prototype.format = function (fmt) {
+	//     const o = {
+	//         "M+" : this.getMonth()+1,                 //月份
+	//         "d+" : this.getDate(),                    //日
+	//         "h+" : this.getHours(),                   //小时
+	//         "m+" : this.getMinutes(),                 //分
+	//         "s+" : this.getSeconds(),                 //秒
+	//         "q+" : Math.floor((this.getMonth()+3)/3), //季度
+	//         "S"  : this.getMilliseconds()             //毫秒
+	//     };
+	//     if(/(y+)/.test(fmt)) fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+	//     for(let k in o)
+	//         if(new RegExp("("+ k +")").test(fmt))
+	//             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+	//     return fmt;
+	// };
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ },
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	/**
+	 * Created by feng on 2016/11/14.
+	 * Used to format the Date
+	 * 格式化时间
+	 */
+
+	//全局添加格式化方法
+	Date.prototype.format = function (fmt) {
+	    var o = {
+	        "M+": this.getMonth() + 1, //月份
+	        "d+": this.getDate(), //日
+	        "h+": this.getHours(), //小时
+	        "m+": this.getMinutes(), //分
+	        "s+": this.getSeconds(), //秒
+	        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+	        "S": this.getMilliseconds() //毫秒
+	    };
+	    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+	    for (var k in o) {
+	        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+	    }return fmt;
+	};
+
+	module.exports = {
+	    relTime: function relTime() {
+	        //todo 相对时间
+	        console.log('相对时间');
+	    }
+	};
 
 /***/ }
 ]);
