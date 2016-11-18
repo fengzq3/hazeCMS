@@ -4622,7 +4622,7 @@ button.close {
     .banner-bg{position: absolute !important;}
     .banner-des{display:table;}
     .main-title{display:table-cell;}
-    .banner-bg>img{position:absolute !important;opacity: .3;}
+    .banner-bg>img{position:absolute !important;opacity: .5;}
     .main-banner:hover .banner-bg>img{-webkit-transform: scale(1.1); transform: scale(1.1);}
     .main-title{text-align: center !important;background:none !important;}
     .main-title h1{color:#fff !important;font-size:36px !important;margin-bottom:20px;}
