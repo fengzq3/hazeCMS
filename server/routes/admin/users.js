@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-
 //使用 control
-const users = require('../control/user/user.server.control');
+const users = require('../../control/admin/user.server.control');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -11,7 +10,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/addArticle', function (req, res, next) {
-    res.render('user/addArticle');
+    res.render('admin/addArticle');
 });
 router.post('/addArticle', function (req, res, next) {
     console.log(req.body);

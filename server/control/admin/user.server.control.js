@@ -15,7 +15,7 @@ module.exports = {
                 description: d.site_description,
                 keywords: d.site_keyword
             };
-            res.render('user/siteInfo', data);
+            res.render('admin/siteInfo', data);
         });
     },
 

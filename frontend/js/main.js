@@ -19,7 +19,7 @@ $(function () {
     let height = window.innerHeight;  //窗口高度
     let $fixed = $('.js-fixed');    //pin功能，固定底部
     let $date = $('.js-date');  //date
-    //user 变量
+    //admin 变量
     let $ajaxForm = $('.js-form-ajax');
 
     //dropdown

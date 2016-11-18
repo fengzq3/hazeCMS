@@ -9,7 +9,7 @@ mongoose.Promise = require('bluebird');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
-//site设置项
+//全局设置项
 const siteSchema = new mongoose.Schema({
     site_name: String,
     site_link: String,
@@ -18,12 +18,19 @@ const siteSchema = new mongoose.Schema({
 
 });
 
+//管理中心用户
+const adminSchema = new mongoose.Schema({
+    admin_name: String,
+    admin_password: String,
+
+});
+
 //主导航
 const navSchema = new mongoose.Schema({
-    nav_name:String,
-    nav_link:String,
-    nav_Type:String,
-    nav_child:[]
+    nav_name: String,
+    nav_link: String,
+    nav_Type: String,
+    nav_child: []
 });
 
 const articleSchema = new mongoose.Schema({
@@ -39,8 +46,9 @@ const articleSchema = new mongoose.Schema({
 });
 
 const webSite = mongoose.model('blog', siteSchema);
+const admins = mongoose.model('admin', adminSchema);
 const article = mongoose.model('article', articleSchema);
-const mainNav = mongoose.model('navigation',navSchema);
+const mainNav = mongoose.model('navigation', navSchema);
 
 module.exports = {
     handlerError: function (err) {
@@ -58,9 +66,22 @@ module.exports = {
         let site = new webSite(data);
         return site.save();
     },
+    //管理中心用户
+    readAdminList: function (num, skip) {
+        return admins.find().skip(skip).limit(num).exec();
+    },
+    editAdmin: function (query, data) {
+        return admins.find(query).update(data).exec();
+    },
+    createAdmin:function (data) {
+        let admin = new admins(data);
+        return admin.save();
+    },
     //文章
     addArticle: function (data) {
         let art = new article(data);
+        //todo 这里是做个测试art是否有返回，实际应该直接return 一个 promise
+
         art.save(function (err, art) {
             console.log(art);
             if (err) return this.handlerError(err);
@@ -79,17 +100,17 @@ module.exports = {
             .exec();
     },
     //导航
-    getNav:function (num,skip) {
+    getNav: function (num, skip) {
         return mainNav
             .find()
             .skip(skip)
             .limit(num)
             .exec();
     },
-    setNav:function (query, data) {
+    setNav: function (query, data) {
         return mainNav.find(query).update(data).exec();
     },
-    createNav:function (data) {
+    createNav: function (data) {
         let nav = new mainNav(data);
         return nav.save();
     }

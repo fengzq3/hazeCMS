@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
-const users = require('./routes/users');
+const users = require('./routes/admin/users');
 const article = require('./routes/article');
 
 

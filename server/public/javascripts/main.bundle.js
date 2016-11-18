@@ -23,7 +23,7 @@ webpackJsonp([1],[
 	    var height = window.innerHeight; //窗口高度
 	    var $fixed = $('.js-fixed'); //pin功能，固定底部
 	    var $date = $('.js-date'); //date
-	    //user 变量
+	    //admin 变量
 	    var $ajaxForm = $('.js-form-ajax');
 
 	    //dropdown
