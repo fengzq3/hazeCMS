@@ -1,2 +1,13 @@
 .add-form{margin-top:20px;}
 .add-article-title{text-align: center;color:#B9B9B9;}
+
+/*后台frame*/
+.frame-table{display:table;width:100%;}
+.frame-cell{display:table-cell;vertical-align:top;}
+.frame-left{width:200px;background-color:#e5e5e5;
+    -webkit-box-shadow: 1px 0 1px #ccc;
+    -moz-box-shadow: 1px 0 1px #ccc;
+    box-shadow: 1px 0 1px #ccc;}
+.frame-right{margin-left:10px;}
+
+.admin-con{max-width:1000px;margin:auto;}

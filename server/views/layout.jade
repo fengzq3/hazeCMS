@@ -11,6 +11,8 @@ html
         meta(name='keywords' content='#{keywords}')
         meta(name='description' content='#{description}')
     body
+        // 遮罩
+        .shade-full.js-shade
         header.header
             nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
                 .navbar-heading
@@ -84,12 +86,5 @@ html
 
 
         // footer
-        footer.page-foot
-            .container
-                .page-footer
-                    p WorldPress
-                    small
-                        a(href='http://semfeng.com') semfeng.com
-                        |  by feng
-        // 遮罩
-        .shade-full.js-shade
+        include block/footer
+

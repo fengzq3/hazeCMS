@@ -19,6 +19,12 @@ module.exports = function(grunt) {
                     src: './style.css',
                     dest: '../server/public/stylesheets/style.css'
                 }]
+            },
+            css2: {
+                files: [{
+                    src: './css/users.css',
+                    dest: '../server/public/stylesheets/admin.css'
+                }]
             }
         },
 
@@ -33,6 +39,10 @@ module.exports = function(grunt) {
             },
             cssmin: {
                 files: './style.css',
+                tasks: ['cssmin']
+            },
+            cssmin2: {
+                files: 'css/users.css',
                 tasks: ['cssmin']
             }
         }

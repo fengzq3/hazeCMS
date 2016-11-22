@@ -11,7 +11,8 @@ module.exports = {
     //页面入口
     entry: {
         commons: ['jquery', 'bts'],
-        main: './js/main.js'
+        main: './js/main.js',
+        admin:'./js/admin.js'
     },
     //输出配置
     output: {

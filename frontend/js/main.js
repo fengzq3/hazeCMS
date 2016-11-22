@@ -3,6 +3,7 @@
  */
 "use strict";
 // require('./index.slide.js');
+//格式化时间
 const fTime = require('./date.format');
 
 
