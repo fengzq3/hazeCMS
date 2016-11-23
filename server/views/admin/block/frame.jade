@@ -4,10 +4,38 @@
 extends adminLayout
 block content
     //后台框架结构
-    .frame-table
-        .frame-cell.frame-left
-            .admin-menu
-                | 这里是菜单
-        .frame-cell
-            .frame-right
-                block adminContent
+    .frame-con
+        .frame-table
+            .frame-cell.frame-left
+                .admin-menu
+                    h4.admin-menu-title.js-mainMenu
+                        b.iconfont.icon-shu
+                    .slide-title
+                        span.iconfont.icon-setting.pull-right(data-toggle="tooltip" data-placement="right" title="基础管理菜单")
+                        b.caret
+                        span 主要功能
+                    ul.slide-menu
+                        li
+                            a(href='#')
+                                b.iconfont.icon-col
+                                span 栏目管理
+                        li
+                            a(href='#')
+                                b.iconfont.icon-article
+                                span 文章管理
+                        li
+                            a(href='#')
+                                b.iconfont.icon-comment
+                                span 评论管理
+                    .slide-title
+                        span.iconfont.icon-setting.pull-right(data-toggle="tooltip" data-placement="right" title="系统设置菜单")
+                        b.caret
+                        span 系统设置
+                    ul.slide-menu
+                        li
+                            a(href='#')
+                                b.iconfont.icon-web
+                                span 网站信息
+            .frame-cell
+                .frame-right
+                    block adminContent
