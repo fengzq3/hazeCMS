@@ -328,14 +328,14 @@ img {
   height: auto;
 }
 .img-rounded {
-  border-radius: 6px;
+
 }
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
   background-color: #ffffff;
   border: 1px solid #dddddd;
-  border-radius: 4px;
+
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -1522,7 +1522,7 @@ output {
   background-color: #ffffff;
   background-image: none;
   border: 1px solid #cccccc;
-  border-radius: 4px;
+
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
@@ -1670,7 +1670,7 @@ fieldset[disabled] .checkbox label {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 3px;
+
 }
 select.input-sm {
   height: 30px;
@@ -1685,7 +1685,7 @@ select[multiple].input-sm {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 3px;
+
 }
 .form-group-sm select.form-control {
   height: 30px;
@@ -1707,7 +1707,7 @@ select[multiple].input-sm {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
-  border-radius: 6px;
+
 }
 select.input-lg {
   height: 46px;
@@ -1722,7 +1722,7 @@ select[multiple].input-lg {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
-  border-radius: 6px;
+
 }
 .form-group-lg select.form-control {
   height: 46px;
@@ -1976,7 +1976,7 @@ select[multiple].input-lg {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  border-radius: 4px;
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -2417,7 +2417,7 @@ fieldset[disabled] .btn-danger.active {
 .btn-link {
   color: #337ab7;
   font-weight: normal;
-  border-radius: 0;
+
 }
 .btn-link,
 .btn-link:active,
@@ -2452,21 +2452,21 @@ fieldset[disabled] .btn-link:focus {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
-  border-radius: 6px;
+
 }
 .btn-sm,
 .btn-group-sm > .btn {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 3px;
+
 }
 .btn-xs,
 .btn-group-xs > .btn {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 3px;
+
 }
 .btn-block {
   display: block;
@@ -2549,7 +2549,7 @@ tbody.collapse.in {
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
+
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   -webkit-background-clip: padding-box;
@@ -2699,7 +2699,7 @@ tbody.collapse.in {
   margin-left: 5px;
 }
 .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
-  border-radius: 0;
+
 }
 .btn-group > .btn:first-child {
   margin-left: 0;
@@ -2717,7 +2717,7 @@ tbody.collapse.in {
   float: left;
 }
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
-  border-radius: 0;
+
 }
 .btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,
 .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
@@ -2777,7 +2777,7 @@ tbody.collapse.in {
   margin-left: 0;
 }
 .btn-group-vertical > .btn:not(:first-child):not(:last-child) {
-  border-radius: 0;
+
 }
 .btn-group-vertical > .btn:first-child:not(:last-child) {
   border-top-right-radius: 4px;
@@ -2790,7 +2790,7 @@ tbody.collapse.in {
   border-top-left-radius: 0;
 }
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
-  border-radius: 0;
+
 }
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
@@ -2851,7 +2851,7 @@ tbody.collapse.in {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
-  border-radius: 6px;
+
 }
 select.input-group-lg > .form-control,
 select.input-group-lg > .input-group-addon,
@@ -2874,7 +2874,7 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 3px;
+
 }
 select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
@@ -2898,7 +2898,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-addon:not(:first-child):not(:last-child),
 .input-group-btn:not(:first-child):not(:last-child),
 .input-group .form-control:not(:first-child):not(:last-child) {
-  border-radius: 0;
+
 }
 .input-group-addon,
 .input-group-btn {
@@ -2915,17 +2915,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #cccccc;
-  border-radius: 4px;
+
 }
 .input-group-addon.input-sm {
   padding: 5px 10px;
   font-size: 12px;
-  border-radius: 3px;
+
 }
 .input-group-addon.input-lg {
   padding: 10px 16px;
   font-size: 18px;
-  border-radius: 6px;
+
 }
 .input-group-addon input[type="radio"],
 .input-group-addon input[type="checkbox"] {
@@ -3037,7 +3037,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-right: 2px;
   line-height: 1.42857143;
   border: 1px solid transparent;
-  border-radius: 4px 4px 0 0;
+
 }
 .nav-tabs > li > a:hover {
   border-color: #eeeeee #eeeeee #dddddd;
@@ -3077,7 +3077,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs.nav-justified > li > a {
   margin-right: 0;
-  border-radius: 4px;
+
 }
 .nav-tabs.nav-justified > .active > a,
 .nav-tabs.nav-justified > .active > a:hover,
@@ -3087,7 +3087,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .nav-tabs.nav-justified > li > a {
     border-bottom: 1px solid #dddddd;
-    border-radius: 4px 4px 0 0;
+
   }
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
@@ -3099,7 +3099,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
 }
 /*.nav-pills > li > a {
-  border-radius: 4px;
+
 }*/
 .nav-pills > li + li {
   margin-left: 2px;
@@ -3145,7 +3145,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs-justified > li > a {
   margin-right: 0;
-  border-radius: 4px;
+
 }
 .nav-tabs-justified > .active > a,
 .nav-tabs-justified > .active > a:hover,
@@ -3155,7 +3155,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .nav-tabs-justified > li > a {
     border-bottom: 1px solid #dddddd;
-    border-radius: 4px 4px 0 0;
+
   }
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
@@ -3182,7 +3182,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar {
-    border-radius: 4px;
+
   }
 }
 @media (min-width: 768px) {
@@ -3257,7 +3257,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-static-top {
-    border-radius: 0;
+
   }
 }
 .navbar-fixed-top,
@@ -3270,7 +3270,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-fixed-top,
   .navbar-fixed-bottom {
-    border-radius: 0;
+
   }
 }
 .navbar-fixed-top {
@@ -3317,7 +3317,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
   background-image: none;
   border: 1px solid transparent;
-  border-radius: 4px;
+
 }
 .navbar-toggle:focus {
   outline: 0;
@@ -3326,7 +3326,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: block;
   width: 22px;
   height: 2px;
-  border-radius: 1px;
+
 }
 .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 4px;
@@ -3728,7 +3728,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   margin-bottom: 20px;
   list-style: none;
   background-color: #f5f5f5;
-  border-radius: 4px;
+
 }
 .breadcrumb > li {
   display: inline-block;
@@ -3745,7 +3745,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   display: inline-block;
   padding-left: 0;
   margin: 20px 0;
-  border-radius: 4px;
+
 }
 .pagination > li {
   display: inline;
@@ -3852,7 +3852,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 5px 14px;
   background-color: #ffffff;
   border: 1px solid #dddddd;
-  border-radius: 15px;
+
 }
 .pager li > a:hover,
 .pager li > a:focus {
@@ -3946,7 +3946,7 @@ a.label:focus {
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
-  border-radius: 4px;
+
 }
 .alert h4 {
   margin-top: 0;
@@ -4086,7 +4086,7 @@ button.close {
   background-color: #ffffff;
   border: 1px solid #999999;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
+
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   -webkit-background-clip: padding-box;
