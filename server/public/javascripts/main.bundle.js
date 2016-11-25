@@ -24,8 +24,8 @@ webpackJsonp([2],[
 	    var height = window.innerHeight; //窗口高度
 	    var $fixed = $('.js-fixed'); //pin功能，固定底部
 	    var $date = $('.js-date'); //date
-	    //admin 变量
-	    var $ajaxForm = $('.js-form-ajax');
+	    var $ajaxForm = $('.js-form-ajax'); //默认ajax提交
+	    var $checkInput = $('.js-checkInput'); //通用input检测
 
 	    //dropdown
 	    $dropDown.hover(function () {
@@ -108,11 +108,37 @@ webpackJsonp([2],[
 	    $date.text(thisDate);
 	    // fTime.relTime();
 
-	    //users 页面
-	    console.log($ajaxForm);
+	    //定义ajax提交
 	    $ajaxForm.on('submit', function (e) {
 	        e.stopPropagation();
 	        e.preventDefault();
+	        var data = $(this).serialize();
+	        var method = this.method;
+	        var action = this.action;
+	        $.ajax({ url: action, method: method, data: data }).then(function (res) {
+	            console.log(res);
+	            if (res.error === 0) {
+	                window.location.href = action;
+	            } else {
+	                //登录错误处理
+	                alert(res.messages);
+	            }
+	        });
+	    });
+
+	    /**
+	     * input检测
+	     * 必要的class为 help-block
+	     * 若为必填项，则添加 em标记，input添加must
+	     * focusin/focusout 两个事件支持冒泡，但是浏览器支持有问题
+	     */
+	    $checkInput.focusin(function (e) {
+	        $(this).find('.help-block span').text($(this).find('input').attr('placeholder'));
+	    }).focusout(function (e) {
+	        console.log($(this).find('input').val());
+	        if ($(this).hasClass('must') && $(this).find('input').val() == '') {
+	            $(this).find('.help-block span').text('该项不能为空');
+	        }
 	    });
 
 	    //function END

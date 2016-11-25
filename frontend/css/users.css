@@ -1,5 +1,5 @@
 .add-form{margin-top:20px;}
-.add-article-title{text-align: center;color:#B9B9B9;}
+.add-form label>em{color: #f00;padding-right:5px;}
 
 /*后台frame*/
 .frame-con{position:absolute;top:50px;bottom:0;left:0;right:0;}

@@ -9,19 +9,19 @@ const fTime = require('./date.format');
 
 $(function () {
     //变量
-    let $dropDown = $('.js-dropdown');  //下拉
-    let $search = $('#mainSearch'); //搜索
-    let $mobSearchIco = $('.js-mobSearchIco'); //移动搜索图标
-    let $mobSearchForm = $('.js-mobSearch'); //移动搜索框
-    let $mobileNav = $('#mobileNav');   //移动导航
-    let $mobileNavBtn = $('#mobileNavBtn'); //移动导航按钮
-    let $shadeLayout = $('.js-shade');  //遮罩层
-    let width = window.innerWidth;  //窗口宽度
-    let height = window.innerHeight;  //窗口高度
-    let $fixed = $('.js-fixed');    //pin功能，固定底部
-    let $date = $('.js-date');  //date
-    //admin 变量
-    let $ajaxForm = $('.js-form-ajax');
+    const $dropDown = $('.js-dropdown');  //下拉
+    const $search = $('#mainSearch'); //搜索
+    const $mobSearchIco = $('.js-mobSearchIco'); //移动搜索图标
+    const $mobSearchForm = $('.js-mobSearch'); //移动搜索框
+    const $mobileNav = $('#mobileNav');   //移动导航
+    const $mobileNavBtn = $('#mobileNavBtn'); //移动导航按钮
+    const $shadeLayout = $('.js-shade');  //遮罩层
+    const width = window.innerWidth;  //窗口宽度
+    const height = window.innerHeight;  //窗口高度
+    const $fixed = $('.js-fixed');    //pin功能，固定底部
+    const $date = $('.js-date');  //date
+    const $ajaxForm = $('.js-form-ajax'); //默认ajax提交
+    const $checkInput = $('.js-checkInput'); //通用input检测
 
     //dropdown
     $dropDown.hover(function () {
@@ -100,13 +100,42 @@ $(function () {
     $date.text(thisDate);
     // fTime.relTime();
 
-    //users 页面
-    console.log($ajaxForm);
+    //定义ajax提交
     $ajaxForm.on('submit', function (e) {
         e.stopPropagation();
         e.preventDefault();
+        const data = $(this).serialize();
+        const method = this.method;
+        const action = this.action;
+        $.ajax({url: action, method: method, data: data}).then(function (res) {
+            console.log(res);
+            if (res.error === 0) {
+                window.location.href = action;
+            } else {
+                //登录错误处理
+                alert(res.messages);
+            }
+        });
 
     });
+
+    /**
+     * input检测
+     * 必要的class为 help-block
+     * 若为必填项，则添加 em标记，input添加must
+     * focusin/focusout 两个事件支持冒泡，但是浏览器支持有问题
+     */
+    $checkInput
+        .focusin(function (e) {
+            $(this).find('.help-block span').text($(this).find('input').attr('placeholder'));
+        })
+        .focusout(function (e) {
+            console.log($(this).find('input').val());
+            if ($(this).hasClass('must') && $(this).find('input').val() == '') {
+                $(this).find('.help-block span').text('该项不能为空');
+            }
+        });
+
 
     //function END
 });

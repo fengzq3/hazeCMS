@@ -1,12 +1,12 @@
-@import "bootstrap.css";
+@import "custom.css";
 
 @font-face {
     font-family: 'iconfont';  /* project id："123115" */
-    src: url('//at.alicdn.com/t/font_u345qowuoydjkyb9.eot');
-    src: url('//at.alicdn.com/t/font_u345qowuoydjkyb9.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_u345qowuoydjkyb9.woff') format('woff'),
-    url('//at.alicdn.com/t/font_u345qowuoydjkyb9.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_u345qowuoydjkyb9.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_yv5g31ff9614te29.eot');
+    src: url('//at.alicdn.com/t/font_yv5g31ff9614te29.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_yv5g31ff9614te29.woff') format('woff'),
+    url('//at.alicdn.com/t/font_yv5g31ff9614te29.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_yv5g31ff9614te29.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -38,6 +38,10 @@
 .icon-comment:before{content:'\e60a'}
 .icon-web:before{content:'\e62c'}
 .icon-system:before{content:'\e666'}
+.icon-help:before{content:'\e733'}
+.icon-dui:before{content:'\e615'}
+.icon-error:before{content:'\e64d'}
+.icon-must:before{content:'\e652'}
 
 @media(min-width: 768px){
     .nav-search{margin:13px;width:215px;text-align: center;padding-left:13px;border-left:1px solid #3c3c3c;white-space: nowrap;overflow: hidden;display:block !important;float:right;}

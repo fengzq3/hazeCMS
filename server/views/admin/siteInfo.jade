@@ -4,21 +4,52 @@
 extends block/frame
 block adminContent
     .admin-con
-        h1.add-article-title 网站基本信息
+        .breadcrumb
+            li.on 基础信息设置
+            //li
+            //    a(href='#') 实例1
+            //li.active
+            //    a(href='#') 实例2
+            //li
+            //    a(href='#') 实例2
         hr
         form.form-horizontal.add-form.js-form-ajax(role='form' method='post' action='#')
-            .form-group
-                label.col-sm-2.control-label 网站名称
+            .form-group.js-checkInput
+                label.col-sm-2.control-label
+                    em.iconfont.icon-must
+                    | 网站名称
                 .col-sm-5
-                    input.form-control(name="site_name")
-            .form-group
+                    input.form-control.must(name="site_name" type="text" placeholder="输入网站名称" value="")
+                .col-sm-5
+                    p.help-block
+                        i.iconfont.icon-dui
+                        span 请输入网站名称
+            .form-group.js-checkInput
+                label.col-sm-2.control-label
+                    em.iconfont.icon-must
+                    | 网站URL
+                .col-sm-5
+                    input.form-control.must(name="site_link" type="text" placeholder="输入程序网址" value="")
+                .col-sm-5
+                    p.help-block
+                        i.iconfont.icon-dui
+                        span 请输入网站网址
+            .form-group.js-checkInput
                 label.col-sm-2.control-label 描述
                 .col-sm-5
-                    input.form-control(name='site_description')
-            .form-group
+                    input.form-control(name='site_description' type="text" placeholder="输入网站SEO描述信息" value="")
+                .col-sm-5
+                    p.help-block
+                        i.iconfont.icon-dui
+                        span 请输入网站描述信息
+            .form-group.js-checkInput
                 label.col-sm-2.control-label 关键词
                 .col-sm-5
-                    input.form-control(name='site_keyword')
+                    input.form-control(name='site_keyword' type="text" placeholder="输入网站SEO关键词" value="")
+                .col-sm-5
+                    p.help-block
+                        i.iconfont.icon-dui
+                        span 请输入网站关键词
             .form-group
                 .col-sm-5.col-sm-offset-2
                     button.btn.btn-success(type='submit') 提交

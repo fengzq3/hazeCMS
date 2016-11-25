@@ -18,7 +18,7 @@ const siteSchema = new mongoose.Schema({
 
 });
 
-//管理中心用户
+//admin用户
 const adminSchema = new mongoose.Schema({
     admin_name: String,
     admin_password: String,

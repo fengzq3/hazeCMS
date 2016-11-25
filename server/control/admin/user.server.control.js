@@ -40,18 +40,31 @@ module.exports = {
             });
         }else if(method === 'POST'){
             //接收post信息
+            const reqBody = req.body;
+            //校验信息完整性
+
+
+            //处理数据存储
             let site = db.readSiteInfo();
             site.then(function (info) {
                 if (!info) {
                     //不存在则创建
-                    db.createSiteInfo(req.body).then(function (r) {
+                    db.createSiteInfo(reqBody).then(function (r) {
                         //保存和更新返回 r 数据格式：{"ok":1,"nModified":1,"n":1}
-                        res.send(r);
+                        if(r.ok === 1){
+                            res.json({error:0,messages:'创建成功'});
+                        }else{
+                            res.json({error:1,messages:'网站信息创建错误'});
+                        }
                     });
                 } else {
                     //存在记录则更新
                     db.editSiteInfo({_id: info.id}, req.body).then(function (r) {
-                        res.send(r);
+                        if(r.ok === 1){
+                            res.json({error:0,messages:'网站信息更新成功'});
+                        }else{
+                            res.json({error:1,messages:'网站信息更新失败'});
+                        }
                     });
                 }
             });
