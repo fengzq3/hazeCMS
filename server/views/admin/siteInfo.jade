@@ -13,13 +13,35 @@ block adminContent
             //li
             //    a(href='#') 实例2
         hr
-        form.form-horizontal.add-form.js-form-ajax(role='form' method='post' action='#')
+        .site-info
+            .row
+                .col-sm-2
+                    .site-info-label 网站名称：
+                .col-sm-10
+                    .site-info-con #{siteName}
+                .clearfix
+                .col-sm-2
+                    .site-info-label 网站连接：
+                .col-sm-10
+                    .site-info-con #{link}
+                .clearfix
+                .col-sm-2
+                    .site-info-label 描述信息：
+                .col-sm-10
+                    .site-info-con #{description}
+                .clearfix
+                .col-sm-2
+                    .site-info-label 关键词：
+                .col-sm-10
+                    .site-info-con #{keywords}
+        hr
+        form.form-horizontal.add-form.js-info-ajax(role='form' method='post' action='/admin/siteInfo')
             .form-group.js-checkInput
                 label.col-sm-2.control-label
                     em.iconfont.icon-must
                     | 网站名称
                 .col-sm-5
-                    input.form-control.must(name="site_name" type="text" placeholder="输入网站名称" value="")
+                    input.form-control.must(name="site_name" type="text" placeholder="输入网站名称")
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
@@ -29,7 +51,7 @@ block adminContent
                     em.iconfont.icon-must
                     | 网站URL
                 .col-sm-5
-                    input.form-control.must(name="site_link" type="text" placeholder="输入程序网址" value="")
+                    input.form-control.must(name="site_link" type="text" placeholder="输入程序网址")
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
@@ -37,7 +59,7 @@ block adminContent
             .form-group.js-checkInput
                 label.col-sm-2.control-label 描述
                 .col-sm-5
-                    input.form-control(name='site_description' type="text" placeholder="输入网站SEO描述信息" value="")
+                    input.form-control(name='site_description' type="text" placeholder="输入网站SEO描述信息")
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
@@ -45,11 +67,11 @@ block adminContent
             .form-group.js-checkInput
                 label.col-sm-2.control-label 关键词
                 .col-sm-5
-                    input.form-control(name='site_keyword' type="text" placeholder="输入网站SEO关键词" value="")
+                    input.form-control(name='site_keyword' type="text" placeholder="输入网站SEO关键词")
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
                         span 请输入网站关键词
             .form-group
                 .col-sm-5.col-sm-offset-2
-                    button.btn.btn-success(type='submit') 提交
+                    button.btn.btn-success(type='submit' data-loading-text="Loading...") 提交

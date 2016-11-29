@@ -1,5 +1,6 @@
-webpackJsonp([2],[
-/* 0 */
+webpackJsonp([2],{
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/**
@@ -9,7 +10,8 @@ webpackJsonp([2],[
 	// require('./index.slide.js');
 	//格式化时间
 
-	var fTime = __webpack_require__(4);
+	var fTime = __webpack_require__(5);
+	var $tipModal = __webpack_require__(3); //通用模态框、提示等
 
 	$(function () {
 	    //变量
@@ -24,8 +26,9 @@ webpackJsonp([2],[
 	    var height = window.innerHeight; //窗口高度
 	    var $fixed = $('.js-fixed'); //pin功能，固定底部
 	    var $date = $('.js-date'); //date
-	    var $ajaxForm = $('.js-form-ajax'); //默认ajax提交
+	    // const $ajaxLink = $('.js-link-ajax'); //默认ajax提交a link
 	    var $checkInput = $('.js-checkInput'); //通用input检测
+
 
 	    //dropdown
 	    $dropDown.hover(function () {
@@ -109,33 +112,35 @@ webpackJsonp([2],[
 	    // fTime.relTime();
 
 	    //定义ajax提交
-	    $ajaxForm.on('submit', function (e) {
-	        e.stopPropagation();
-	        e.preventDefault();
-	        var data = $(this).serialize();
-	        var method = this.method;
-	        var action = this.action;
-	        $.ajax({ url: action, method: method, data: data }).then(function (res) {
-	            console.log(res);
-	            if (res.error === 0) {
-	                window.location.href = action;
-	            } else {
-	                //登录错误处理
-	                alert(res.messages);
-	            }
-	        });
-	    });
+	    // $ajaxLink.on('click', function (e) {
+	    //     e.stopPropagation();
+	    //     e.preventDefault();
+	    //     const url = $(this).attr('href');
+	    //     $.ajax({url: url, method: get}).then(function (res) {
+	    //         console.log(res);
+	    //         if (res.error === 0) {
+	    //             $mainTip.modal('show');
+	    //             window.location.href = url;
+	    //         } else {
+	    //             //登录错误处理
+	    //             alert(res.messages);
+	    //         }
+	    //     });
+	    //
+	    // });
 
 	    /**
 	     * input检测
 	     * 必要的class为 help-block
 	     * 若为必填项，则添加 em标记，input添加must
-	     * focusin/focusout 两个事件支持冒泡，但是浏览器支持有问题
+	     * focusin/focusout 两个事件支持冒泡，但是浏览器支持有问题（可能）
 	     */
 	    $checkInput.focusin(function (e) {
-	        $(this).find('.help-block span').text($(this).find('input').attr('placeholder'));
+	        $(this).find('.help-block').addClass('on').find('span').text($(this).find('input').attr('placeholder'));
 	    }).focusout(function (e) {
 	        console.log($(this).find('input').val());
+
+	        $(this).find('.help-block').removeClass('on');
 	        if ($(this).hasClass('must') && $(this).find('input').val() == '') {
 	            $(this).find('.help-block span').text('该项不能为空');
 	        }
@@ -146,10 +151,8 @@ webpackJsonp([2],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */
+
+/***/ 5:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -185,4 +188,5 @@ webpackJsonp([2],[
 	};
 
 /***/ }
-]);
+
+});
