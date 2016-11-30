@@ -11,7 +11,6 @@ $(function () {
     const $infoForm = $('.js-info-ajax');
     const $loginForm = $('.js-login-ajax');
     const $tipModal = $('#tipModal');
-    const $minTip = $('#minTip');
 
     //菜单min方法
     $minMenu.on('click', function () {
@@ -64,17 +63,13 @@ $(function () {
 
         btn.button('loading');
 
-
         $.ajax({
             url: action,
             method: method,
             data: data
         }).then(function (res) {
-            // $tipModal.modal('show');
-            // $tipModal.find('#tipModalLabel').text(res.messages.title);
-            // $tipModal.find('.modal-body').text(res.messages.body);
-            // Modal.setModal($tipModal,res.messages);
-            Modal.setTip($minTip,'测试内容内容');
+            Modal.setModal($tipModal,res.messages);
+
             if (res.error === 0) {
                 setTimeout(function () {
                     window.location.href = action;
@@ -84,11 +79,7 @@ $(function () {
             }
 
         }, function (e) {
-            // $tipModal.modal('show');
-            // $tipModal.find('#tipModalLabel').text(e.status);
-            // $tipModal.find('.modal-body').text(e.statusText);
             Modal.setModal($tipModal,{title:e.status,body:e.statusText});
-
             btn.button('reset');
         });
 
