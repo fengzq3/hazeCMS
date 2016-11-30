@@ -240,10 +240,49 @@ transition: all .3s ease-in-out;}
 .article-relate-con img{width:100%;height:100%;position: absolute;top:0;left:0;}
 
 /*通用tip*/
-.main-tip-bg{position:absolute;top:100px;width:100%;text-align: center;}
-.main-tip{max-width:500px;display:inline-block;background-color:#293038;position:relative;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;}
+.main-tip-bg{position:absolute;bottom:100%;width:100%;opacity:0; text-align: center;}
+
+.main-tip{max-width:500px;display:inline-block;background-color:#293038;position:relative;}
 .main-tip>p{padding:10px 40px 10px 20px;margin:0;color:#fff;}
-.main-tip>span.iconfont{position:absolute;right:10px;color:#fff;top:10px;}
+.main-tip>span.iconfont{position:absolute;right:10px;color:#fff;top:10px;cursor: pointer;}
+.showTip{
+    -webkit-animation:showTip .3s both;
+    -o-animation:showTip .3s both;
+    animation:showTip .3s both;}
+.hideTip{
+    -webkit-animation:hideTip .3s;
+    -o-animation:hideTip .3s;
+    animation:hideTip .3s;}
+
+@keyframes showTip {
+    0%{bottom:100%;opacity:0;}
+    70%{bottom:85%;opacity:0;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);}
+    100%{bottom:85%;opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);}
+}
+@-webkit-keyframes showTip {
+    0%{bottom:100%;opacity:0;}
+    70%{bottom:85%;opacity:0;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);}
+    100%{bottom:85%;opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);}
+}
+@keyframes hideTip {
+    100%{bottom:100%;opacity:0;}
+    30%{bottom:85%;opacity:0;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);}
+    0%{bottom:85%;opacity: 1;}
+}
+@-webkit-keyframes hideTip {
+    100%{bottom:100%;opacity:0;}
+    30%{bottom:85%;opacity:0;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);}
+    0%{bottom:85%;opacity: 1;}
+}

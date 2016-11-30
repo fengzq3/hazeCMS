@@ -4222,11 +4222,10 @@ button.close {
 }
 .tooltip-inner {
   max-width: 200px;
-  padding: 3px 8px;
+  padding: 9px 12px;
   color: #ffffff;
   text-align: center;
   background-color: #000000;
-  border-radius: 4px;
 }
 .tooltip-arrow {
   position: absolute;

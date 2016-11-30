@@ -7,7 +7,7 @@ webpackJsonp([0],[
 	/**
 	 * Created by feng on 2016/11/21.
 	 */
-	var $tipModal = __webpack_require__(3);
+	var Modal = __webpack_require__(3);
 
 	$(function () {
 	    $("[data-toggle='tooltip']").tooltip();
@@ -16,10 +16,12 @@ webpackJsonp([0],[
 	    var $menuSlide = $('.js-menuSlide');
 	    var $infoForm = $('.js-info-ajax');
 	    var $loginForm = $('.js-login-ajax');
+	    var $tipModal = $('#tipModal');
+	    var $minTip = $('#minTip');
 
 	    //菜单min方法
 	    $minMenu.on('click', function () {
-	        $(this).parent().parent().toggleClass('min-menu');
+	        $('body').toggleClass('min-menu');
 	        $menuSlide.find('b.iconfont').attr({ title: $menuSlide.find('span').text() });
 	    });
 
@@ -30,29 +32,31 @@ webpackJsonp([0],[
 	    });
 
 	    //网站登录
-	    $loginForm.on('submit', function (e) {
-	        e.stopPropagation();
-	        e.preventDefault();
-	        var action = this.action;
-	        var method = this.method;
-	        var data = $(this).serialize();
-	        $(this).find('.btn').button('loading');
+	    // $loginForm.on('submit', function (e) {
+	    //     e.stopPropagation();
+	    //     e.preventDefault();
+	    //     const action = this.action;
+	    //     const method = this.method;
+	    //     const data = $(this).serialize();
+	    //     $(this).find('.btn').button('loading');
+	    //
+	    //     $.ajax({
+	    //         url: action,
+	    //         method: method,
+	    //         data: data
+	    //     }).then(function (res) {
+	    //
+	    //         if (res.error === 0) {
+	    //             window.location.href = action;
+	    //         } else {
+	    //
+	    //             if (res.error === 1) $(this).find('[name="userName"]').addClass('has-error');
+	    //             if (res.error === 2) $(this).find('[name="userPassword"]').addClass('has-error');
+	    //         }
+	    //     });
+	    //
+	    // });
 
-	        $.ajax({
-	            url: action,
-	            method: method,
-	            data: data
-	        }).then(function (res) {
-	            $tipModal.open(res.messages);
-	            if (res.error === 0) {
-	                window.location.href = action;
-	            } else {
-	                setTimeout($tipModal.hide(), 1000);
-	                if (res.error === 1) $(this).find('[name="userName"]').addClass('has-error');
-	                if (res.error === 2) $(this).find('[name="userPassword"]').addClass('has-error');
-	            }
-	        });
-	    });
 	    //网站信息页
 	    $infoForm.on('submit', function (e) {
 	        e.stopPropagation();
@@ -60,23 +64,79 @@ webpackJsonp([0],[
 	        var action = this.action;
 	        var method = this.method;
 	        var data = $(this).serialize();
-	        $(this).find('.btn').button('loading');
+	        var btn = $(this).find('.btn');
+
+	        btn.button('loading');
 
 	        $.ajax({
 	            url: action,
 	            method: method,
 	            data: data
 	        }).then(function (res) {
-	            $tipModal.open(res.messages);
+	            // $tipModal.modal('show');
+	            // $tipModal.find('#tipModalLabel').text(res.messages.title);
+	            // $tipModal.find('.modal-body').text(res.messages.body);
+	            // Modal.setModal($tipModal,res.messages);
+	            Modal.setTip($minTip, '测试内容内容');
 	            if (res.error === 0) {
-	                window.location.href = action;
+	                setTimeout(function () {
+	                    window.location.href = action;
+	                }, 2000);
 	            } else {
-	                setTimeout($tipModal.hide(), 1000);
+	                btn.button('reset');
 	            }
+	        }, function (e) {
+	            // $tipModal.modal('show');
+	            // $tipModal.find('#tipModalLabel').text(e.status);
+	            // $tipModal.find('.modal-body').text(e.statusText);
+	            Modal.setModal($tipModal, { title: e.status, body: e.statusText });
+
+	            btn.button('reset');
 	        });
 	    });
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ },
+/* 1 */,
+/* 2 */,
+/* 3 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	/**
+	 * Created by feng on 2016/11/29.
+	 * data = {}
+	 * data.title 标题
+	 * data.body 内容
+	 */
+	//通用tip消息
+
+	var tipModal = {
+	    setModal: function setModal(modal, data) {
+	        modal.modal('show');
+	        modal.find('#tipModalLabel').text(data.title);
+	        modal.find('.modal-body').text(data.body);
+	    },
+	    setTip: function setTip(tip, mes) {
+	        // tip.stop().animate({bottom:85+'%',opacity:1});
+	        tip.addClass('showTip').removeClass('hideTip');
+	        tip.find('p').text(mes);
+	        //超时自动关闭
+	        setTimeout(function () {
+	            // tip.stop().animate({bottom:100+'%',opacity:0}).off('click');
+	            tip.removeClass('showTip').addClass('hideTip');
+	        }, 5000);
+	        //点击关闭按钮
+	        tip.on('click', '.js-close', function () {
+	            // tip.stop().animate({bottom:100+'%',opacity:0}).off('click');
+	            tip.removeClass('showTip').addClass('hideTip');
+	        });
+	    }
+	};
+
+	module.exports = tipModal;
 
 /***/ }
 ]);

@@ -5,18 +5,28 @@
  * data.body 内容
  */
 //通用tip消息
-const mainTip = $('#tipModal');
 
-module.exports = {
-
-    open:function (data) {
-        mainTip.modal('show');
-        mainTip.find('#tipModalLabel').text(data.title);
-        mainTip.find('.modal-body').text(data.body);
+const tipModal = {
+    setModal:function (modal,data) {
+        modal.modal('show');
+        modal.find('#tipModalLabel').text(data.title);
+        modal.find('.modal-body').text(data.body);
     },
-    hide:function () {
-        mainTip.modal('hide');
-    },
-
-
+    setTip:function (tip, mes) {
+        // tip.stop().animate({bottom:85+'%',opacity:1});
+        tip.addClass('showTip').removeClass('hideTip');
+        tip.find('p').text(mes);
+        //超时自动关闭
+        setTimeout(function () {
+            // tip.stop().animate({bottom:100+'%',opacity:0}).off('click');
+            tip.removeClass('showTip').addClass('hideTip');
+        },5000);
+        //点击关闭按钮
+        tip.on('click','.js-close',function () {
+            // tip.stop().animate({bottom:100+'%',opacity:0}).off('click');
+            tip.removeClass('showTip').addClass('hideTip');
+        });
+    }
 };
+
+module.exports = tipModal;

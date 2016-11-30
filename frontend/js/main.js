@@ -5,7 +5,6 @@
 // require('./index.slide.js');
 //格式化时间
 const fTime = require('./date.format');
-const $tipModal = require('./tipModal'); //通用模态框、提示等
 
 $(function () {
     //变量
@@ -127,14 +126,17 @@ $(function () {
      */
     $checkInput
         .focusin(function (e) {
-            $(this).find('.help-block').addClass('on').find('span').text($(this).find('input').attr('placeholder'));
+            $(this).find('.help-block').addClass('on').find('span').text($(e.target).attr('placeholder'));
         })
         .focusout(function (e) {
-            console.log($(this).find('input').val());
+            console.log($(e.target).val());
 
             $(this).find('.help-block').removeClass('on');
-            if ($(this).hasClass('must') && $(this).find('input').val() == '') {
+            if ($(e.target).hasClass('must') && $(e.target).val() === '') {
+                $(e.target).parent().addClass('has-error');
                 $(this).find('.help-block span').text('该项不能为空');
+            }else{
+                $(e.target).parent().removeClass('has-error');
             }
         });
 

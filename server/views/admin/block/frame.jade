@@ -5,8 +5,8 @@ extends adminLayout
 block content
     //后台框架结构
     .frame-con
-        .frame-table
-            .frame-cell.frame-left
+        .frame-left
+            .frame-layout
                 .admin-menu
                     h4.admin-menu-title.js-mainMenu
                         b.iconfont.icon-shu
@@ -36,5 +36,5 @@ block content
                             a(href='/admin/siteInfo')
                                 b.iconfont.icon-web(data-toggle="tooltip" data-placement="right" title="网站信息")
                                 span 网站信息
-            .frame-cell.frame-right
-                block adminContent
+        .frame-right
+            block adminContent

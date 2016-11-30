@@ -11,7 +11,6 @@ webpackJsonp([2],{
 	//格式化时间
 
 	var fTime = __webpack_require__(5);
-	var $tipModal = __webpack_require__(3); //通用模态框、提示等
 
 	$(function () {
 	    //变量
@@ -136,13 +135,16 @@ webpackJsonp([2],{
 	     * focusin/focusout 两个事件支持冒泡，但是浏览器支持有问题（可能）
 	     */
 	    $checkInput.focusin(function (e) {
-	        $(this).find('.help-block').addClass('on').find('span').text($(this).find('input').attr('placeholder'));
+	        $(this).find('.help-block').addClass('on').find('span').text($(e.target).attr('placeholder'));
 	    }).focusout(function (e) {
-	        console.log($(this).find('input').val());
+	        console.log($(e.target).val());
 
 	        $(this).find('.help-block').removeClass('on');
-	        if ($(this).hasClass('must') && $(this).find('input').val() == '') {
+	        if ($(e.target).hasClass('must') && $(e.target).val() === '') {
+	            $(e.target).parent().addClass('has-error');
 	            $(this).find('.help-block span').text('该项不能为空');
+	        } else {
+	            $(e.target).parent().removeClass('has-error');
 	        }
 	    });
 
