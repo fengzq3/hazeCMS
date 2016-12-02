@@ -1,25 +1,28 @@
 //
    Created by feng on 2016/11/4.
 
-extends ../layout
-
-block content
-    .container
+extends block/frame
+block adminContent
+    .admin-con
         h1.add-article-title 添加一篇文章
         hr
         form.form-horizontal.add-form.js-form-ajax(role='form' method='post' action='#')
             .form-group
                 label.col-sm-2.control-label 文章标题
                 .col-sm-5
-                    input.form-control(name="title")
+                    input.form-control(type='text' name="title")
             .form-group
                 label.col-sm-2.control-label 作者
                 .col-sm-5
-                    input.form-control(name='author')
+                    input.form-control(type='text' name='author')
             .form-group
-                label.col-sm-2.control-label 标签
+                label.col-sm-2.control-label 主图
                 .col-sm-5
-                    input.form-control(name='tag')
+                    input.form-control(type='file' name='topPic')
+            .form-group
+                label.col-sm-2.control-label 话题
+                .col-sm-5
+                    input.form-control(type='text' name='tags')
             .form-group
                 label.col-sm-2.control-label
                 .col-sm-10

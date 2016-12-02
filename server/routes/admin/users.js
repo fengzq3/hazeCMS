@@ -4,12 +4,19 @@ const router = express.Router();
 //使用 control
 const users = require('../../control/admin/user.server.control');
 
-/* GET users listing. */
+//use
 router.use(users.checkLogin);
 
-router.get('/',users.index);
-router.all('/login',users.login);
-router.all('/siteInfo',users.siteInfo);
+/* GET users listing. */
+router.get('/', users.index);
+router.get('/tagList', users.tagList);
+
+//ALL
+router.all('/login', users.login);
+router.all('/siteInfo', users.siteInfo);
+router.all('/addArticle', users.addArticle);
+
+//POST
 
 
 // router.get('/addArticle', function (req, res, next) {
@@ -20,7 +27,6 @@ router.all('/siteInfo',users.siteInfo);
 //     users.addArticle(req.body);
 //     res.json({error: '0', message: '保存成功'});
 // });
-
 
 
 module.exports = router;

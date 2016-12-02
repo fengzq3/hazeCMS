@@ -1,0 +1,58 @@
+//
+   Created by feng on 2016/12/1.
+
+extends block/frame
+block adminContent
+    .admin-con
+        .breadcrumb
+            li.on 话题管理
+            //li
+            //    a(href='#') 添加话题
+            //li.active
+            //    a(href='#') 实例2
+            //li
+            //    a(href='#') 实例2
+        hr
+        .col-list
+            table.table.table-bordered
+                thead
+                    tr
+                        th 话题名称
+                        th 话题描述
+                        th 关键词
+                        th 添加时间
+                        th 操作
+                tbody
+                    tr
+                        td #123131as阿萨德#
+                            small (11)
+                        td adfs123123423
+                        td asd,123,345,ddd
+                        td 2016.10.15
+                        td
+                            a(href="/admin/delCol") 删除
+                            button.btn-link(type='button') 编辑
+                    tr
+                        td #123131as阿萨德#
+                            small (345)
+                        td adfs123123423
+                        td asd,123,345,ddd
+                        td 2016.11.12
+                        td
+                            a(href="/admin/delCol") 删除
+                            button.btn-link(type='button') 编辑
+            .clearfix
+            //添加话题
+            form.form-horizontal(method='post' action='/admin/editCol')
+                .input-group
+                    label.control-label.input-group-addon 话题名称：
+                    input.form-control(type="text" name="tag_name" placeholder="输入话题名称")
+
+                    label.control-label.input-group-addon 描述：
+                    input.form-control(type="text" name="tag_description" placeholder="输入话题描述")
+
+                    label.control-label.input-group-addon 关键词：
+                    input.form-control(type="text" name="tag_keyword" placeholder="输入话题关键词")
+                    span.input-group-btn
+                        button.btn.btn-success(type="submit") 添加新话题
+                        button.btn.btn-default(type="button") 更新话题列表
