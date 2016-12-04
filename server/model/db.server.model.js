@@ -68,7 +68,7 @@ module.exports = {
         return webSite.findOne().exec();
     },
     editSiteInfo: function (query, data) {
-        return webSite.find(query).update(data).exec();
+        return webSite.update(query,data).exec();
     },
     createSiteInfo: function (data) {
         let site = new webSite(data);

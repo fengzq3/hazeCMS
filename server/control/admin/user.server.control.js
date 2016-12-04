@@ -32,12 +32,19 @@ module.exports = {
         switch (req.method) {
             case 'GET':
                 db.readSiteInfo().then(function (d) {
-                    let data = {
-                        siteName: d.site_name,
-                        description: d.site_description,
-                        keywords: d.site_keyword,
-                        link: d.site_link
-                    };
+
+                    console.log(d);
+                    let data;
+                    if (d !== null) {
+                        data = {
+                            siteName: d.site_name,
+                            description: d.site_description,
+                            keywords: d.site_keyword,
+                            link: d.site_link
+                        };
+                    }
+
+
                     res.render('admin/siteInfo', data);
                 });
                 break;
