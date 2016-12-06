@@ -21,6 +21,7 @@ block adminContent
                         th 话题描述
                         th 关键词
                         th 添加时间
+                        th 导航显示
                         th 操作
                 tbody
                     tr
@@ -29,8 +30,10 @@ block adminContent
                         td adfs123123423
                         td asd,123,345,ddd
                         td 2016.10.15
+                        td 否
                         td
                             a(href="/admin/delCol") 删除
+                            a(href="/admin/setNav") 设为导航
                             button.btn-link(type='button') 编辑
                     tr
                         td #123131as阿萨德#
@@ -38,8 +41,10 @@ block adminContent
                         td adfs123123423
                         td asd,123,345,ddd
                         td 2016.11.12
+                        td 是
                         td
                             a(href="/admin/delCol") 删除
+                            a(href="/admin/setNav") 设为导航
                             button.btn-link(type='button') 编辑
             .clearfix
             //添加话题
@@ -53,6 +58,10 @@ block adminContent
 
                     label.control-label.input-group-addon 关键词：
                     input.form-control(type="text" name="tag_keyword" placeholder="输入话题关键词")
+                    label.control-label.input-group-addon 设为导航：
+                    select.form-control
+                        option(name='1') 是
+                        option(name='0' selected) 否
                     span.input-group-btn
                         button.btn.btn-success(type="submit") 添加新话题
                         button.btn.btn-default(type="button") 更新话题列表

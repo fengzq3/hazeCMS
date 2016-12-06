@@ -96,8 +96,13 @@ $(function () {
     }
 
     //格式化时间
-    const thisDate = (new Date($date.attr('date'))).format('yyyy-MM-dd');
-    $date.text(thisDate);
+    $date.each(function () {
+        const thisDate = (new Date($(this).attr('date'))).format('yyyy-MM-dd');
+        $(this).text(thisDate);
+    });
+
+
+
     // fTime.relTime();
 
     //定义ajax提交

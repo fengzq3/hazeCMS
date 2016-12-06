@@ -3,9 +3,9 @@
  * 处理错误，添加逻辑
  */
 const db = require('../../model/db.server.model');
+const Promise = require('bluebird');
 
-
-module.exports = {
+const adminCtl = {
     checkLogin: function (req, res, next) {
         console.log('检测登录');
         next();
@@ -31,19 +31,19 @@ module.exports = {
     siteInfo: function (req, res, next) {
         switch (req.method) {
             case 'GET':
-                db.readSiteInfo().then(function (d) {
+                const siteP = db.readSiteInfo();
+                const navP = db.getNav();
+
+                Promise.all([siteP,navP]).then(function (d) {
 
                     console.log(d);
                     let data;
-                    if (d !== null) {
+                    if (d.length !== 0) {
                         data = {
-                            siteName: d.site_name,
-                            description: d.site_description,
-                            keywords: d.site_keyword,
-                            link: d.site_link
+                            site:d[0],
+                            nav:d[1]
                         };
                     }
-
 
                     res.render('admin/siteInfo', data);
                 });
@@ -91,13 +91,44 @@ module.exports = {
     addArticle: function (req, res, next) {
         switch (req.method) {
             case 'GET':
-                res.render('admin/addArticle');
+                const siteP = db.readSiteInfo();
+                const navP = db.getNav();
+
+                Promise.all([siteP, navP]).then(function (d) {
+                    const data = {
+                        site: d[0],
+                        nav: d[1]
+                    };
+                    res.render('admin/addArticle', data);
+                });
+
                 break;
             case 'POST':
-                console.log(req.body);
-                //添加文章
-                db.addArticle(req.body);
-                res.json({error: '0', message: {title: '操作成功', body: '文章发布成功！'}});
+                /**
+                 * 添加文章
+                 * 处理 tags
+                 */
+                let pAr = [];
+                pAr.push(db.addArticle(req.body));
+
+                const tagAr = req.body.tags.split(',');
+
+                for(let i=0;i<tagAr.length;i++){
+                    db.checkTag({tag_name:tagAr[i]}).then(function (d) {
+                        if(!!d){
+                            pAr.push(db.updateTag({tag_name:tagAr[i]},{tag_num:d.tag_num + 1}));
+                        }else{
+                            pAr.push(db.addTag({tag_name:tagAr[i],tag_num:1}));
+                        }
+                    })
+
+                }
+
+                Promise.all(pAr).then(function (d) {
+                    console.log(d);
+                    res.json({error: '0', message: {title: '操作成功', body: '文章发布成功！'}});
+                });
+
                 break;
             default:
                 let err = new Error('非法method');
@@ -109,9 +140,21 @@ module.exports = {
     //话题列表
     tagList: function (req, res, next) {
         //todo 分页 && 序列化 tags
-        db.getTagList(10, 0).then(function (tags) {
+        const siteP = db.readSiteInfo();
+        const navP = db.getNav();
+        const tagsP = db.getTagList(10, 0);
 
-            res.render('admin/tagList', tags);
+        Promise.all([siteP, navP, tagsP]).then(function (d) {
+            console.log(d[0]);
+            console.log(d[1]);
+            console.log(d[2]);
+            const data = {
+                site: d[0],
+                nav: d[1],
+                content: d[2]
+            };
+
+            res.render('admin/tagList', data);
         });
 
 
@@ -127,3 +170,6 @@ module.exports = {
 
 
 };
+
+
+module.exports = adminCtl;

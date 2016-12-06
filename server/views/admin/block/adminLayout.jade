@@ -4,7 +4,9 @@ html
         include ../../block/head
         link(rel='stylesheet', href='/stylesheets/admin.css')
         script(src='/javascripts/admin.bundle.js')
-        title= 'hazeCMS 后台管理系统'
+        title= site.site_name
+        meta(name='keywords' content='#{site.site_keyword}')
+        meta(name='description' content='#{site.site_description}')
     body
         header.admin-header
             nav.navbar.navbar-admin(role='navigation')
@@ -14,8 +16,19 @@ html
                 ul.nav.navbar-nav.pull-right
                     li.active
                         a(href='/') 首页
-                    li
-                        a(href='#') 栏目1
+                    for item in nav
+                        if item.nav_child.length === 0
+                            li
+                                a(href='/column/#{item.nav_link}') #{item.nav_name}
+                        else
+                            li.dropdown.js-dropdown
+                                a.dropdown-toggle(href='/column/#{item.nav_link}', data-toggle='dropdown') #{item.nav_name}
+                                    b.caret
+                                ul.dropdown-menu.navbar-dropdown-menu
+                                    for child in item.nav_child
+                                        li
+                                            a(href='/column/#{item.nav_link}/#{child.nav_link}') #{child.nav_name}
+
                     li.dropdown.js-dropdown
                         a.dropdown-toggle.has-menu-icon(href='#', data-toggle='dropdown')
                             span.iconfont.icon-admin
@@ -23,7 +36,7 @@ html
                             b.caret
                         ul.dropdown-menu
                             li
-                                a.has-menu-icon(href='#')
+                                a.has-menu-icon(href='/admin/logout')
                                     span.iconfont.icon-quit
                                     | 退出
 

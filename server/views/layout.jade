@@ -2,9 +2,13 @@ doctype html
 html
     head
         include block/head
-        title= title
-        meta(name='keywords' content='#{keywords}')
-        meta(name='description' content='#{description}')
+        //if title === undefined
+        //    title= site.site_name
+        //else
+        //    title= title + '-' + site.site_name
+
+        meta(name='keywords' content='#{site.site_keyword}')
+        meta(name='description' content='#{site.site_description}')
     body
         // 遮罩
         .shade-full.js-shade
@@ -15,7 +19,7 @@ html
                         span.icon-bar
                         span.icon-bar
                         span.icon-bar
-                    a.navbar-brand(href='#') #{title}
+                    a.navbar-brand(href='#') #{site.site_name}
                 // search
                 .nav-search
                     form#mainSearch.nav-search-form(role='form', method='POST', action='#')
@@ -31,42 +35,35 @@ html
                 #feng-navbar-collapse.collapse.navbar-collapse.pull-right
                     ul.nav.navbar-nav
                         li.active
-                            a(href='#') 首页
-                        li
-                            a(href='#') 栏目1
-                        li.dropdown.js-dropdown
-                            a.dropdown-toggle(href='#', data-toggle='dropdown')
-                                | 下拉菜单栏目
-                                b.caret
-                            ul.dropdown-menu.navbar-dropdown-menu
+                            a(href='#{site.site_link}') 首页
+                        for item in nav
+                            if item.nav_child.length === 0
                                 li
-                                    a(href='#') Item1
-                                li
-                                    a(href='#') Item1
-                                li
-                                    a(href='#') Item1
-                                li
-                                    a(href='#') Item1
+                                    a(href='/column/#{item.nav_link}') #{item.nav_name}
+                            else
+                                li.dropdown.js-dropdown
+                                    a.dropdown-toggle(href='/column/#{item.nav_link}', data-toggle='dropdown') #{item.nav_name}
+                                        b.caret
+                                    ul.dropdown-menu.navbar-dropdown-menu
+                                        for child in item.nav_child
+                                            li
+                                                a(href='/column/#{item.nav_link}/#{child.nav_link}') #{child.nav_name}
                 // 移动导航
                 #mobileNav.mobile-nav
                     ul.nav.nav-pills.nav-stacked
-                        li
-                            a(href='#') 首页
-                        li
-                            a(href='#') 一级栏目
-                        li.active
-                            a(href='#') 阿萨德
-                        li
-                            a(href='#') 一级栏目
-                        li
-                            a(href='#') 二级栏目
-                            ul.nav.nav-pills.nav-stacked
+
+                        for item in nav
+                            if item.nav_child.length === 0
                                 li
-                                    a(href='#') 二级二级
+                                    a(href='/column/#{item.nav_link}') #{item.nav_name}
+                            else
                                 li
-                                    a(href='#') 二级二级
-                                li
-                                    a(href='#') 二级二级
+                                    a(href='/column/#{item.nav_link}') #{item.nav_name}
+                                    ul.nav.nav-pills.nav-stacked
+                                        for child in item.nav_child
+                                            li
+                                                a(href='/column/#{item.nav_link}/#{child.nav_link}') #{child.nav_name}
+
                 // 移动 search
                 .mobile-search.js-mobSearchIco
                     span.mob-search-ico.iconfont.icon-fangdajing

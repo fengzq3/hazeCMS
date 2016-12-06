@@ -2,36 +2,35 @@ extends layout
 
 block content
     //banner
-    a.main-banner(href='#')
+    a.main-banner(href='/article/#{content[0].id}')
         .banner-bg
-            img(src='https://isux.tencent.com/wp-content/uploads/2016/02/20160202111209544.jpg', alt='标题标题标题标题一个测试标题')
+            img(src='/upload/#{content[0].topPic}', alt='#{content[0].title}')
             // 内层
             .banner-des
                 .main-title
-                    h1 标题标题标题标题一个测试标题
+                    h1 #{content[0].title}
                     p
                         small
-                            span.iconfont.icon-rili
-                            |  2016.10.22
+                            span.iconfont.icon-rili.js-date(date='#{content[0].date}')
                         small
-                            span.iconfont.icon-discuss
-                            | 122
+                            span.iconfont.icon-discuss #{content[0].comments.length}
     // 主内容
     .container-fluid.main-list
         .row
-            for item in list
-                .col-lg-3.col-md-4.col-sm-6
-                    a.main-list-item(href='/article/#{item.id}')
-                        .list-img
-                            img(src='https://isux.tencent.com/wp-content/uploads/2016/07/mobile-phone-photography.jpg', alt='#{item.title}')
-                        .list-con
-                            h3 #{item.title}
-                            p.list-con-des
-                                small
-                                    span.iconfont.icon-date.js-date(date='#{item.date}')
-                                small
-                                    span.iconfont.icon-discuss
-                                    | #{item.comments.length}
+            each item,key in content
+                if key !== 0
+                    .col-lg-3.col-md-4.col-sm-6
+                        a.main-list-item(href='/article/#{item.id}')
+                            .list-img
+                                img(src='/upload/#{item.topPic}', alt='#{item.title}')
+                            .list-con
+                                h3 #{item.title}
+                                p.list-con-des
+                                    small
+                                        span.iconfont.icon-date.js-date(date='#{item.date}')
+                                    small
+                                        span.iconfont.icon-discuss
+                                        | #{item.comments.length}
         // row END page navigation 开始
         .page-more
             a.btn.btn-block.btn-lg.btn-default(href='#') 下一页

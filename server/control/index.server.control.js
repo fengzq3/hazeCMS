@@ -13,18 +13,17 @@ const index = {
          * todo 读取系统设置，调取导航
          */
         let siteP = db.readSiteInfo();
-        // let navP = db.getNav(10, 0);
-        let listP = db.showList(10, 0);
-        Promise.all([siteP, listP]).then(function (dt) {
-            let data = {
-                title: dt[0].site_name,
-                description: dt[0].site_description,
-                keywords: dt[0].site_keyword,
-                list: dt[1]
+        let navP = db.getNav();
+        let listP = db.showList(13, 0);
+        Promise.all([siteP, navP, listP]).then(function (d) {
+            console.log(d[0]);
+
+            const data = {
+                site: d[0],
+                nav: d[1],
+                content: d[2]
             };
 
-            console.log(dt[1]);
-            // res.send(data);
             res.render('index', data);
         });
     },

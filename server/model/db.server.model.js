@@ -26,12 +26,12 @@ const adminSchema = new mongoose.Schema({
 });
 
 //主导航
-// const navSchema = new mongoose.Schema({
-//     nav_name: String,
-//     nav_link: String,
-//     nav_Type: String,
-//     nav_child: []
-// });
+const navSchema = new mongoose.Schema({
+    nav_name: String,
+    nav_link: String,
+    nav_Type: String,
+    nav_child: []
+});
 
 //话题
 const tagsSchema = new mongoose.Schema({
@@ -60,7 +60,7 @@ const webSite = mongoose.model('blog', siteSchema);
 const admins = mongoose.model('admin', adminSchema);
 const article = mongoose.model('article', articleSchema);
 const tags = mongoose.model('tag', tagsSchema);
-// const mainNav = mongoose.model('navigation', navSchema);
+const mainNav = mongoose.model('navigation', navSchema);
 
 module.exports = {
     //网站信息
@@ -79,7 +79,7 @@ module.exports = {
         return admins.find().skip(skip).limit(num).exec();
     },
     editAdmin: function (query, data) {
-        return admins.find(query).update(data).exec();
+        return admins.update(query,data).exec();
     },
     createAdmin: function (data) {
         let admin = new admins(data);
@@ -88,13 +88,12 @@ module.exports = {
     //文章
     addArticle: function (data) {
         let art = new article(data);
-        //处理tag
-
         return art.save();
     },
     showList: function (num, skip) {
         return article
             .find()
+            .sort({date:-1})
             .skip(skip)
             .limit(num)
             .exec();
@@ -107,22 +106,21 @@ module.exports = {
     /**
      * todo 导航
      * 导航由话题中提取，详见readme
+     * 导航使用tag list
      */
 
-    // getNav: function (num, skip) {
-    //     return mainNav
-    //         .find()
-    //         .skip(skip)
-    //         .limit(num)
-    //         .exec();
-    // },
-    // setNav: function (query, data) {
-    //     return mainNav.find(query).update(data).exec();
-    // },
-    // createNav: function (data) {
-    //     let nav = new mainNav(data);
-    //     return nav.save();
-    // },
+    getNav: function () {
+        return mainNav
+            .find()
+            .exec();
+    },
+    setNav: function (query, data) {
+        return mainNav.update(query,data).exec();
+    },
+    createNav: function (data) {
+        let nav = new mainNav(data);
+        return nav.save();
+    },
     //话题列表
     getTagList: function (num,skip) {
         return tags
@@ -132,13 +130,16 @@ module.exports = {
             .exec();
     },
     addTag:function (data) {
-        //添加一行
         let tag = new tags(data);
         return tag.save();
+
     },
-    updateTag: function (query,data) {
-        //更新单行
-        return tags.update(query,data);
+    updateTag:function (query,data) {
+        return tags.update(query,data).exec();
+    },
+    checkTag: function (query) {
+        //用于手动添加tag时检测是否重复
+        return tags.findOne(query).exec();
     },
 
     //话题详情-文章列表

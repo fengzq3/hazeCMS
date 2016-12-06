@@ -18,22 +18,22 @@ block adminContent
                 .col-sm-2
                     .site-info-label 网站名称：
                 .col-sm-10
-                    .site-info-con #{siteName}
+                    .site-info-con #{site.site_name}
                 .clearfix
                 .col-sm-2
                     .site-info-label 网站连接：
                 .col-sm-10
-                    .site-info-con #{link}
+                    .site-info-con #{site.site_link}
                 .clearfix
                 .col-sm-2
                     .site-info-label 描述信息：
                 .col-sm-10
-                    .site-info-con #{description}
+                    .site-info-con #{site.site_description}
                 .clearfix
                 .col-sm-2
                     .site-info-label 关键词：
                 .col-sm-10
-                    .site-info-con #{keywords}
+                    .site-info-con #{site.site_keyword}
         hr
         form.form-horizontal.add-form.js-info-ajax(role='form' method='post' action='/admin/siteInfo')
             .form-group.js-checkInput
