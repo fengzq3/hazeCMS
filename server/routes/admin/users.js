@@ -17,6 +17,8 @@ router.all('/siteInfo', users.siteInfo);
 router.all('/addArticle', users.addArticle);
 
 //POST
+router.post('/editTag',users.editTag);
+router.post('/addTag',users.inputTag);
 
 
 // router.get('/addArticle', function (req, res, next) {

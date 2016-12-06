@@ -2439,6 +2439,7 @@ fieldset[disabled] .btn-link {
   color: #23527c;
   text-decoration: underline;
   background-color: transparent;
+  outline:none;
 }
 .btn-link[disabled]:hover,
 fieldset[disabled] .btn-link:hover,

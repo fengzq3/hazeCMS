@@ -2446,6 +2446,7 @@ fieldset[disabled] .btn-link {
   color: #23527c;
   text-decoration: underline;
   background-color: transparent;
+  outline:none;
 }
 .btn-link[disabled]:hover,
 fieldset[disabled] .btn-link:hover,
@@ -5108,3 +5109,6 @@ transition: all .3s ease-in-out;}
         transform: scale(1.2);}
     0%{bottom:85%;opacity: 1;}
 }
+
+.w-p10{width:10%;}
+.w-p20{width:20%;}

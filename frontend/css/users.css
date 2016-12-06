@@ -59,3 +59,11 @@ body{overflow:hidden;}
 .add-form .help-block .iconfont{margin-right:10px;}
 
 .site-info-label{text-align: right;}
+
+/*话题列表*/
+.tag-list{margin-bottom:20px;}
+.tags-table caption{padding:8px;text-align: left;}
+.tags-table td>small{margin-left:10px;color:#ccc;}
+.tags-table td,.tags-table th{vertical-align: middle !important;}
+.tags-table td>a{padding:1px 6px;}
+.tag-edit{background-color:#ececec;display:none;}

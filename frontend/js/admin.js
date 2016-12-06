@@ -11,6 +11,7 @@ $(function () {
     const $infoForm = $('.js-info-ajax');
     const $loginForm = $('.js-login-ajax');
     const $tipModal = $('#tipModal');
+    const $tagEdit = $('.js-tagEdit'),$tagEditBtn = $('.js-editBtn');
 
     //菜单min方法
     $minMenu.on('click', function () {
@@ -84,6 +85,41 @@ $(function () {
         });
 
     });
+
+    //话题编辑功能
+    $tagEdit.on('click',function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $(this).parents('tr').toggle(0);
+        $('#'+$(this).data('target')).toggle(0);
+    });
+
+    $tagEditBtn.on('click',function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        const form = $('#'+$(this).data('target'));
+        let data = [
+            form.find('[name="tag_name"]').val(),
+            form.find('[name="tag_description"]').val(),
+            form.find('[name="tag_keyword"]').val(),
+            form.find('[name="tag_nav"]').val()
+        ];
+
+        $.ajax({
+            url:form.data('action'),
+            method:'post',
+            data:data
+        }).then(function (res) {
+            console.log(res);
+            //todo 处理数据
+
+            //显示
+            form.toggle(0).prev('tr').toggle(0);
+        });
+
+    });
+
+    //todo 双向绑定input和
 
 
 });

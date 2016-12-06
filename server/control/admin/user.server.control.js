@@ -125,7 +125,6 @@ const adminCtl = {
                 }
 
                 Promise.all(pAr).then(function (d) {
-                    console.log(d);
                     res.json({error: '0', message: {title: '操作成功', body: '文章发布成功！'}});
                 });
 
@@ -145,9 +144,6 @@ const adminCtl = {
         const tagsP = db.getTagList(10, 0);
 
         Promise.all([siteP, navP, tagsP]).then(function (d) {
-            console.log(d[0]);
-            console.log(d[1]);
-            console.log(d[2]);
             const data = {
                 site: d[0],
                 nav: d[1],
@@ -159,13 +155,17 @@ const adminCtl = {
 
 
     },
-    delCol: function (req, res, next) {
+    delTag: function (req, res, next) {
         //删除话题
 
     },
-    editCol: function (req, res, next) {
+    inputTag: function (req, res, next) {
+        //添加话题
+        res.json({error:0,messages:'inputTag'});
+    },
+    editTag: function (req, res, next) {
         //编辑话题
-
+        res.json({error:0,messages:'test'});
     }
 
 

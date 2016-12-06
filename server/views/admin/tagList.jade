@@ -13,42 +13,59 @@ block adminContent
             //li
             //    a(href='#') 实例2
         hr
-        .col-list
-            table.table.table-bordered
+        .tag-list
+            table.table.table-bordered.tags-table
+                caption 共查询到：#{content.length} 条话题记录
                 thead
                     tr
-                        th 话题名称
-                        th 话题描述
-                        th 关键词
-                        th 添加时间
-                        th 导航显示
-                        th 操作
+                        th.w-p20 话题名称
+                        th.w-p20 话题描述
+                        th.w-p20 关键词
+                        th.w-p10 添加时间
+                        th.w-p10 导航显示
+                        th.w-p20 操作
                 tbody
-                    tr
-                        td #123131as阿萨德#
-                            small (11)
-                        td adfs123123423
-                        td asd,123,345,ddd
-                        td 2016.10.15
-                        td 否
-                        td
-                            a(href="/admin/delCol") 删除
-                            a(href="/admin/setNav") 设为导航
-                            button.btn-link(type='button') 编辑
-                    tr
-                        td #123131as阿萨德#
-                            small (345)
-                        td adfs123123423
-                        td asd,123,345,ddd
-                        td 2016.11.12
-                        td 是
-                        td
-                            a(href="/admin/delCol") 删除
-                            a(href="/admin/setNav") 设为导航
-                            button.btn-link(type='button') 编辑
+                    each item in content
+                        tr
+                            td ##{item.tag_name}#
+                                small (#{item.tag_num})
+                            td #{item.tag_description}
+                            td #{item.tag_keyword}
+                            td.js-date(date="#{item.date}")
+                            td #{item.tag_nav}
+                            td
+                                a(href="/admin/delCol") 删除
+                                a(href="/admin/setNav") 设为导航
+                                button.btn-link.js-tagEdit(type='button' data-target='#{item._id}') 编辑
+                        //编辑话题
+                        tr.tag-edit(id="#{item._id}" data-action='/admin/editTag')
+                            td
+                                input.form-control(type="text" name="tag_name" value="#{item.tag_name}")
+                            td
+                                if item.tag_description === undefined
+                                    input.form-control(type="text" name="tag_description" placeholder="输入tag描述")
+                                else
+                                    input.form-control(type="text" name="tag_description" placeholder="输入tag描述" value="#{item.tag_description}")
+                            td
+                                if item.tag_keyword === undefined
+                                    input.form-control(type="text" name="tag_keyword" placeholder="输入tag关键词")
+                                else
+                                    input.form-control(type="text" name="tag_keyword" placeholder="输入tag关键词" value="#{item.tag_keyword}")
+                            td
+                            td
+                                select.form-control(name="tag_nav")
+                                    if item.tag_nav
+                                        option(value='1' selected) 是
+                                        option(value='0') 否
+                                    else
+                                        option(value='1') 是
+                                        option(value='0' selected) 否
+                            td
+                                button.btn.btn-success.js-editBtn(type="button" data-target='#{item._id}') 确定
+
             .clearfix
             //添加话题
-            form.form-horizontal(method='post' action='/admin/editCol')
+            form.form-horizontal(method='post' action='/admin/addTag')
                 .input-group
                     label.control-label.input-group-addon 话题名称：
                     input.form-control(type="text" name="tag_name" placeholder="输入话题名称")
@@ -59,9 +76,9 @@ block adminContent
                     label.control-label.input-group-addon 关键词：
                     input.form-control(type="text" name="tag_keyword" placeholder="输入话题关键词")
                     label.control-label.input-group-addon 设为导航：
-                    select.form-control
-                        option(name='1') 是
-                        option(name='0' selected) 否
+                    select.form-control(name="tag_nav")
+                        option(value='1') 是
+                        option(value='0' selected) 否
                     span.input-group-btn
                         button.btn.btn-success(type="submit") 添加新话题
                         button.btn.btn-default(type="button") 更新话题列表

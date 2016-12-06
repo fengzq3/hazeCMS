@@ -286,3 +286,6 @@ transition: all .3s ease-in-out;}
         transform: scale(1.2);}
     0%{bottom:85%;opacity: 1;}
 }
+
+.w-p10{width:10%;}
+.w-p20{width:20%;}

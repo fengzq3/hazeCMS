@@ -38,6 +38,7 @@ const tagsSchema = new mongoose.Schema({
     tag_name: String,
     tag_description: String,
     tag_keyword: String,
+    tag_nav:{type:Boolean,default:0},
     tag_num: {type:Number,default:0},
     date: {type: Date, default: Date.now()}
 });

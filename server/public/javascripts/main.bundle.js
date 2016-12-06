@@ -108,7 +108,6 @@ webpackJsonp([2],{
 	    //格式化时间
 	    $date.each(function () {
 	        var thisDate = new Date($(this).attr('date')).format('yyyy-MM-dd');
-	        console.log(new Date($(this).attr('date')));
 	        $(this).text(thisDate);
 	    });
 

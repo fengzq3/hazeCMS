@@ -17,6 +17,8 @@ webpackJsonp([0],[
 	    var $infoForm = $('.js-info-ajax');
 	    var $loginForm = $('.js-login-ajax');
 	    var $tipModal = $('#tipModal');
+	    var $tagEdit = $('.js-tagEdit'),
+	        $tagEditBtn = $('.js-editBtn');
 
 	    //菜单min方法
 	    $minMenu.on('click', function () {
@@ -84,6 +86,31 @@ webpackJsonp([0],[
 	        }, function (e) {
 	            Modal.setModal($tipModal, { title: e.status, body: e.statusText });
 	            btn.button('reset');
+	        });
+	    });
+
+	    //话题编辑功能
+	    $tagEdit.on('click', function (e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	        $(this).parents('tr').toggle(0);
+	        $('#' + $(this).data('target')).toggle(0);
+	    });
+
+	    $tagEditBtn.on('click', function (e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	        var form = $('#' + $(this).data('target'));
+	        var data = [form.find('[name="tag_name"]').val(), form.find('[name="tag_description"]').val(), form.find('[name="tag_keyword"]').val(), form.find('[name="tag_nav"]').val()];
+
+	        $.ajax({
+	            url: form.data('action'),
+	            method: 'post',
+	            data: data
+	        }).then(function (res) {
+	            console.log(res);
+
+	            form.toggle(0).prev('tr').toggle(0);
 	        });
 	    });
 	});
