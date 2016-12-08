@@ -32,15 +32,19 @@ block adminContent
                             td #{item.tag_description}
                             td #{item.tag_keyword}
                             td.js-date(date="#{item.date}")
-                            td #{item.tag_nav}
                             td
-                                a(href="/admin/delCol") 删除
-                                a(href="/admin/setNav") 设为导航
+                                if item.tag_nav
+                                    | 显示
+                                else
+                                    | 不显示
+                            td
+                                a.js-linkAjax(href="/admin/delTag/#{item._id}") 删除
                                 button.btn-link.js-tagEdit(type='button' data-target='#{item._id}') 编辑
                         //编辑话题
                         tr.tag-edit(id="#{item._id}" data-action='/admin/editTag')
-                            td
-                                input.form-control(type="text" name="tag_name" value="#{item.tag_name}")
+                            td ##{item.tag_name}#
+                                small (#{item.tag_num})
+                                input.form-control(type="hidden" name="tag_name" value="#{item.tag_name}")
                             td
                                 if item.tag_description === undefined
                                     input.form-control(type="text" name="tag_description" placeholder="输入tag描述")
@@ -62,10 +66,12 @@ block adminContent
                                         option(value='0' selected) 否
                             td
                                 button.btn.btn-success.js-editBtn(type="button" data-target='#{item._id}') 确定
+                                |  &nbsp;or&nbsp;
+                                button.btn.btn-default.js-editAbort(type="button" data-target='#{item._id}') 取消
 
             .clearfix
             //添加话题
-            form.form-horizontal(method='post' action='/admin/addTag')
+            form.form-horizontal.js-addTag-ajax(method='post' action='/admin/tagList')
                 .input-group
                     label.control-label.input-group-addon 话题名称：
                     input.form-control(type="text" name="tag_name" placeholder="输入话题名称")
@@ -81,4 +87,3 @@ block adminContent
                         option(value='0' selected) 否
                     span.input-group-btn
                         button.btn.btn-success(type="submit") 添加新话题
-                        button.btn.btn-default(type="button") 更新话题列表

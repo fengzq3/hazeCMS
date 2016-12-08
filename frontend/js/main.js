@@ -5,9 +5,11 @@
 // require('./index.slide.js');
 //格式化时间
 const fTime = require('./date.format');
+const Model = require('./tipModal');
 
 $(function () {
     //变量
+    const $minTip = $('#minTip'); //minTip
     const $dropDown = $('.js-dropdown');  //下拉
     const $search = $('#mainSearch'); //搜索
     const $mobSearchIco = $('.js-mobSearchIco'); //移动搜索图标
@@ -19,9 +21,8 @@ $(function () {
     const height = window.innerHeight;  //窗口高度
     const $fixed = $('.js-fixed');    //pin功能，固定底部
     const $date = $('.js-date');  //date
-    // const $ajaxLink = $('.js-link-ajax'); //默认ajax提交a link
     const $checkInput = $('.js-checkInput'); //通用input检测
-
+    const $linkAjax = $('.js-linkAjax'); //全局ajax link 标签
 
     //dropdown
     $dropDown.hover(function () {
@@ -69,7 +70,7 @@ $(function () {
         hide: () => {
             $shadeLayout.removeClass('show').off('click'); //隐藏遮罩
         }
-    }
+    };
 
     // 移动search
     $mobSearchIco.on('click', function () {
@@ -102,27 +103,6 @@ $(function () {
     });
 
 
-
-    // fTime.relTime();
-
-    //定义ajax提交
-    // $ajaxLink.on('click', function (e) {
-    //     e.stopPropagation();
-    //     e.preventDefault();
-    //     const url = $(this).attr('href');
-    //     $.ajax({url: url, method: get}).then(function (res) {
-    //         console.log(res);
-    //         if (res.error === 0) {
-    //             $mainTip.modal('show');
-    //             window.location.href = url;
-    //         } else {
-    //             //登录错误处理
-    //             alert(res.messages);
-    //         }
-    //     });
-    //
-    // });
-
     /**
      * input检测
      * 必要的class为 help-block
@@ -146,6 +126,21 @@ $(function () {
         });
 
 
+    //全局ajax link 方法
+    $linkAjax.on('click',function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        Model.setTip($minTip,'处理中...');
+        $.ajax({
+            url:$(this).attr('href'),
+            method:'GET'
+        }).then(function (d) {
+            Model.setTip($minTip,d.messages.body);
+            if(d.error === 0){
+                setTimeout(window.location.reload());
+            }
+        });
+    });
 
 
     //function END

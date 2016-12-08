@@ -9,16 +9,17 @@ router.use(users.checkLogin);
 
 /* GET users listing. */
 router.get('/', users.index);
-router.get('/tagList', users.tagList);
+router.get('/delTag/:id',users.delTag);
 
 //ALL
+router.all('/tagList', users.tagList);
 router.all('/login', users.login);
 router.all('/siteInfo', users.siteInfo);
 router.all('/addArticle', users.addArticle);
 
 //POST
 router.post('/editTag',users.editTag);
-router.post('/addTag',users.inputTag);
+
 
 
 // router.get('/addArticle', function (req, res, next) {

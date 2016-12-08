@@ -11,9 +11,11 @@ webpackJsonp([2],{
 	//格式化时间
 
 	var fTime = __webpack_require__(5);
+	var Model = __webpack_require__(3);
 
 	$(function () {
 	    //变量
+	    var $minTip = $('#minTip'); //minTip
 	    var $dropDown = $('.js-dropdown'); //下拉
 	    var $search = $('#mainSearch'); //搜索
 	    var $mobSearchIco = $('.js-mobSearchIco'); //移动搜索图标
@@ -25,9 +27,8 @@ webpackJsonp([2],{
 	    var height = window.innerHeight; //窗口高度
 	    var $fixed = $('.js-fixed'); //pin功能，固定底部
 	    var $date = $('.js-date'); //date
-	    // const $ajaxLink = $('.js-link-ajax'); //默认ajax提交a link
 	    var $checkInput = $('.js-checkInput'); //通用input检测
-
+	    var $linkAjax = $('.js-linkAjax'); //全局ajax link 标签
 
 	    //dropdown
 	    $dropDown.hover(function () {
@@ -111,26 +112,6 @@ webpackJsonp([2],{
 	        $(this).text(thisDate);
 	    });
 
-	    // fTime.relTime();
-
-	    //定义ajax提交
-	    // $ajaxLink.on('click', function (e) {
-	    //     e.stopPropagation();
-	    //     e.preventDefault();
-	    //     const url = $(this).attr('href');
-	    //     $.ajax({url: url, method: get}).then(function (res) {
-	    //         console.log(res);
-	    //         if (res.error === 0) {
-	    //             $mainTip.modal('show');
-	    //             window.location.href = url;
-	    //         } else {
-	    //             //登录错误处理
-	    //             alert(res.messages);
-	    //         }
-	    //     });
-	    //
-	    // });
-
 	    /**
 	     * input检测
 	     * 必要的class为 help-block
@@ -149,6 +130,22 @@ webpackJsonp([2],{
 	        } else {
 	            $(e.target).parent().removeClass('has-error');
 	        }
+	    });
+
+	    //全局ajax link 方法
+	    $linkAjax.on('click', function (e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	        Model.setTip($minTip, '处理中...');
+	        $.ajax({
+	            url: $(this).attr('href'),
+	            method: 'GET'
+	        }).then(function (d) {
+	            Model.setTip($minTip, d.messages.body);
+	            if (d.error === 0) {
+	                setTimeout(window.location.reload());
+	            }
+	        });
 	    });
 
 	    //function END

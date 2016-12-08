@@ -34,14 +34,14 @@ const adminCtl = {
                 const siteP = db.readSiteInfo();
                 const navP = db.getNav();
 
-                Promise.all([siteP,navP]).then(function (d) {
+                Promise.all([siteP, navP]).then(function (d) {
 
                     console.log(d);
                     let data;
                     if (d.length !== 0) {
                         data = {
-                            site:d[0],
-                            nav:d[1]
+                            site: d[0],
+                            nav: d[1]
                         };
                     }
 
@@ -113,12 +113,12 @@ const adminCtl = {
 
                 const tagAr = req.body.tags.split(',');
 
-                for(let i=0;i<tagAr.length;i++){
-                    db.checkTag({tag_name:tagAr[i]}).then(function (d) {
-                        if(!!d){
-                            pAr.push(db.updateTag({tag_name:tagAr[i]},{tag_num:d.tag_num + 1}));
-                        }else{
-                            pAr.push(db.addTag({tag_name:tagAr[i],tag_num:1}));
+                for (let i = 0; i < tagAr.length; i++) {
+                    db.checkTag({tag_name: tagAr[i]}).then(function (d) {
+                        if (!!d) {
+                            pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num + 1}));
+                        } else {
+                            pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
                         }
                     })
 
@@ -141,31 +141,64 @@ const adminCtl = {
         //todo 分页 && 序列化 tags
         const siteP = db.readSiteInfo();
         const navP = db.getNav();
-        const tagsP = db.getTagList(10, 0);
+        const tagsP = db.getTagList(20, 0);
 
-        Promise.all([siteP, navP, tagsP]).then(function (d) {
-            const data = {
-                site: d[0],
-                nav: d[1],
-                content: d[2]
-            };
+        switch (req.method) {
+            case 'GET':
+                Promise.all([siteP, navP, tagsP]).then(function (d) {
+                    const data = {
+                        site: d[0],
+                        nav: d[1],
+                        content: d[2]
+                    };
+                    res.render('admin/tagList', data);
+                });
 
-            res.render('admin/tagList', data);
-        });
+                break;
+            case 'POST':
+                //todo 处理话题名称为空时
+                if(req.body.tag_name !== ''){
+                    db.addTag(req.body).then(function (d) {
+                        res.json({error: 0, messages: {title: '添加成功', body: '话题添加成功！'}});
+                    }, function (er) {
+                        res.json({error: 100, messages: {title: '添加失败', body: '话题添加失败！'}});
+                    });
+                }else{
+                    res.json({error: 200, messages: {title: '添加失败', body: '话题名称不能为空！'}});
+                }
+
+
+
+                break;
+            default:
+                let err = new Error('非法method');
+                next(err);
+
+        }
 
 
     },
     delTag: function (req, res, next) {
         //删除话题
+        db.removeTag({_id:req.params.id}).then(function (d) {
+            // d.result.ok = 1 为删除成功
+            res.json({error: 0, messages: {title: '删除成功', body: '话题删除成功！'}});
+        });
 
     },
-    inputTag: function (req, res, next) {
-        //添加话题
-        res.json({error:0,messages:'inputTag'});
-    },
     editTag: function (req, res, next) {
-        //编辑话题
-        res.json({error:0,messages:'test'});
+        /**
+         * 编辑话题
+         * 前端ajax提交传入一个数组：[tag_name,tag_description,tag_keyword,tag_nav]
+         */
+        db.updateTag({tag_name: req.body.tag_name}, req.body).then(function (d) {
+            if (d.ok) {
+                res.json({error: 0, messages: {title: '编辑成功', body: '话题编辑成功！'}});
+            } else {
+                res.json({error: 100, message: {title: '编辑失败', body: '数据库存储错误，编辑失败' + d.nModified}});
+            }
+        });
+
     }
 
 

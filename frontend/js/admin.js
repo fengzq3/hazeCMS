@@ -11,7 +11,9 @@ $(function () {
     const $infoForm = $('.js-info-ajax');
     const $loginForm = $('.js-login-ajax');
     const $tipModal = $('#tipModal');
-    const $tagEdit = $('.js-tagEdit'),$tagEditBtn = $('.js-editBtn');
+    const $minTip = $('#minTip');
+    const $tagEdit = $('.js-tagEdit'), $tagEditBtn = $('.js-editBtn'), $tagEditAbort = $('.js-editAbort');
+    const $addTagForm = $('.js-addTag-ajax');
 
     //菜单min方法
     $minMenu.on('click', function () {
@@ -69,57 +71,75 @@ $(function () {
             method: method,
             data: data
         }).then(function (res) {
-            Modal.setModal($tipModal,res.messages);
+            Modal.setModal($tipModal, res.messages);
 
             if (res.error === 0) {
                 setTimeout(function () {
                     window.location.href = action;
-                },2000);
+                }, 2000);
             } else {
                 btn.button('reset');
             }
 
         }, function (e) {
-            Modal.setModal($tipModal,{title:e.status,body:e.statusText});
+            Modal.setModal($tipModal, {title: e.status, body: e.statusText});
             btn.button('reset');
         });
 
     });
 
     //话题编辑功能
-    $tagEdit.on('click',function (e) {
+    $tagEdit.on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
         $(this).parents('tr').toggle(0);
-        $('#'+$(this).data('target')).toggle(0);
+        $('#' + $(this).data('target')).toggle(0);
     });
 
-    $tagEditBtn.on('click',function (e) {
+    $tagEditBtn.on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        const form = $('#'+$(this).data('target'));
-        let data = [
-            form.find('[name="tag_name"]').val(),
-            form.find('[name="tag_description"]').val(),
-            form.find('[name="tag_keyword"]').val(),
-            form.find('[name="tag_nav"]').val()
-        ];
+        const form = $('#' + $(this).data('target'));
+        let data = {
+            tag_name: $(form.find('[name="tag_name"]')).val(),
+            tag_description: $(form.find('[name="tag_description"]')).val(),
+            tag_keyword: $(form.find('[name="tag_keyword"]')).val(),
+            tag_nav: $(form.find('[name="tag_nav"]')).val()
+        };
 
         $.ajax({
-            url:form.data('action'),
-            method:'post',
-            data:data
+            url: form.data('action'),
+            method: 'post',
+            data: data
         }).then(function (res) {
             console.log(res);
-            //todo 处理数据
-
-            //显示
-            form.toggle(0).prev('tr').toggle(0);
+            window.location.reload(); //刷新
         });
 
     });
 
-    //todo 双向绑定input和
+    $tagEditAbort.on('click', function (e) {
+        $('#' + $(this).data('target')).toggle(0).prev('tr').toggle(0);
+    });
+
+
+    //话题添加，添加一个新话题
+    $addTagForm.on('submit', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        const data = $(this).serialize();
+        Modal.setTip($minTip, '正在提交...');
+        $.ajax({
+            url: this.action,
+            method: this.method,
+            data: data
+        }).then(function (d) {
+            Modal.setTip($minTip, d.messages.body);
+            if (d.error === 0) {
+                setTimeout(window.location.reload());
+            }
+        });
+    });
 
 
 });

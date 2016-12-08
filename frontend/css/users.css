@@ -66,4 +66,4 @@ body{overflow:hidden;}
 .tags-table td>small{margin-left:10px;color:#ccc;}
 .tags-table td,.tags-table th{vertical-align: middle !important;}
 .tags-table td>a{padding:1px 6px;}
-.tag-edit{background-color:#ececec;display:none;}
+.tag-edit{display:none;}

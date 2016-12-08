@@ -133,7 +133,9 @@ module.exports = {
     addTag:function (data) {
         let tag = new tags(data);
         return tag.save();
-
+    },
+    removeTag:function (query) {
+        return tags.remove(query);
     },
     updateTag:function (query,data) {
         return tags.update(query,data).exec();

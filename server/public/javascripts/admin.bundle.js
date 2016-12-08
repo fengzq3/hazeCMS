@@ -17,8 +17,11 @@ webpackJsonp([0],[
 	    var $infoForm = $('.js-info-ajax');
 	    var $loginForm = $('.js-login-ajax');
 	    var $tipModal = $('#tipModal');
+	    var $minTip = $('#minTip');
 	    var $tagEdit = $('.js-tagEdit'),
-	        $tagEditBtn = $('.js-editBtn');
+	        $tagEditBtn = $('.js-editBtn'),
+	        $tagEditAbort = $('.js-editAbort');
+	    var $addTagForm = $('.js-addTag-ajax');
 
 	    //菜单min方法
 	    $minMenu.on('click', function () {
@@ -101,7 +104,12 @@ webpackJsonp([0],[
 	        e.stopPropagation();
 	        e.preventDefault();
 	        var form = $('#' + $(this).data('target'));
-	        var data = [form.find('[name="tag_name"]').val(), form.find('[name="tag_description"]').val(), form.find('[name="tag_keyword"]').val(), form.find('[name="tag_nav"]').val()];
+	        var data = {
+	            tag_name: $(form.find('[name="tag_name"]')).val(),
+	            tag_description: $(form.find('[name="tag_description"]')).val(),
+	            tag_keyword: $(form.find('[name="tag_keyword"]')).val(),
+	            tag_nav: $(form.find('[name="tag_nav"]')).val()
+	        };
 
 	        $.ajax({
 	            url: form.data('action'),
@@ -109,53 +117,33 @@ webpackJsonp([0],[
 	            data: data
 	        }).then(function (res) {
 	            console.log(res);
+	            window.location.reload(); //刷新
+	        });
+	    });
 
-	            form.toggle(0).prev('tr').toggle(0);
+	    $tagEditAbort.on('click', function (e) {
+	        $('#' + $(this).data('target')).toggle(0).prev('tr').toggle(0);
+	    });
+
+	    //话题添加，添加一个新话题
+	    $addTagForm.on('submit', function (e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	        var data = $(this).serialize();
+	        Modal.setTip($minTip, '正在提交...');
+	        $.ajax({
+	            url: this.action,
+	            method: this.method,
+	            data: data
+	        }).then(function (d) {
+	            Modal.setTip($minTip, d.messages.body);
+	            if (d.error === 0) {
+	                setTimeout(window.location.reload());
+	            }
 	        });
 	    });
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ },
-/* 1 */,
-/* 2 */,
-/* 3 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	/**
-	 * Created by feng on 2016/11/29.
-	 * data = {}
-	 * data.title 标题
-	 * data.body 内容
-	 */
-	//通用tip消息
-
-	var tipModal = {
-	    setModal: function setModal(modal, data) {
-	        modal.modal('show');
-	        modal.find('#tipModalLabel').text(data.title);
-	        modal.find('.modal-body').text(data.body);
-	    },
-	    setTip: function setTip(tip, mes) {
-	        // tip.stop().animate({bottom:85+'%',opacity:1});
-	        tip.addClass('showTip').removeClass('hideTip');
-	        tip.find('p').text(mes);
-	        //超时自动关闭
-	        setTimeout(function () {
-	            // tip.stop().animate({bottom:100+'%',opacity:0}).off('click');
-	            tip.removeClass('showTip').addClass('hideTip');
-	        }, 5000);
-	        //点击关闭按钮
-	        tip.on('click', '.js-close', function () {
-	            // tip.stop().animate({bottom:100+'%',opacity:0}).off('click');
-	            tip.removeClass('showTip').addClass('hideTip');
-	        });
-	    }
-	};
-
-	module.exports = tipModal;
 
 /***/ }
 ]);
