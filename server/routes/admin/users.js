@@ -17,6 +17,7 @@ router.all('/tagList', users.tagList);
 router.all('/login', users.login);
 router.all('/siteInfo', users.siteInfo);
 router.all('/addArticle', users.addArticle);
+router.all('/editArticle/:id',users.editArticle);
 
 //POST
 router.post('/editTag',users.editTag);

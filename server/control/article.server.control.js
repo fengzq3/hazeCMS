@@ -1,5 +1,6 @@
 /**
  * Created by feng on 2016/12/9.
+ * 前台article 详情页面
  */
 const db = require('../model/db.server.model');
 const Promise = require('bluebird');

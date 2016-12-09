@@ -154,6 +154,33 @@ const adminCtl = {
         }
 
     },
+    //编辑文章
+    editArticle: function (req, res, next) {
+        switch (req.method) {
+            case 'GET':
+                const siteP = db.readSiteInfo();
+                const navP = db.getNav();
+                const detail = db.artDetail({_id: req.params.id});
+
+                Promise.all([siteP, navP, detail]).then(function (d) {
+                    const data = {
+                        site: d[0],
+                        nav: d[1],
+                        content:d[2]
+                    };
+
+                    res.render('admin/editArticle', data);
+                });
+                break;
+            case 'POST':
+
+                break;
+            default:
+                let err = new Error('非法method');
+                next(err);
+
+        }
+    },
 
     //话题列表
     tagList: function (req, res, next) {
@@ -201,7 +228,7 @@ const adminCtl = {
         db.removeTag({_id: req.params.id}).then(function (d) {
             // d.result.ok = 1 为删除成功
             res.json({error: 0, messages: {title: '删除成功', body: '话题删除成功！'}});
-        },function (err) {
+        }, function (err) {
             next(err);
         });
 
