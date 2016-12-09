@@ -87,6 +87,23 @@ const adminCtl = {
         }
 
     },
+    //文章列表
+    articleList: function (req, res, next) {
+        //与index 中相似调用
+        let siteP = db.readSiteInfo();
+        let navP = db.getNav();
+        let listP = db.showList(0, 0);
+        Promise.all([siteP, navP, listP]).then(function (d) {
+
+            const data = {
+                site: d[0],
+                nav: d[1],
+                content: d[2]
+            };
+
+            res.render('admin/articleList', data);
+        });
+    },
 
     addArticle: function (req, res, next) {
         switch (req.method) {
@@ -113,15 +130,17 @@ const adminCtl = {
 
                 const tagAr = req.body.tags.split(',');
 
-                for (let i = 0; i < tagAr.length; i++) {
-                    db.checkTag({tag_name: tagAr[i]}).then(function (d) {
-                        if (!!d) {
-                            pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num + 1}));
-                        } else {
-                            pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
-                        }
-                    })
-
+                //若话题存在，则添加到话题 Documents
+                if (tagAr.length !== 0) {
+                    for (let i = 0; i < tagAr.length; i++) {
+                        db.checkTag({tag_name: tagAr[i]}).then(function (d) {
+                            if (!!d) {
+                                pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num + 1}));
+                            } else {
+                                pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
+                            }
+                        })
+                    }
                 }
 
                 Promise.all(pAr).then(function (d) {
@@ -157,16 +176,15 @@ const adminCtl = {
                 break;
             case 'POST':
                 //todo 处理话题名称为空时
-                if(req.body.tag_name !== ''){
+                if (req.body.tag_name !== '') {
                     db.addTag(req.body).then(function (d) {
                         res.json({error: 0, messages: {title: '添加成功', body: '话题添加成功！'}});
                     }, function (er) {
                         res.json({error: 100, messages: {title: '添加失败', body: '话题添加失败！'}});
                     });
-                }else{
+                } else {
                     res.json({error: 200, messages: {title: '添加失败', body: '话题名称不能为空！'}});
                 }
-
 
 
                 break;
@@ -180,16 +198,18 @@ const adminCtl = {
     },
     delTag: function (req, res, next) {
         //删除话题
-        db.removeTag({_id:req.params.id}).then(function (d) {
+        db.removeTag({_id: req.params.id}).then(function (d) {
             // d.result.ok = 1 为删除成功
             res.json({error: 0, messages: {title: '删除成功', body: '话题删除成功！'}});
+        },function (err) {
+            next(err);
         });
 
     },
     editTag: function (req, res, next) {
         /**
          * 编辑话题
-         * 前端ajax提交传入一个数组：[tag_name,tag_description,tag_keyword,tag_nav]
+         * 前端ajax提交传入 tag 类：{tag_name:String,tag_description:String,tag_keyword:String,tag_nav:Boolean}
          */
         db.updateTag({tag_name: req.body.tag_name}, req.body).then(function (d) {
             if (d.ok) {

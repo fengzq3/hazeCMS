@@ -27,6 +27,7 @@ webpackJsonp([2],{
 	    var height = window.innerHeight; //窗口高度
 	    var $fixed = $('.js-fixed'); //pin功能，固定底部
 	    var $date = $('.js-date'); //date
+	    var $dateTime = $('.js-dateTime'); //date time
 	    var $checkInput = $('.js-checkInput'); //通用input检测
 	    var $linkAjax = $('.js-linkAjax'); //全局ajax link 标签
 
@@ -109,6 +110,10 @@ webpackJsonp([2],{
 	    //格式化时间
 	    $date.each(function () {
 	        var thisDate = new Date($(this).attr('date')).format('yyyy-MM-dd');
+	        $(this).text(thisDate);
+	    });
+	    $dateTime.each(function () {
+	        var thisDate = new Date($(this).attr('date')).format('yyyy-MM-dd hh:mm:ss');
 	        $(this).text(thisDate);
 	    });
 

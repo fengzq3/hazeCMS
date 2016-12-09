@@ -6,8 +6,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/blog');
 mongoose.Promise = require('bluebird');
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
 //全局设置项
 const siteSchema = new mongoose.Schema({
@@ -146,7 +145,7 @@ module.exports = {
     },
 
     //话题详情-文章列表
-    getColArticle: function (query, num, skip) {
+    getTagArticle: function (query, num, skip) {
         return article
             .find({tags: {$regex: query, $options: 'i'}})
             .skip(skip)

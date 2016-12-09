@@ -67,3 +67,15 @@ body{overflow:hidden;}
 .tags-table td,.tags-table th{vertical-align: middle !important;}
 .tags-table td>a{padding:1px 6px;}
 .tag-edit{display:none;}
+
+/*文章列表*/
+.admin-list{margin-bottom:25px;}
+.article-list{margin-bottom:0;}
+.article-list>thead>tr>th{text-align: left;}
+.article-list>tbody>tr>td{border:0 !important;}
+.article-list>tbody>tr>td p{margin-bottom:0;margin-top:5px;visibility: hidden;}
+.article-list>tbody>tr:hover,.article-list>tbody>tr:focus{background-color:#eee;}
+.article-list>tbody>tr:hover>td p,.article-list>tbody>tr:focus>td p{visibility: visible;}
+.article-list>tbody>tr>td p a{margin-right:10px;}
+.page-break{text-align: right;}
+.page-break p{margin:20px 0;padding:6px;color:#ccc;}

@@ -1,0 +1,50 @@
+//
+   Created by feng on 2016/12/1.
+
+extends block/frame
+block adminContent
+    .admin-con
+        .breadcrumb
+            li.on 文章列表
+            li
+                a(href='addArticle') 添加文章
+            //li.active
+            //    a(href='#') 实例2
+            //li
+            //    a(href='#') 实例2
+        hr
+        .admin-list
+            table.table.table-striped.article-list
+                thead
+                    tr
+                        th 标题
+                        th 作者
+                        th 标签
+                        th 评论
+                        th 日期
+                tbody
+                    each item in content
+                        tr
+                            td #{item.title}
+                                p
+                                    a(href='delArticle/#{item._id}') 删除
+                                    a(href='editArticle/#{item._id}') 编辑
+                            td #{item.author}
+                            td #{item.tags}
+                            td #{item.comments.length}
+                            td.js-dateTime(date='#{item.date}')
+            .page-break
+                p.pull-left 共查询到：#{content.length} 条数据
+                ul.pagination
+                    li
+                        a(href="#") prev
+                    li
+                        a(href="#") 1
+                    li
+                        a(href="#") 2
+                    li
+                        a(href="#") 3
+                    li
+                        a(href="#") next
+
+

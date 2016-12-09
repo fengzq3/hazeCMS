@@ -10,6 +10,7 @@ router.use(users.checkLogin);
 /* GET users listing. */
 router.get('/', users.index);
 router.get('/delTag/:id',users.delTag);
+router.get('/articleList',users.articleList);
 
 //ALL
 router.all('/tagList', users.tagList);

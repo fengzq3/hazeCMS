@@ -62,6 +62,8 @@
     /*文章详情*/
     .article-des-title h1{font-size:36px !important;}
     .article-des-title p{font-size:20px !important;}
+    .article-des-title p small{margin:0 5px;}
+    .article-des-title p small em{padding-left:5px;}
     /*详情描述*/
     .article-info-l{display:block !important;}
     .article-info-l p{margin:0;float:left;padding-right:20px;position: relative;padding-left:40px;}
@@ -226,6 +228,12 @@ transition: all .3s;bottom:0;}
 .article-info-l{display:none;}
 .article-info-r>p{display:table-cell;text-align: center;}
 .article-info p,.article-info p a{color:#666;}
+.article-tag a{background-color: #74A5C4;
+    color: #f6f6f6 !important;
+    margin: 0 3px;
+    padding: 3px 8px;
+    border-radius: 4px;}
+.article-tag a:hover,.article-tag a:focus{background-color: #86bcdb;}
 .article-info-r>p a{display:block;}
 .article-info-r>p + p{border-left:1px solid #eee;}
 

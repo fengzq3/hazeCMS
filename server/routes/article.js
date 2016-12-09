@@ -1,13 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', function (req, res, next) {
-  res.send('article home page');
-});
+const articleCtl = require('../control/article.server.control');
 
-router.get('/:id', function (req, res, next) {
+router.get('/:id', articleCtl.articleDetail);
 
-  res.render('article',{title:'文章首页'+req.params.id ,content:'文章内容内容内容内容'});
-});
+//与文章有关的 router 存放在这里
 
 module.exports = router;

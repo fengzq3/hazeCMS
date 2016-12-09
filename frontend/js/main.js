@@ -21,6 +21,7 @@ $(function () {
     const height = window.innerHeight;  //窗口高度
     const $fixed = $('.js-fixed');    //pin功能，固定底部
     const $date = $('.js-date');  //date
+    const $dateTime = $('.js-dateTime');  //date time
     const $checkInput = $('.js-checkInput'); //通用input检测
     const $linkAjax = $('.js-linkAjax'); //全局ajax link 标签
 
@@ -101,7 +102,10 @@ $(function () {
         const thisDate = (new Date($(this).attr('date'))).format('yyyy-MM-dd');
         $(this).text(thisDate);
     });
-
+    $dateTime.each(function () {
+        const thisDate = (new Date($(this).attr('date'))).format('yyyy-MM-dd hh:mm:ss');
+        $(this).text(thisDate);
+    });
 
     /**
      * input检测

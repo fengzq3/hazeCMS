@@ -2,10 +2,10 @@ doctype html
 html
     head
         include block/head
-        //if title === undefined
-        //    title= site.site_name
-        //else
-        //    title= title + '-' + site.site_name
+        if content.title === undefined
+            title= site.site_name
+        else
+            title= content.title + '-' + site.site_name
 
         meta(name='keywords' content='#{site.site_keyword}')
         meta(name='description' content='#{site.site_description}')

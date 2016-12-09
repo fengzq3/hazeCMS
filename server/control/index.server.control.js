@@ -16,7 +16,6 @@ const index = {
         let navP = db.getNav();
         let listP = db.showList(13, 0);
         Promise.all([siteP, navP, listP]).then(function (d) {
-            console.log(d[0]);
 
             const data = {
                 site: d[0],

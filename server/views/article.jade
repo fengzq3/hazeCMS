@@ -11,36 +11,30 @@ block content
             // 内层
             .container
                 .article-des-title
-                    h1= title
+                    h1 #{content.title}
                     p
                         small
                             span.iconfont.icon-rili
-                            |  2016.10.22
+                            em.js-date(date='#{content.date}')
                         small
                             span.iconfont.icon-discuss
-                            | 122
+                            em #{content.comments.length}
     // 主内容
     .container
         // 内容部分
         .article-con
-            p= content
+            p #{content.body}
             .clearfix
             hr
             .article-info.js-fixed
                 .article-info-l
                     p
                         span.iconfont.icon-riqi
-                        |  2016.10.22
-                    p
-                        span.iconfont.icon-lanmu
-                        a(href='#') 用户体验
-                    p
+                        span.js-dateTime(date='#{content.date}')
+                    p.article-tag
                         span.iconfont.icon-tag
-                        a(href='#') 用户
-                        | 、
-                        a(href='#') 体验
-                        | 、
-                        a(href='#') 前端
+                        each tag in content.tags.split(',')
+                            a(href='/tags/#{tag}') #{tag}
                     p.pull-right
                         a(href='#')
                             span.iconfont.icon-discuss

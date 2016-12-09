@@ -19,5 +19,9 @@ a javascript cms
 
 6. 登录、注销，保持登录
 
+7. 上传图片控件、markdown编辑器
+
+8. 定义一个默认tag，当tag未填写时使用
+
 ### client 端
 1. 通用tip框架
