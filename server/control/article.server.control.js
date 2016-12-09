@@ -13,12 +13,15 @@ const article = {
         let siteP = db.readSiteInfo();
         let navP = db.getNav();
         let detail = db.artDetail({_id:req.params.id});
+        let prevNext = db.prevNext({_id:req.params.id});
 
-        Promise.all([siteP,navP,detail]).then(function (d) {
+        Promise.all([siteP,navP,detail,prevNext.prev,prevNext.next]).then(function (d) {
             const data = {
                 site: d[0],
                 nav: d[1],
-                content: d[2]
+                content: d[2],
+                prev:d[3],
+                next:d[4]
             };
 
             res.render('article',data);

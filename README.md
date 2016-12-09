@@ -23,5 +23,9 @@ a javascript cms
 
 8. 定义一个默认tag，当tag未填写时使用
 
+9. mongodb 上一篇下一篇查询
+
+10. 默认随机显示特色图片（若无上传）
+
 ### client 端
 1. 通用tip框架

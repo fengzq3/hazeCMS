@@ -52,7 +52,7 @@ const articleSchema = new mongoose.Schema({
     body: String,
     comments: [{body: String, date: Date}],
     date: {type: Date, default: Date.now()},
-    tags: String,
+    tags: {type:String,default:'tags'},  //定义一个默认tags，便于后期用tag组织文章
     topPic: String
 });
 
@@ -102,6 +102,18 @@ module.exports = {
         return article
             .findOne(query)
             .exec();
+    },
+    /**
+     * 上一篇下一篇查询
+     * 传入query，返回一个object，里面含有两个 promise
+     */
+
+    prevNext:function (query) {
+        let thisId = query._id;
+        return {
+            prev:article.find({_id:{$gt:thisId}}).sort({_id:1}).limit(1).exec(),
+            next:article.find({_id:{$lt:thisId}}).sort({_id:-1}).limit(1).exec()
+        };
     },
     /**
      * todo 导航
