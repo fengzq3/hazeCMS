@@ -14,6 +14,8 @@ $(function () {
     const $minTip = $('#minTip');
     const $tagEdit = $('.js-tagEdit'), $tagEditBtn = $('.js-editBtn'), $tagEditAbort = $('.js-editAbort');
     const $addTagForm = $('.js-addTag-ajax');
+    const $editArticle = $('.js-editArticle-ajax');
+    const $changeTag = $('.js-changeTag-ajax');
 
     //菜单min方法
     $minMenu.on('click', function () {
@@ -140,6 +142,43 @@ $(function () {
             }
         });
     });
+
+    //话题更新num
+    $changeTag.on('click',function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        Modal.setTip($minTip,'loading...');
+        $.ajax({
+            url:$(this).attr('href'),
+            method:'GET'
+        }).then(function (d) {
+
+        });
+    });
+
+    //todo 修改文章的话题列表思路：正对删除后再添加的tag，可以进行输入tag与历史记录列表对比，若存在于删除历史中，则自动恢复到tag列表中，并且tag_num+1
+
+    //修改文章
+    $editArticle.on('submit',function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        Modal.setTip($minTip,'loading...');
+        const data = $(this).serialize();
+        $.ajax({
+            url:this.action,
+            method:this.method,
+            data:data
+        }).then(function (d) {
+            Modal.setTip($minTip,d.messages.body);
+            if(d.error === 0){
+                setTimeout(window.history.go(-1));
+            }else{
+                Modal.setModal($tipModal,d.messages);
+            }
+        });
+    });
+
+
 
 
 });

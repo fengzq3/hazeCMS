@@ -90,6 +90,9 @@ module.exports = {
         let art = new article(data);
         return art.save();
     },
+    updateArticle: function (query,data) {
+        return article.update(query,data);
+    },
     showList: function (num, skip) {
         return article
             .find()

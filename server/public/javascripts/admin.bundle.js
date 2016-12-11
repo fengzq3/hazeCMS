@@ -22,6 +22,7 @@ webpackJsonp([0],[
 	        $tagEditBtn = $('.js-editBtn'),
 	        $tagEditAbort = $('.js-editAbort');
 	    var $addTagForm = $('.js-addTag-ajax');
+	    var $editArticle = $('.js-editArticle-ajax');
 
 	    //菜单min方法
 	    $minMenu.on('click', function () {
@@ -139,6 +140,26 @@ webpackJsonp([0],[
 	            Modal.setTip($minTip, d.messages.body);
 	            if (d.error === 0) {
 	                setTimeout(window.location.reload());
+	            }
+	        });
+	    });
+
+	    //修改文章
+	    $editArticle.on('submit', function (e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	        Modal.setTip($minTip, 'loading...');
+	        var data = $(this).serialize();
+	        $.ajax({
+	            url: this.action,
+	            method: this.method,
+	            data: data
+	        }).then(function (d) {
+	            Modal.setTip($minTip, d.messages.body);
+	            if (d.error === 0) {
+	                setTimeout(window.history.go(-1));
+	            } else {
+	                Modal.setModal($tipModal, d.messages);
 	            }
 	        });
 	    });

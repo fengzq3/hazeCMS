@@ -2,6 +2,7 @@
  * Created by feng on 2016/11/4.
  * 处理错误，添加逻辑
  */
+const config = require('../../config.js');
 const db = require('../../model/db.server.model');
 const Promise = require('bluebird');
 
@@ -166,13 +167,41 @@ const adminCtl = {
                     const data = {
                         site: d[0],
                         nav: d[1],
-                        content:d[2]
+                        content: d[2]
                     };
 
                     res.render('admin/editArticle', data);
                 });
                 break;
             case 'POST':
+                //处理tag
+                let pAr = [];
+                pAr.push(db.updateArticle({_id: req.params.id}, req.body));
+
+                console.log(req.body.tags);
+                const tagAr = req.body.tags.split(',');
+
+                //若话题存在则跳过，不存在则添加
+                if (tagAr.length !== 0) {
+                    for (let i = 0; i < tagAr.length; i++) {
+                        db.checkTag({tag_name: tagAr[i]}).then(function (d) {
+                            if (!d) {
+                                pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
+                            }
+                        })
+                    }
+                }
+
+                //存储文章修改
+                Promise.all(pAr).then(function (d) {
+                    console.log(d);
+                    if (d[0].ok === 1) {
+                        res.json({error: 0, messages: {title: '文章修改成功', body: '文章修改成功！'}});
+                    } else {
+                        res.json({error: 100, messages: {title: '修改失败', body: '文章修改失败！可能出现了一些错误 '}});
+                    }
+
+                });
 
                 break;
             default:
@@ -202,7 +231,9 @@ const adminCtl = {
 
                 break;
             case 'POST':
-                //todo 处理话题名称为空时
+                //话题添加
+
+                //todo 处理话题已存在
                 if (req.body.tag_name !== '') {
                     db.addTag(req.body).then(function (d) {
                         res.json({error: 0, messages: {title: '添加成功', body: '话题添加成功！'}});
@@ -239,11 +270,25 @@ const adminCtl = {
          * 前端ajax提交传入 tag 类：{tag_name:String,tag_description:String,tag_keyword:String,tag_nav:Boolean}
          */
         db.updateTag({tag_name: req.body.tag_name}, req.body).then(function (d) {
-            if (d.ok) {
+            if (d[0].ok === 1) {
                 res.json({error: 0, messages: {title: '编辑成功', body: '话题编辑成功！'}});
             } else {
                 res.json({error: 100, message: {title: '编辑失败', body: '数据库存储错误，编辑失败' + d.nModified}});
             }
+        });
+
+    },
+    //编辑文章时若删除tag，则自动将tags Documents 的 tag_num 减一
+    changeTag: function (req, res, next) {
+
+        if(config.debug) console.log(req.params.tag_name);
+
+        db.checkTag({tag_name: req.params.tag_name}).then(function (d) {
+            //处理tags文档
+            db.updateTag({tag_name: req.params.tag_name}, {tag_num: d.tag_num - 1}).then(function (d) {
+                res.json({error: 0, messages: {title: '更新成功',body:'更新tag成功'}});
+            });
+
         });
 
     }
