@@ -81,9 +81,20 @@ body{overflow:hidden;}
 .page-break p{margin:20px 0;padding:6px;color:#ccc;}
 
 /*编辑文章*/
+.edit-article{margin-bottom:25px;}
 .edit-article-right{padding-right:0;border-left:1px solid #eee;}
 .edit-article-right h4{margin-top:0;}
 .edit-right-pic{list-style:none;padding-left:0;}
 .edit-right-pic>li{position:relative;padding-top:60%;background-color:#ccc;}
 .edit-right-pic>li>p{position:absolute;bottom:0;margin:0;padding:10px;background:rgba(0,0,0,.8);width:100%;color:#fff;}
 .edit-right-con .input-group{margin-bottom:10px;}
+/*tag 列表*/
+.edit-article-tag{margin-bottom:10px;}
+.edit-article-tag>a{display:inline-block;margin-right:5px;padding:2px 5px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;}
+.edit-article-tag>a:hover,.edit-article-tag>a:focus{text-decoration: none;}
+.edit-article-tag>a.active{background-color:#9CD9ED;border:1px solid #9CD9ED;color:#fff;}
+.edit-article-tag>a.history{color:#ccc;border:1px solid #ccc;}
+.edit-article-tag>a.history:hover{background-color:#ccc;color:#fff;}

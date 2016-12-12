@@ -18,14 +18,12 @@ block adminContent
                                 img(src="#{content.topPic}")
                                 p #{content.title}
                         hr
-                        .edit-article-tag
+                        .edit-article-tag.js-changeTag-ajax
                             each tag in content.tags.split(',')
-                                a.js-changeTag-ajax(href="../changeTag/#{tag}") #{tag}
-                                    span.iconfont.icon-error
-                        .history-tag
-                            h5
-                                span 历史话题：
-
+                                a.active(href="../changeTag/#{tag}" data-toggle="tooltip" data-placement="top" title="点击添加/删除此话题") ##{tag}#
+                        //.history-tag
+                        //    h5
+                        //        span 历史话题：
 
                         .input-group
                             label.input-group-addon.control-label 话题:

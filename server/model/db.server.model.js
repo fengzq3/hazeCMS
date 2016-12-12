@@ -140,6 +140,7 @@ module.exports = {
     getTagList: function (num,skip) {
         return tags
             .find()
+            .sort({date:-1})
             .skip(skip)
             .limit(num)
             .exec();

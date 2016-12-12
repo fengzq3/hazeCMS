@@ -11,9 +11,11 @@ block content
                     h1 #{content[0].title}
                     p
                         small
-                            span.iconfont.icon-rili.js-date(date='#{content[0].date}')
+                            span.iconfont.icon-rili
+                            em.js-date(date='#{content[0].date}')
                         small
-                            span.iconfont.icon-discuss #{content[0].comments.length}
+                            span.iconfont.icon-discuss
+                            em #{content[0].comments.length}
     // 主内容
     .container-fluid.main-list
         .row

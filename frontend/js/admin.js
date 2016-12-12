@@ -119,7 +119,7 @@ $(function () {
         });
 
     });
-
+    //取消编辑tag
     $tagEditAbort.on('click', function (e) {
         $('#' + $(this).data('target')).toggle(0).prev('tr').toggle(0);
     });
@@ -144,19 +144,40 @@ $(function () {
     });
 
     //话题更新num
-    $changeTag.on('click',function (e) {
+    $changeTag.on('click','.active',function (e) {
         e.stopPropagation();
         e.preventDefault();
-        Modal.setTip($minTip,'loading...');
+        const thisTag = $(this);
         $.ajax({
             url:$(this).attr('href'),
-            method:'GET'
+            method:'GET',
+            data:'opt=del'
         }).then(function (d) {
-
+            if(d.error === 0) {
+                thisTag.toggleClass('active history');
+            }else{
+                Modal.setModal($tipModal,d.messages);
+            }
+        });
+    });
+    $changeTag.on('click','.history',function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        const thisTag = $(this);
+        $.ajax({
+            url:$(this).attr('href'),
+            method:'GET',
+            data:'opt=add'
+        }).then(function (d) {
+            if(d.error === 0) {
+                thisTag.toggleClass('active history');
+            }else{
+                Modal.setModal($tipModal,d.messages);
+            }
         });
     });
 
-    //todo 修改文章的话题列表思路：正对删除后再添加的tag，可以进行输入tag与历史记录列表对比，若存在于删除历史中，则自动恢复到tag列表中，并且tag_num+1
+    //修改文章的话题列表思路：正对删除后再添加的tag，可以进行输入tag与历史记录列表对比，若存在于删除历史中，则自动恢复到tag列表中，并且tag_num+1
 
     //修改文章
     $editArticle.on('submit',function (e) {

@@ -4883,8 +4883,7 @@ table th[class*="col-"] {
     /*\6587\7AE0\8BE6\60C5*/
     .article-des-title h1{font-size:36px !important;}
     .article-des-title p{font-size:20px !important;}
-    .article-des-title p small{margin:0 5px;}
-    .article-des-title p small em{padding-left:5px;}
+
     /*\8BE6\60C5\63CF\8FF0*/
     .article-info-l{display:block !important;}
     .article-info-l p{margin:0;float:left;padding-right:20px;position: relative;padding-left:40px;}
@@ -4915,7 +4914,8 @@ table th[class*="col-"] {
 .main-title{text-align: left;z-index: 1000;position:relative;vertical-align: middle;background-color:#fff;padding:0 20px;overflow:hidden;}
 .main-title h1{font-size:24px;color:#000;margin:0;text-overflow: ellipsis;overflow:hidden;white-space: nowrap;height:50px;line-height:50px;}
 .main-title>p{margin:10px 0 30px;}
-.main-title>p>small{color:#ababab;font-size:16px;}
+.main-title>p>small{color:#ababab;font-size:16px;margin:0 5px;}
+.main-title p small em{padding-left:5px;}
 
 /*\4E0B\62C9\83DC\5355*/
 .navbar-dropdown-menu{background-color:#080808;text-align: center;}
@@ -5035,6 +5035,8 @@ transition: all .3s;bottom:0;}
 .article-des-title{display:table-cell;vertical-align: middle;}
 .article-des-title h1{margin-top:0;color:#fff;font-size:22px;}
 .article-des-title p{color:#ababab;font-size:16px;}
+.article-des-title p small{margin:0 5px;}
+.article-des-title p small em{padding-left:5px;}
 
 .article-con{padding:50px 0 20px;font-size:16px;line-height:1.6em;position: relative;}
 /*\8BE6\60C5\63CF\8FF0*/
