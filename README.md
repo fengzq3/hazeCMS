@@ -4,12 +4,11 @@ a javascript cms
 ## todo list
 
 ### server 端
+
 1. 保持登录状态
 
 2. 导航：
-由文章话题中提取，单独保存于一个 Document 中
-然后根据 Document 中的tags,序列化成为数组，后数组去重，列出话题列表
-另一个想法：导航由话题中随机选取，或按文章数排列选取前N项
+    重新定义：直接读取带有nav标签的tag，sort by tag_num, view时超出数量的放入dropMenu
 
 3. 话题详情页面：url由中文组成，查询出具有此tag的文章列表
 
@@ -38,4 +37,5 @@ a javascript cms
 14. 全局保存数据时做安全性处理（去掉不必要的/危险的特殊字符）
 
 ### client 端
+
 1. 通用tip框架

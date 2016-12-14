@@ -4,7 +4,7 @@
 
 "use strict";
 const webpack = require('webpack');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 
@@ -12,12 +12,13 @@ module.exports = {
     entry: {
         commons: ['jquery', 'bts'],
         main: './js/main.js',
-        admin:'./js/admin.js'
+        admin:'./js/admin.js',
+        editor:'./js/editor.js'
     },
     //输出配置
     output: {
-        path: '../server/',
-        filename: 'public/javascripts/[name].bundle.js'
+        path: '../server/public/',
+        filename: 'javascripts/[name].bundle.js'
     },
     module: {
         loaders: [{
@@ -27,6 +28,12 @@ module.exports = {
                 presets: ['es2015'],
                 compact: false
             }
+        },{
+            test:/\.css$/,
+            loader:ExtractTextPlugin.extract("style-loader","css-loader")
+        },{
+            test:/\.(eot|svg|ttf|woff|woff2)\w*/,
+            loader:"file?name=/fonts/[name].[ext]"
         }]
     },
     resolve: {
@@ -37,15 +44,17 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'commons',
-            filename: 'public/javascripts/common.bundle.js'
+            filename: 'javascripts/common.bundle.js'
         }),
+        //提取js中的css
+        new ExtractTextPlugin('stylesheets/editor.css'),
 
-        //new webpack.optimize.UglifyJsPlugin({
-        //    compress: {
-        //        drop_console: true,
-        //        warnings: false
-        //    }
-        //}),
+        new webpack.optimize.UglifyJsPlugin({
+           compress: {
+               // drop_console: true,
+               warnings: false
+           }
+        }),
         //全局引入
         new webpack.ProvidePlugin({
             $: 'jquery',

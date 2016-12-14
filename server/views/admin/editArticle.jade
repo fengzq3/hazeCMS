@@ -2,6 +2,9 @@
    Created by feng on 2016/11/4.
 
 extends block/frame
+block append head
+    link(rel='stylesheet', href='/stylesheets/editor.css')
+    script(src="/javascripts/editor.bundle.js")
 block adminContent
     .admin-con
         .breadcrumb
@@ -9,7 +12,11 @@ block adminContent
         hr
         form.edit-article.js-editArticle-ajax(method="post" action="#{content._id}")
             .row
-                .col-sm-9
+                .col-sm-9.edit-article-left
+                    .edit-textarea
+                        .form-group.form-group-lg
+                            input.form-control(name="title" type="text" value="#{content.title}" placeholder="输入标题")
+                        textarea#textArea.form-control.js-textArea.js-autoHeight(name="body") #{content.body}
                 .col-sm-3.edit-article-right
                     .edit-right-con
                         h4 图文预览
@@ -18,13 +25,6 @@ block adminContent
                                 img(src="#{content.topPic}")
                                 p #{content.title}
                         hr
-                        .edit-article-tag.js-changeTag-ajax
-                            each tag in content.tags.split(',')
-                                a.active(href="../changeTag/#{tag}" data-toggle="tooltip" data-placement="top" title="点击添加/删除此话题") ##{tag}#
-                        //.history-tag
-                        //    h5
-                        //        span 历史话题：
-
                         .input-group
                             label.input-group-addon.control-label 话题:
                             input.form-control(name="tags" type="text" value="#{content.tags}")
