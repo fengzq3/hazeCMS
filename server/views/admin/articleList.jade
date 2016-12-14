@@ -27,7 +27,7 @@ block adminContent
                         tr
                             td #{item.title}
                                 p
-                                    a(href='delArticle/#{item._id}') 删除
+                                    a.js-linkAjax(href='delArticle/#{item._id}') 删除
                                     a(href='editArticle/#{item._id}') 编辑
                             td #{item.author}
                             td #{item.tags}

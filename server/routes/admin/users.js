@@ -12,6 +12,7 @@ router.get('/', users.index);
 router.get('/delTag/:id',users.delTag);
 router.get('/articleList',users.articleList);
 router.get('/changeTag/:tag_name',users.changeTag);
+router.get('/delArticle/:id',users.delArticle);
 
 //ALL
 router.all('/tagList', users.tagList);

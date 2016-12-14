@@ -2,34 +2,36 @@
    Created by feng on 2016/11/4.
 
 extends block/frame
+block append head
+    link(rel='stylesheet', href='/stylesheets/editor.css')
+    script(src="/javascripts/editor.bundle.js")
 block adminContent
     .admin-con
-        h1.add-article-title 添加一篇文章
+        .breadcrumb
+            li.on 添加一篇文章
         hr
-        form.form-horizontal.add-form.js-form-ajax(role='form' method='post' action='#')
-            .form-group
-                label.col-sm-2.control-label 文章标题
-                .col-sm-5
-                    input.form-control(type='text' name="title")
-            .form-group
-                label.col-sm-2.control-label 作者
-                .col-sm-5
-                    input.form-control(type='text' name='author')
-            .form-group
-                label.col-sm-2.control-label 主图
-                .col-sm-5
-                    input.form-control(type='file' name='topPic')
-            .form-group
-                label.col-sm-2.control-label 话题
-                .col-sm-5
-                    input.form-control(type='text' name='tags')
-            .form-group
-                label.col-sm-2.control-label
-                .col-sm-10
-                    textarea.form-control(name='body' rows='5')
-            .form-group
-                .col-sm-5.col-sm-offset-2
-                    button.btn.btn-success(type='submit') 提交
+        form.edit-article.js-editArticle-ajax(method="post" action="addArticle")
+            .row
+                .col-sm-9.edit-article-left
+                    .edit-textarea
+                        .form-group.form-group-lg
+                            input.form-control(name="title" type="text" placeholder="输入标题")
+                        textarea#textArea.form-control.js-textArea.js-autoHeight(name="body")
+                .col-sm-3.edit-article-right
+                    .edit-right-con
+                        h4 图文预览
+                        ul.edit-right-pic
+                            li
+                                //img(src="#{content.topPic}") 这里应该显示一个默认图片
+                                p 文章标题
+                        hr
+                        .input-group
+                            label.input-group-addon.control-label 话题:
+                            input.form-control(name="tags" type="text" placeholder="输入话题，多个以‘,’隔开")
 
-        hr
-        a.btn.btn-success(href="/users/site") 创建siteOption
+                        .input-group
+                            label.input-group-addon.control-label 作者:
+                            input.form-control(name="author" type="text" value="feng")
+                        button.btn.btn-block.btn-success(type="submit") 保存/发布
+
+

@@ -8,6 +8,7 @@ body{overflow:hidden;}
     box-shadow: 1px 0 1px #ccc;}
 .frame-layout{width:200px;overflow-y:auto;overflow-x:hidden;height:100%;}
 .frame-right{position:absolute;right:0;left:180px;bottom:0;top:0;background-color:#fff;overflow-x:hidden;}
+.has-icon .iconfont{padding-left:5px;}
 
 /*登录注册页面*/
 .login{position:absolute;width:100%;left:0;top:50px;bottom:0;text-align: center;}

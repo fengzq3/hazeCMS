@@ -93,6 +93,9 @@ module.exports = {
     updateArticle: function (query,data) {
         return article.update(query,data);
     },
+    removeArticle:function (query) {
+        return article.remove(query);
+    },
     showList: function (num, skip) {
         return article
             .find()
@@ -129,13 +132,7 @@ module.exports = {
             .find()
             .exec();
     },
-    setNav: function (query, data) {
-        return mainNav.update(query,data).exec();
-    },
-    createNav: function (data) {
-        let nav = new mainNav(data);
-        return nav.save();
-    },
+
     //话题列表
     getTagList: function (num,skip) {
         return tags

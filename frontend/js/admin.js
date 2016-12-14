@@ -15,7 +15,6 @@ $(function () {
     const $tagEdit = $('.js-tagEdit'), $tagEditBtn = $('.js-editBtn'), $tagEditAbort = $('.js-editAbort');
     const $addTagForm = $('.js-addTag-ajax');
     const $editArticle = $('.js-editArticle-ajax');
-    const $changeTag = $('.js-changeTag-ajax');
 
     //菜单min方法
     $minMenu.on('click', function () {
@@ -143,41 +142,6 @@ $(function () {
         });
     });
 
-    //话题更新num
-    $changeTag.on('click','.active',function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        const thisTag = $(this);
-        $.ajax({
-            url:$(this).attr('href'),
-            method:'GET',
-            data:'opt=del'
-        }).then(function (d) {
-            if(d.error === 0) {
-                thisTag.toggleClass('active history');
-            }else{
-                Modal.setModal($tipModal,d.messages);
-            }
-        });
-    });
-    $changeTag.on('click','.history',function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        const thisTag = $(this);
-        $.ajax({
-            url:$(this).attr('href'),
-            method:'GET',
-            data:'opt=add'
-        }).then(function (d) {
-            if(d.error === 0) {
-                thisTag.toggleClass('active history');
-            }else{
-                Modal.setModal($tipModal,d.messages);
-            }
-        });
-    });
-
-    //修改文章的话题列表思路：正对删除后再添加的tag，可以进行输入tag与历史记录列表对比，若存在于删除历史中，则自动恢复到tag列表中，并且tag_num+1
 
     //修改文章
     $editArticle.on('submit',function (e) {
@@ -192,13 +156,14 @@ $(function () {
         }).then(function (d) {
             Modal.setTip($minTip,d.messages.body);
             if(d.error === 0){
-                setTimeout(window.history.go(-1));
+                setTimeout(function () {
+                    window.location.href = document.referrer;
+                });
             }else{
                 Modal.setModal($tipModal,d.messages);
             }
         });
     });
-
 
 
 

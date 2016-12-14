@@ -24,6 +24,7 @@ $(function () {
     const $dateTime = $('.js-dateTime');  //date time
     const $checkInput = $('.js-checkInput'); //通用input检测
     const $linkAjax = $('.js-linkAjax'); //全局ajax link 标签
+    const $back = $('.js-back'); //返回按钮
 
     //dropdown
     $dropDown.hover(function () {
@@ -146,6 +147,12 @@ $(function () {
         });
     });
 
+    //全局返回按钮
+    $back.on('click',function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        window.history.go(-1);
+    });
 
     //function END
 });

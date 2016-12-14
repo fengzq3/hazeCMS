@@ -136,18 +136,24 @@ const adminCtl = {
                 //若话题存在，则添加到话题 Documents
                 if (tagAr.length !== 0) {
                     for (let i = 0; i < tagAr.length; i++) {
-                        db.checkTag({tag_name: tagAr[i]}).then(function (d) {
-                            if (!!d) {
-                                pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num + 1}));
-                            } else {
-                                pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
-                            }
-                        })
+
+                        if(config.debug) console.log(tagAr[i]);
+
+                        if(tagAr[i]){
+                            db.checkTag({tag_name: tagAr[i]}).then(function (d) {
+                                if (!!d) {
+                                    pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num + 1}));
+                                } else {
+                                    pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
+                                }
+                            })
+                        }
+
                     }
                 }
 
                 Promise.all(pAr).then(function (d) {
-                    res.json({error: '0', message: {title: '操作成功', body: '文章发布成功！'}});
+                    res.json({error: 0, messages: {title: '操作成功', body: '文章发布成功！'}});
                 });
 
                 break;
@@ -157,6 +163,48 @@ const adminCtl = {
         }
 
     },
+    //删除文章article
+    delArticle:function (req, res, next) {
+
+
+        db.artDetail({_id:req.params.id}).then(function (d) {
+            //处理tag
+            let ar = [];
+
+            if(config.debug) console.log(d);
+            const tagAr = d.tags.split(',');
+            if (tagAr.length !== 0) {
+                for (let i = 0; i < tagAr.length; i++) {
+                    if(tagAr[i]){
+                        db.checkTag({tag_name: tagAr[i]}).then(function (tag) {
+                            if (!!tag) {
+                                ar.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: tag.tag_num - 1}));
+                            }
+                        })
+                    }
+
+                }
+            }
+
+            ar.push(db.removeArticle({_id:req.params.id}));
+
+            Promise.all(ar).then(function (d) {
+                if(d[0].result.ok === 1){
+                    res.json({error:0,messages:{title:'删除成功',body:'删除一篇文章成功！'}});
+                }else{
+                    res.json({error:100,messages:{title:'删除失败',body:'删除一篇文章失败！可能原因为数据库操作错误！'}});
+                }
+            });
+
+        },function (err) {
+            res.json({error:0,messages:{title:'删除失败',body:'文章不存在或已经被删除！'}});
+        });
+
+
+
+
+    },
+
     //编辑文章
     editArticle: function (req, res, next) {
         switch (req.method) {
@@ -192,13 +240,19 @@ const adminCtl = {
                     //若话题存在则tag_num -1，不存在则添加
                     if (tagAr.length !== 0) {
                         for (let i = 0; i < tagAr.length; i++) {
-                            db.checkTag({tag_name: tagAr[i]}).then(function (d) {
-                                if (!d) {
-                                    pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
-                                }else{
-                                    pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num - 1}));
-                                }
-                            })
+
+                            if(config.debug) console.log(tagAr[i]);
+
+                            if(tagAr[i]){
+                                db.checkTag({tag_name: tagAr[i]}).then(function (d) {
+                                    if (!d) {
+                                        pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
+                                    }else{
+                                        pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num - 1}));
+                                    }
+                                })
+                            }
+
                         }
                     }
                     //存储文章修改

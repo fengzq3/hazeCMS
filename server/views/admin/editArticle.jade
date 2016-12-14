@@ -9,6 +9,9 @@ block adminContent
     .admin-con
         .breadcrumb
             li.on 编辑文章：#{content.title}
+            li.pull-right
+                a.has-icon.js-back(href='#') 返回列表
+                    span.iconfont.icon-back
         hr
         form.edit-article.js-editArticle-ajax(method="post" action="#{content._id}")
             .row
@@ -22,7 +25,7 @@ block adminContent
                         h4 图文预览
                         ul.edit-right-pic
                             li
-                                img(src="#{content.topPic}")
+                                img(src="/upload/#{content.topPic}")
                                 p #{content.title}
                         hr
                         .input-group
@@ -33,6 +36,6 @@ block adminContent
                             label.input-group-addon.control-label 作者:
                             input.form-control(name="author" type="text" value="#{content.author}")
                         button.btn.btn-block.btn-success(type="submit") 保存/发布
-                        button.btn.btn-block.btn-default(type="reset") 取消/重置
+                        button.btn.btn-block.btn-default.js-back(type="reset") 取消/重置
 
 
