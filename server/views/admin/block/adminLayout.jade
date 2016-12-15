@@ -17,18 +17,20 @@ html
                 ul.nav.navbar-nav.pull-right
                     li.active
                         a(href='/') 首页
-                    for item in nav
-                        if item.nav_child.length === 0
+                    each item,key in nav
+                        if key < 3
                             li
-                                a(href='/column/#{item.nav_link}') #{item.nav_name}
-                        else
-                            li.dropdown.js-dropdown
-                                a.dropdown-toggle(href='/column/#{item.nav_link}', data-toggle='dropdown') #{item.nav_name}
-                                    b.caret
-                                ul.dropdown-menu.navbar-dropdown-menu
-                                    for child in item.nav_child
+                                a(href='/tags/#{item.tag_name}') #{item.tag_name}
+                    if nav.length > 4
+                        li.dropdown.js-dropdown
+                            a.dropdown-toggle(href='#', data-toggle='dropdown') 查看更多...
+                                b.caret
+                            ul.dropdown-menu.navbar-dropdown-menu
+                                each item,key in nav
+                                    if key > 3
                                         li
-                                            a(href='/column/#{item.nav_link}/#{child.nav_link}') #{child.nav_name}
+                                            a(href='/tags/#{item.tag_name}') #{item.tag_name}
+
 
                     li.dropdown.js-dropdown
                         a.dropdown-toggle.has-menu-icon(href='#', data-toggle='dropdown')

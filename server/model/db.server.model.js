@@ -24,14 +24,6 @@ const adminSchema = new mongoose.Schema({
 
 });
 
-//主导航
-const navSchema = new mongoose.Schema({
-    nav_name: String,
-    nav_link: String,
-    nav_Type: String,
-    nav_child: []
-});
-
 //话题
 const tagsSchema = new mongoose.Schema({
     tag_name: String,
@@ -60,7 +52,6 @@ const webSite = mongoose.model('blog', siteSchema);
 const admins = mongoose.model('admin', adminSchema);
 const article = mongoose.model('article', articleSchema);
 const tags = mongoose.model('tag', tagsSchema);
-const mainNav = mongoose.model('navigation', navSchema);
 
 module.exports = {
     //网站信息
@@ -128,8 +119,8 @@ module.exports = {
      */
 
     getNav: function () {
-        return mainNav
-            .find()
+        return tags
+            .find({tag_nav:true})
             .exec();
     },
 

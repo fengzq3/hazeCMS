@@ -28,6 +28,7 @@ body{overflow:hidden;}
 .navbar-admin .dropdown .caret{margin-left:5px;}
 .navbar-admin .dropdown.open>.dropdown-menu{border:0;border-top:1px solid #eaedf1;margin-top:-1px;}
 .navbar-admin .dropdown.open>.dropdown-menu>li>a{background-color:#fff;color:#333;padding:10px 20px;}
+.navbar-admin .dropdown.open>.dropdown-menu>li+li{border-top:1px solid #F2F2F2;}
 .navbar-admin .dropdown.open>.dropdown-menu>li>a:hover,.navbar-admin .dropdown.open>.dropdown-menu>li>a:focus{background-color:#f5f5f5 !important;}
 /*.has-menu-icon{padding-left:40px !important;}*/
 .has-menu-icon .iconfont{margin-right:10px;font-size:18px;}

@@ -9,14 +9,14 @@ const common = require('../../common');
 
 const adminCtl = {
     checkLogin: function (req, res, next) {
-        if(config.debug) console.log('检测登录');
+        if (config.debug) console.log('检测登录');
         next();
     },
     index: function (req, res, next) {
         res.send('这里是用户中心首页');
     },
     login: function (req, res, next) {
-        if(config.debug) console.log(req.method);
+        if (config.debug) console.log(req.method);
         let method = req.method;
         if (method === 'GET') {
             res.render('admin/login');
@@ -38,7 +38,7 @@ const adminCtl = {
 
                 Promise.all([siteP, navP]).then(function (d) {
 
-                    if(config.debug) console.log(d);
+                    if (config.debug) console.log(d);
 
                     let data;
                     if (d.length !== 0) {
@@ -137,9 +137,9 @@ const adminCtl = {
                 if (tagAr.length !== 0) {
                     for (let i = 0; i < tagAr.length; i++) {
 
-                        if(config.debug) console.log(tagAr[i]);
+                        if (config.debug) console.log(tagAr[i]);
 
-                        if(tagAr[i]){
+                        if (tagAr[i]) {
                             db.checkTag({tag_name: tagAr[i]}).then(function (d) {
                                 if (!!d) {
                                     pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num + 1}));
@@ -164,18 +164,18 @@ const adminCtl = {
 
     },
     //删除文章article
-    delArticle:function (req, res, next) {
+    delArticle: function (req, res, next) {
 
 
-        db.artDetail({_id:req.params.id}).then(function (d) {
+        db.artDetail({_id: req.params.id}).then(function (d) {
             //处理tag
             let ar = [];
 
-            if(config.debug) console.log(d);
+            if (config.debug) console.log(d);
             const tagAr = d.tags.split(',');
             if (tagAr.length !== 0) {
                 for (let i = 0; i < tagAr.length; i++) {
-                    if(tagAr[i]){
+                    if (tagAr[i]) {
                         db.checkTag({tag_name: tagAr[i]}).then(function (tag) {
                             if (!!tag) {
                                 ar.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: tag.tag_num - 1}));
@@ -186,21 +186,19 @@ const adminCtl = {
                 }
             }
 
-            ar.push(db.removeArticle({_id:req.params.id}));
+            ar.push(db.removeArticle({_id: req.params.id}));
 
             Promise.all(ar).then(function (d) {
-                if(d[0].result.ok === 1){
-                    res.json({error:0,messages:{title:'删除成功',body:'删除一篇文章成功！'}});
-                }else{
-                    res.json({error:100,messages:{title:'删除失败',body:'删除一篇文章失败！可能原因为数据库操作错误！'}});
+                if (d[0].result.ok === 1) {
+                    res.json({error: 0, messages: {title: '删除成功', body: '删除一篇文章成功！'}});
+                } else {
+                    res.json({error: 100, messages: {title: '删除失败', body: '删除一篇文章失败！可能原因为数据库操作错误！'}});
                 }
             });
 
-        },function (err) {
-            res.json({error:0,messages:{title:'删除失败',body:'文章不存在或已经被删除！'}});
+        }, function (err) {
+            res.json({error: 0, messages: {title: '删除失败', body: '文章不存在或已经被删除！'}});
         });
-
-
 
 
     },
@@ -228,26 +226,26 @@ const adminCtl = {
                 let pAr = [];
                 pAr.push(db.updateArticle({_id: req.params.id}, req.body));
 
-                if(config.debug) console.log(req.body.tags);
+                if (config.debug) console.log(req.body.tags);
 
                 //tag块
-                db.artDetail({_id:req.params.id}).then(function (d) {
+                db.artDetail({_id: req.params.id}).then(function (d) {
                     let newAr = req.body.tags.split(',');
                     let oldAr = d.tags.split(',');
 
-                    let tagAr = common.mergeArray(newAr,oldAr);
+                    let tagAr = common.mergeArray(newAr, oldAr);
 
                     //若话题存在则tag_num -1，不存在则添加
                     if (tagAr.length !== 0) {
                         for (let i = 0; i < tagAr.length; i++) {
 
-                            if(config.debug) console.log(tagAr[i]);
+                            if (config.debug) console.log(tagAr[i]);
 
-                            if(tagAr[i]){
+                            if (tagAr[i]) {
                                 db.checkTag({tag_name: tagAr[i]}).then(function (d) {
                                     if (!d) {
                                         pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
-                                    }else{
+                                    } else {
                                         pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num - 1}));
                                     }
                                 })
@@ -257,7 +255,7 @@ const adminCtl = {
                     }
                     //存储文章修改
                     Promise.all(pAr).then(function (d) {
-                        if(config.debug) console.log(d);
+                        if (config.debug) console.log(d);
                         if (d[0].ok === 1) {
                             res.json({error: 0, messages: {title: '文章修改成功', body: '文章修改成功！'}});
                         } else {
@@ -267,8 +265,8 @@ const adminCtl = {
                     });
 
                     //tag 块END
-                },function (err) {
-                    res.json({error:300,messages:{title:"内部错误",body:"读取原始tag出错，无法提交修改"}});
+                }, function (err) {
+                    res.json({error: 300, messages: {title: "内部错误", body: "读取原始tag出错，无法提交修改"}});
                 });
 
                 break;
@@ -338,7 +336,9 @@ const adminCtl = {
          * 前端ajax提交传入 tag 类：{tag_name:String,tag_description:String,tag_keyword:String,tag_nav:Boolean}
          */
         db.updateTag({tag_name: req.body.tag_name}, req.body).then(function (d) {
-            if (d[0].ok === 1) {
+            if (config.debug) console.log(d);
+            //d { ok: 1, nModified: 0, n: 1 }
+            if (d.ok === 1) {
                 res.json({error: 0, messages: {title: '编辑成功', body: '话题编辑成功！'}});
             } else {
                 res.json({error: 100, message: {title: '编辑失败', body: '数据库存储错误，编辑失败' + d.nModified}});
@@ -349,20 +349,20 @@ const adminCtl = {
     //编辑文章时若删除tag，则自动将tags Documents 的 tag_num 减一
     changeTag: function (req, res, next) {
 
-        if(config.debug) console.log(req.params.tag_name, req.query.opt);
+        if (config.debug) console.log(req.params.tag_name, req.query.opt);
 
         db.checkTag({tag_name: req.params.tag_name}).then(function (d) {
             //处理tags文档
-            if(req.query.opt === 'del'){
+            if (req.query.opt === 'del') {
                 db.updateTag({tag_name: req.params.tag_name}, {tag_num: d.tag_num - 1}).then(function (d) {
-                    res.json({error: 0, messages: {title: '更新成功',body:'删除tag成功'}});
+                    res.json({error: 0, messages: {title: '更新成功', body: '删除tag成功'}});
                 });
-            }else if(req.query.opt === 'add'){
+            } else if (req.query.opt === 'add') {
                 db.updateTag({tag_name: req.params.tag_name}, {tag_num: d.tag_num + 1}).then(function (d) {
-                    res.json({error: 0, messages: {title: '更新成功',body:'添加tag成功'}});
+                    res.json({error: 0, messages: {title: '更新成功', body: '添加tag成功'}});
                 });
-            }else{
-                res.json({error: 100, messages: {title: '错误请求',body:'tag请求错误，请刷新重试'}});
+            } else {
+                res.json({error: 100, messages: {title: '错误请求', body: 'tag请求错误，请刷新重试'}});
             }
 
 
