@@ -25,6 +25,7 @@ $(function () {
     const $checkInput = $('.js-checkInput'); //通用input检测
     const $linkAjax = $('.js-linkAjax'); //全局ajax link 标签
     const $back = $('.js-back'); //返回按钮
+    const $prevNext = $('.js-prevNext'); //上一篇下一篇
 
     //dropdown
     $dropDown.hover(function () {
@@ -125,34 +126,53 @@ $(function () {
             if ($(e.target).hasClass('must') && $(e.target).val() === '') {
                 $(e.target).parent().addClass('has-error');
                 $(this).find('.help-block span').text('该项不能为空');
-            }else{
+            } else {
                 $(e.target).parent().removeClass('has-error');
             }
         });
 
 
     //全局ajax link 方法
-    $linkAjax.on('click',function (e) {
+    $linkAjax.on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        Model.setTip($minTip,'处理中...');
+        Model.setTip($minTip, '处理中...');
         $.ajax({
-            url:$(this).attr('href'),
-            method:'GET'
+            url: $(this).attr('href'),
+            method: 'GET'
         }).then(function (d) {
-            Model.setTip($minTip,d.messages.body);
-            if(d.error === 0){
+            Model.setTip($minTip, d.messages.body);
+            if (d.error === 0) {
                 setTimeout(window.location.reload());
             }
         });
     });
 
     //全局返回按钮
-    $back.on('click',function (e) {
+    $back.on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
         window.history.go(-1);
     });
+
+    if ($prevNext.length !== 0) {
+        setTimeout(function () {
+            $.ajax({
+                url: '/article/prevNext',
+                method: 'post',
+                data: {date: $prevNext.data('date')}
+            }).then(function (d) {
+                let prev = d[0][0], next = d[1][0];
+                console.log(prev, next);
+                if(!!prev){
+                    $prevNext.append(`<p><a href="${prev._id}" title="${prev.title}">上一篇</a></p>`);
+                }
+                if(!!next){
+                    $prevNext.prepend(`<p><a href="${next._id}" title="${next.title}">下一篇</a></p>`);
+                }
+            });
+        });
+    }
 
     //function END
 });

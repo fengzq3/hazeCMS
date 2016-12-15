@@ -115,10 +115,10 @@ module.exports = {
      */
 
     prevNext:function (query) {
-        let thisId = query._id;
+        let thisDate = query.date;
         return {
-            prev:article.find({_id:{$gt:thisId}}).sort({_id:1}).limit(1).exec(),
-            next:article.find({_id:{$lt:thisId}}).sort({_id:-1}).limit(1).exec()
+            prev:article.find({date:{$lt:thisDate}}).sort({date:-1}).limit(1).exec(),
+            next:article.find({date:{$gt:thisDate}}).sort({date:1}).skip(1).limit(1).exec()
         };
     },
     /**

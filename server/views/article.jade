@@ -35,19 +35,19 @@ block content
                         p.article-tag
                             span.iconfont.icon-tag
                             each tag in content.tags.split(',')
-                                a(href='/tags/#{tag}') #{tag}
+                                if tag
+                                    a(href='/tags/#{tag}') #{tag}
                     p.pull-right
                         a(href='#')
                             span.iconfont.icon-discuss
                             | 122
-                .article-info-r
-                    p
-                        if next.length !== 0
-                            a(href='#{next[0]._id}' title="#{next[0].title}") 下一篇
-                    p
-                        if prev.length !== 0
-                            a(href='#{prev[0]._id}' title="#{prev[0].title}") 上一篇
-
+                .article-info-r.js-prevNext(data-date='#{content.date}')
+                    //p
+                    //    if next.length !== 0
+                    //        a(href='#{next[0]._id}' title="#{next[0].title}") 下一篇
+                    //p
+                    //    if prev.length !== 0
+                    //        a(href='#{prev[0]._id}' title="#{prev[0].title}") 上一篇
 
         // 推荐部分
         .article-relate
