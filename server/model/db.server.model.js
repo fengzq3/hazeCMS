@@ -19,8 +19,11 @@ const siteSchema = new mongoose.Schema({
 
 //admin用户
 const adminSchema = new mongoose.Schema({
-    admin_name: String,
-    admin_password: String,
+    userName: String,
+    password: String,
+    description:String,
+    tel:String,
+    date:{type:Date,default:Date.now()}
 
 });
 

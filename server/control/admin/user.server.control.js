@@ -28,6 +28,78 @@ const adminCtl = {
             next(err);
         }
     },
+    //用户获取
+    userList:function (req, res, next) {
+        switch (req.method){
+            case 'GET':
+                const siteP = db.readSiteInfo();
+                const navP = db.getNav();
+                const usersP = db.readAdminList(20,0);
+
+                Promise.all([siteP,navP,usersP]).then(function (d) {
+                    let data = {
+                        site:d[0],
+                        nav:d[1],
+                        content:d[2]
+                    };
+                    res.render('admin/userList',data);
+                });
+
+                break;
+            case 'POST':
+                req.assert('userName','用户名不能为空').notEmpty();
+                req.assert('password','密码不能为空').notEmpty();
+                //处理错误
+                let errors = req.validationErrors();
+                if(errors && errors.length > 0){
+                    let error = [];
+                    for(let i = 0;i<errors.length;i++){
+                        error.push(errors[i].msg);
+                    }
+                    res.json({error:300,messages:{title:'信息填写不完整',body:error.join(',')}});
+                }else{
+                    //开始提交
+                    db.createAdmin(req.body).then(function (d) {
+                        if(d.ok === 0){
+                            res.json({error:0,messages:{title:'添加用户成功',body:'您已成功添加一个用户！'}});
+                        }else{
+                            res.json({error:100,messages:{title:'添加用户失败',body:'由于数据库发生了一些错误，添加用户失败！'}});
+                        }
+                    });
+                }
+
+
+                break;
+            default:
+                let err = new Error('非法method');
+                next(err);
+        }
+    },
+
+    editUser:function (req, res, next) {
+
+        //check user 检测提交表单
+        req.assert('userName','用户名不能为空').notEmpty();
+        req.assert('password','密码不能为空').notEmpty();
+        //处理错误
+        let errors = req.validationErrors();
+        if(errors && errors.length > 0){
+            let error = [];
+            for(let i = 0;i<errors.length;i++){
+                error.push(errors[i].msg);
+            }
+            res.json({error:300,messages:{title:'信息填写不完整',body:error.join(',')}});
+        }else{
+            db.editAdmin({_id:req.params.id},req.body).then(function (d) {
+                if(d.ok === 0){
+                    res.json({error:0,messages:{title:'修改用户成功',body:'您已成功修改一个用户！'}});
+                }else{
+                    res.json({error:100,messages:{title:'修改用户失败',body:'由于数据库发生了一些错误，修改用户失败！'}});
+                }
+            });
+        }
+
+    },
 
     //users方法
     siteInfo: function (req, res, next) {
@@ -335,7 +407,7 @@ const adminCtl = {
          * 编辑话题
          * 前端ajax提交传入 tag 类：{tag_name:String,tag_description:String,tag_keyword:String,tag_nav:Boolean}
          */
-        db.updateTag({tag_name: req.body.tag_name}, req.body).then(function (d) {
+        db.updateTag({_id: req.params.id}, req.body).then(function (d) {
             if (config.debug) console.log(d);
             //d { ok: 1, nModified: 0, n: 1 }
             if (d.ok === 1) {

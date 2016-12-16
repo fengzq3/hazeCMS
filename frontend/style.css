@@ -4890,7 +4890,7 @@ body[class*=jconfirm-no-scroll-] {
 }
 .jconfirm .jconfirm-box {
   background: white;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
   position: relative;
   outline: none;
   padding: 15px 15px 0;
@@ -4959,7 +4959,7 @@ body[class*=jconfirm-no-scroll-] {
 }
 .jconfirm .jconfirm-box div.jconfirm-title-c {
   display: block;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 20px;
 }
 .jconfirm .jconfirm-box div.jconfirm-title-c .jconfirm-icon-c {
@@ -5028,7 +5028,7 @@ body[class*=jconfirm-no-scroll-] {
 .jconfirm.jconfirm-white .jconfirm-box,
 .jconfirm.jconfirm-light .jconfirm-box {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 .jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons,
 .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons {
@@ -5063,7 +5063,7 @@ body[class*=jconfirm-no-scroll-] {
 .jconfirm.jconfirm-dark .jconfirm-box {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   background: #444;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   color: white;
 }
 .jconfirm.jconfirm-black .jconfirm-box .jconfirm-buttons,
@@ -5307,7 +5307,7 @@ body[class*=jconfirm-no-scroll-] {
 }
 .jconfirm.jconfirm-supervan .jconfirm-box .jconfirm-buttons button {
   font-size: 16px;
-  border-radius: 2px;
+  /*border-radius: 2px;*/
   background: #303f53;
   text-shadow: none;
   border: none;
@@ -5372,11 +5372,11 @@ body[class*=jconfirm-no-scroll-] {
   margin: -5px 0 0px;
   border-top: solid 1px #ddd;
   overflow: hidden;
-  border-radius: 0 0 4px 4px;
+  /*border-radius: 0 0 4px 4px;*/
 }
 .jconfirm.jconfirm-bootstrap .jconfirm-box .jconfirm-buttons button {
   font-weight: 500;
-  border-radius: 0px;
+  /*border-radius: 0px;*/
   margin: 0;
   border-left: solid 1px #ddd;
 }

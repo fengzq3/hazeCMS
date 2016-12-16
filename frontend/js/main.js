@@ -142,6 +142,8 @@ $(function () {
         let content = $thisLink.data('confirm') ? $thisLink.data('confirm') : "确定进行此操作吗？";
 
         $.confirm({
+            animation:'top',
+            closeAnimation:'top',
             title: '系统提示',
             content: content,
             buttons: {
@@ -159,6 +161,8 @@ $(function () {
                         }).then(function (d) {
                             // Model.setTip($minTip, d.messages.body);
                             $.alert({
+                                animation:'top',
+                                closeAnimation:'top',
                                 title: d.messages.title,
                                 content: d.messages.body,
                                 buttons:{

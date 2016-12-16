@@ -1,0 +1,94 @@
+//
+   Created by feng on 2016/12/1.
+
+extends block/frame
+block adminContent
+    .admin-con
+        .breadcrumb
+            li.on 用户列表
+        hr
+        .tag-list
+            table.table.table-bordered.tags-table
+                caption 共查询到：#{content.length} 个用户
+                thead
+                    tr
+                        th.w-p20 用户名
+                        th.w-p10 密码
+                        th.w-p20 描述
+                        th.w-p20 联系电话
+                        th.w-p10 添加时间
+                        th.w-p20 操作
+                tbody
+                    each item in content
+                        tr
+                            td #{item.userName}
+                            td #####
+                            td #{item.description}
+                            td #{item.tel}
+                            td.js-dateTime(date="#{item.date}")
+                            td
+                                button.btn-link.js-tagEdit(type='button' data-target='#{item._id}') 编辑
+                        //编辑话题
+                        tr.tag-edit(id="#{item._id}")
+                            td(colspan="6")
+                                form.form-horizontal(method="post" action="/admin/editUser/#{item._id}")
+                                    .input-group
+                                        label.control-label.input-group-addon 用户名：
+                                        input.form-control(type="text" name="userName" value="#{item.userName}")
+
+                                        label.control-label.input-group-addon 密码：
+                                        input.form-control(type="password" name="password" placeholder="密码")
+
+                                        label.control-label.input-group-addon 描述：
+                                        if item.description === undefined
+                                            input.form-control(type="text" name="description" placeholder="输入话题描述")
+                                        else
+                                            input.form-control(type="text" name="description" value="#{item.description}")
+
+                                        label.control-label.input-group-addon 联系电话：
+                                        if item.tel === undefined
+                                            input.form-control(type="text" name="tel" placeholder="联系电话")
+                                        else
+                                            input.form-control(type="text" name="tel" value="#{item.tel}")
+                                        span.input-group-btn
+                                            button.btn.btn-success.js-editBtn(type="submit") 确定
+                                        span.input-group-btn
+                                            button.btn.btn-default.js-editAbort(type="button") 取消
+
+                            //td #{item.userName}
+                            //    input.form-control(type="text" name="userName" value="#{item.userName}")
+                            //td #{item.password}
+                            //    input.form-control(type="password" name="password")
+                            //td
+                            //    if item.description === undefined
+                            //        input.form-control(type="text" name="description" placeholder="输入描述")
+                            //    else
+                            //        input.form-control(type="text" name="description" placeholder="输入描述" value="#{item.description}")
+                            //td
+                            //    if item.tel === undefined
+                            //        input.form-control(type="text" name="tel" placeholder="联系电话")
+                            //    else
+                            //        input.form-control(type="text" name="tel" placeholder="联系电话" value="#{item.tel}")
+                            //td
+                            //td
+                            //    button.btn.btn-success.js-editBtn(type="button" data-target='#{item._id}') 确定
+                            //    |  &nbsp;or&nbsp;
+                            //    button.btn.btn-default.js-editAbort(type="button" data-target='#{item._id}') 取消
+
+            .clearfix
+            //添加话题
+            form.form-horizontal.js-addTag-ajax(method='post' action='/admin/userList')
+                .input-group
+                    label.control-label.input-group-addon 用户名：
+                    input.form-control(type="text" name="userName" placeholder="用户名")
+
+                    label.control-label.input-group-addon 密码：
+                    input.form-control(type="password" name="password" placeholder="密码")
+
+                    label.control-label.input-group-addon 描述：
+                    input.form-control(type="text" name="description" placeholder="输入话题描述")
+
+                    label.control-label.input-group-addon 联系电话：
+                    input.form-control(type="text" name="tel" placeholder="联系电话")
+                    span.input-group-btn
+                        button.btn.btn-success(type="submit") 添加新用户

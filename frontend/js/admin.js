@@ -109,7 +109,7 @@ $(function () {
         };
 
         $.ajax({
-            url: form.data('action'),
+            url: form.data('action')+'/'+form.attr('id'),
             method: 'post',
             data: data
         }).then(function (res) {
@@ -147,13 +147,14 @@ $(function () {
     $editArticle.on('submit',function (e) {
         e.stopPropagation();
         e.preventDefault();
-        Modal.setTip($minTip,'loading...');
         const data = $(this).serialize();
-        if(data.title === ''){
 
+        if(!data.title){
+            Modal.setModal($tipModal,{title:'操作失败',body:'文章标题不能为空'});
             return false;
         }
 
+        Modal.setTip($minTip,'loading...');
         $.ajax({
             url:this.action,
             method:this.method,
@@ -167,7 +168,7 @@ $(function () {
                     }else{
                         window.location.href = '/admin/articleList';
                     }
-                });
+                },1000);
             }else{
                 Modal.setModal($tipModal,d.messages);
             }

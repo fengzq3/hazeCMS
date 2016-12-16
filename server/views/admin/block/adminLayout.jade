@@ -23,7 +23,7 @@ html
                                 a(href='/tags/#{item.tag_name}') #{item.tag_name}
                     if nav.length > 4
                         li.dropdown.js-dropdown
-                            a.dropdown-toggle(href='#', data-toggle='dropdown') 查看更多...
+                            a.dropdown-toggle(href='#', data-toggle='dropdown') 查看更多
                                 b.caret
                             ul.dropdown-menu.navbar-dropdown-menu
                                 each item,key in nav
@@ -34,7 +34,6 @@ html
 
                     li.dropdown.js-dropdown
                         a.dropdown-toggle.has-menu-icon(href='#', data-toggle='dropdown')
-                            span.iconfont.icon-admin
                             | admin用户名
                             b.caret
                         ul.dropdown-menu

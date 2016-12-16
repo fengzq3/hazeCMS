@@ -1,0 +1,41 @@
+//
+   Created by feng on 2016/11/11.
+
+extends block/frame
+block adminContent
+    .admin-con
+        .breadcrumb
+            li.on 用户信息修改
+        hr
+        form.form-horizontal.add-form.js-info-ajax(role='form' method='post' action='/admin/userSet')
+            .form-group.js-checkInput
+                label.col-sm-2.control-label
+                    em.iconfont.icon-must
+                    | 用户名
+                .col-sm-5
+                    input.form-control.must(name="user_name" type="text" placeholder="请输入用户名")
+                .col-sm-5
+                    p.help-block
+                        i.iconfont.icon-dui
+                        span 请输入用户名
+            .form-group.js-checkInput
+                label.col-sm-2.control-label
+                    em.iconfont.icon-must
+                    | 密码
+                .col-sm-5
+                    input.form-control.must(name="user_password" type="password" placeholder="请输入用户密码")
+                .col-sm-5
+                    p.help-block
+                        i.iconfont.icon-dui
+                        span 请输入用户密码
+            .form-group.js-checkInput
+                label.col-sm-2.control-label 电话
+                .col-sm-5
+                    input.form-control(name='user_tel' type="text" placeholder="联系电话")
+                .col-sm-5
+                    p.help-block
+                        i.iconfont.icon-dui
+                        span 请输入联系电话
+            .form-group
+                .col-sm-5.col-sm-offset-2
+                    button.btn.btn-success(type='submit' data-loading-text="Loading...") 提交

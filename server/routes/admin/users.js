@@ -20,9 +20,11 @@ router.all('/login', users.login);
 router.all('/siteInfo', users.siteInfo);
 router.all('/addArticle', users.addArticle);
 router.all('/editArticle/:id',users.editArticle);
+router.all('/userList',users.userList);
 
 //POST
-router.post('/editTag',users.editTag);
+router.post('/editTag/:id',users.editTag);
+router.post('/editUser/:id',users.editUser);
 
 
 
