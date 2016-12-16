@@ -7,6 +7,10 @@
 //通用tip消息
 
 const tipModal = {
+    initModal:function () {
+
+    },
+
     setModal:function (modal,data) {
         modal.modal('show');
         modal.find('#tipModalLabel').text(data.title);

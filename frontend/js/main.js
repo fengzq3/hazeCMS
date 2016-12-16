@@ -5,7 +5,8 @@
 // require('./index.slide.js');
 //格式化时间
 const fTime = require('./date.format');
-const Model = require('./tipModal');
+// const Model = require('./tipModal');
+require('jquery-confirm');
 
 $(function () {
     //变量
@@ -136,16 +137,48 @@ $(function () {
     $linkAjax.on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        Model.setTip($minTip, '处理中...');
-        $.ajax({
-            url: $(this).attr('href'),
-            method: 'GET'
-        }).then(function (d) {
-            Model.setTip($minTip, d.messages.body);
-            if (d.error === 0) {
-                setTimeout(window.location.reload());
+        // Model.setTip($minTip, '处理中...');
+        let $thisLink = $(this);
+        let content = $thisLink.data('confirm') ? $thisLink.data('confirm') : "确定进行此操作吗？";
+
+        $.confirm({
+            title: '系统提示',
+            content: content,
+            buttons: {
+                "取消": {
+                    btnClass: 'btn-default',
+                    key:'esc'
+                },
+                '确定': {
+                    btnClass: 'btn-success',
+                    key:'enter',
+                    action: () => {
+                        $.ajax({
+                            url: $thisLink.attr('href'),
+                            method: 'GET'
+                        }).then(function (d) {
+                            // Model.setTip($minTip, d.messages.body);
+                            $.alert({
+                                title: d.messages.title,
+                                content: d.messages.body,
+                                buttons:{
+                                    '确定':()=>{
+                                        if (d.error === 0) {
+                                            setTimeout(window.location.reload());
+                                        }
+                                    }
+                                }
+                            });
+                            //end alert
+
+                        });
+                    }
+                },
+
             }
         });
+
+
     });
 
     //全局返回按钮
@@ -164,10 +197,10 @@ $(function () {
             }).then(function (d) {
                 let prev = d[0][0], next = d[1][0];
                 console.log(prev, next);
-                if(!!prev){
+                if (!!prev) {
                     $prevNext.append(`<p><a href="${prev._id}" title="${prev.title}">上一篇</a></p>`);
                 }
-                if(!!next){
+                if (!!next) {
                     $prevNext.prepend(`<p><a href="${next._id}" title="${next.title}">下一篇</a></p>`);
                 }
             });

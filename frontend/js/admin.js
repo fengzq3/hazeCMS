@@ -149,6 +149,11 @@ $(function () {
         e.preventDefault();
         Modal.setTip($minTip,'loading...');
         const data = $(this).serialize();
+        if(data.title === ''){
+
+            return false;
+        }
+
         $.ajax({
             url:this.action,
             method:this.method,
@@ -157,7 +162,11 @@ $(function () {
             Modal.setTip($minTip,d.messages.body);
             if(d.error === 0){
                 setTimeout(function () {
-                    window.location.href = document.referrer;
+                    if(document.referrer){
+                        window.location.href = document.referrer;
+                    }else{
+                        window.location.href = '/admin/articleList';
+                    }
                 });
             }else{
                 Modal.setModal($tipModal,d.messages);

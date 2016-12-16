@@ -14,8 +14,10 @@ block adminContent
             .row
                 .col-sm-9.edit-article-left
                     .edit-textarea
-                        .form-group.form-group-lg
-                            input.form-control(name="title" type="text" placeholder="输入标题")
+                        .form-group.form-group-lg.js-checkInput
+                            input.form-control.must(name="title" type="text" placeholder="输入标题")
+                            p.help-block
+                                span
                         textarea#textArea.form-control.js-textArea.js-autoHeight(name="body")
                 .col-sm-3.edit-article-right
                     .edit-right-con
