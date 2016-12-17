@@ -12,7 +12,7 @@ $(function () {
     const $loginForm = $('.js-login-ajax');
     const $tipModal = $('#tipModal');
     const $minTip = $('#minTip');
-    const $tagEdit = $('.js-tagEdit'), $tagEditBtn = $('.js-editBtn'), $tagEditAbort = $('.js-editAbort');
+    const $tagEdit = $('.js-tagEdit'), $tagEditForm = $('.js-editForm'), $tagEditAbort = $('.js-editAbort');
     const $addTagForm = $('.js-addTag-ajax');
     const $editArticle = $('.js-editArticle-ajax');
 
@@ -97,20 +97,15 @@ $(function () {
         $('#' + $(this).data('target')).toggle(0);
     });
 
-    $tagEditBtn.on('click', function (e) {
+    $tagEditForm.on('submit', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        const form = $('#' + $(this).data('target'));
-        let data = {
-            tag_name: $(form.find('[name="tag_name"]')).val(),
-            tag_description: $(form.find('[name="tag_description"]')).val(),
-            tag_keyword: $(form.find('[name="tag_keyword"]')).val(),
-            tag_nav: $(form.find('[name="tag_nav"]')).val()
-        };
+        const form = $(this);
+        let data = form.serialize();
 
         $.ajax({
-            url: form.data('action')+'/'+form.attr('id'),
-            method: 'post',
+            url: this.action,
+            method: this.method,
             data: data
         }).then(function (res) {
             console.log(res);

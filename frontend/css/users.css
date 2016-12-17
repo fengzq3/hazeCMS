@@ -68,7 +68,9 @@ body{overflow:hidden;}
 .tags-table td>small{margin-left:10px;color:#ccc;}
 .tags-table td,.tags-table th{vertical-align: middle !important;}
 .tags-table td>a{padding:1px 6px;}
-.tag-edit{display:none;}
+.tags-table tr:hover,.tags-table tr:focus{background-color:#EEEEEE;}
+.tag-edit{display:none;background-color:#e6e6e6;}
+.tag-edit .input-group{width:100%;}
 
 /*文章列表*/
 .admin-list{margin-bottom:25px;}

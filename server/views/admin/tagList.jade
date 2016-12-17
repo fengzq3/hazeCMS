@@ -41,33 +41,33 @@ block adminContent
                                 a.js-linkAjax(href="/admin/delTag/#{item._id}") 删除
                                 button.btn-link.js-tagEdit(type='button' data-target='#{item._id}') 编辑
                         //编辑话题
-                        tr.tag-edit(id="#{item._id}" data-action='/admin/editTag')
+                        tr.tag-edit(id="#{item._id}")
                             td ##{item.tag_name}#
-                                small (#{item.tag_num})
-                                input.form-control(type="hidden" name="tag_name" value="#{item.tag_name}")
-                            td
-                                if item.tag_description === undefined
-                                    input.form-control(type="text" name="tag_description" placeholder="输入tag描述")
-                                else
-                                    input.form-control(type="text" name="tag_description" placeholder="输入tag描述" value="#{item.tag_description}")
-                            td
-                                if item.tag_keyword === undefined
-                                    input.form-control(type="text" name="tag_keyword" placeholder="输入tag关键词")
-                                else
-                                    input.form-control(type="text" name="tag_keyword" placeholder="输入tag关键词" value="#{item.tag_keyword}")
-                            td
-                            td
-                                select.form-control(name="tag_nav")
-                                    if item.tag_nav
-                                        option(value='1' selected) 是
-                                        option(value='0') 否
-                                    else
-                                        option(value='1') 是
-                                        option(value='0' selected) 否
-                            td
-                                button.btn.btn-success.js-editBtn(type="button" data-target='#{item._id}') 确定
-                                |  &nbsp;or&nbsp;
-                                button.btn.btn-default.js-editAbort(type="button" data-target='#{item._id}') 取消
+                            td(colspan="5")
+                                form.form-horizontal.js-editForm(method="post" action="/admin/editTag/#{item._id}")
+                                    .input-group
+                                        input.form-control(type="hidden" name="tag_name" value="#{item.tag_name}")
+                                        label.control-label.input-group-addon 描述信息
+                                        if item.tag_description === undefined
+                                            input.form-control(type="text" name="tag_description" placeholder="输入tag描述")
+                                        else
+                                            input.form-control(type="text" name="tag_description" placeholder="输入tag描述" value="#{item.tag_description}")
+                                        label.control-label.input-group-addon 关键词
+                                        if item.tag_keyword === undefined
+                                            input.form-control(type="text" name="tag_keyword" placeholder="输入tag关键词")
+                                        else
+                                            input.form-control(type="text" name="tag_keyword" placeholder="输入tag关键词" value="#{item.tag_keyword}")
+                                        label.control-label.input-group-addon 导航显示
+                                        select.form-control(name="tag_nav")
+                                            if item.tag_nav
+                                                option(value='1' selected) 是
+                                                option(value='0') 否
+                                            else
+                                                option(value='1') 是
+                                                option(value='0' selected) 否
+                                        span.input-group-btn
+                                            button.btn.btn-info(type="submit") 确定修改
+                                            button.btn.btn-default.js-editAbort(type="button" data-target='#{item._id}') 取消编辑
 
             .clearfix
             //添加话题

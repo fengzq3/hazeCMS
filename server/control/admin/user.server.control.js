@@ -60,11 +60,9 @@ const adminCtl = {
                 }else{
                     //开始提交
                     db.createAdmin(req.body).then(function (d) {
-                        if(d.ok === 0){
-                            res.json({error:0,messages:{title:'添加用户成功',body:'您已成功添加一个用户！'}});
-                        }else{
-                            res.json({error:100,messages:{title:'添加用户失败',body:'由于数据库发生了一些错误，添加用户失败！'}});
-                        }
+                        res.json({error:0,messages:{title:'添加用户成功',body:'您已成功添加一个用户！'}});
+                    },function () {
+                        res.json({error:100,messages:{title:'添加用户失败',body:'由于数据库发生了一些错误，添加用户失败！'}});
                     });
                 }
 
@@ -91,11 +89,9 @@ const adminCtl = {
             res.json({error:300,messages:{title:'信息填写不完整',body:error.join(',')}});
         }else{
             db.editAdmin({_id:req.params.id},req.body).then(function (d) {
-                if(d.ok === 0){
-                    res.json({error:0,messages:{title:'修改用户成功',body:'您已成功修改一个用户！'}});
-                }else{
-                    res.json({error:100,messages:{title:'修改用户失败',body:'由于数据库发生了一些错误，修改用户失败！'}});
-                }
+                res.json({error:0,messages:{title:'修改用户成功',body:'您已成功修改一个用户！'}});
+            },function () {
+                res.json({error:100,messages:{title:'修改用户失败',body:'由于数据库发生了一些错误，修改用户失败！'}});
             });
         }
 

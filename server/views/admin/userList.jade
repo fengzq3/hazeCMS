@@ -31,7 +31,7 @@ block adminContent
                         //编辑话题
                         tr.tag-edit(id="#{item._id}")
                             td(colspan="6")
-                                form.form-horizontal(method="post" action="/admin/editUser/#{item._id}")
+                                form.form-horizontal.js-editForm(method="post" action="/admin/editUser/#{item._id}")
                                     .input-group
                                         label.control-label.input-group-addon 用户名：
                                         input.form-control(type="text" name="userName" value="#{item.userName}")
@@ -51,9 +51,8 @@ block adminContent
                                         else
                                             input.form-control(type="text" name="tel" value="#{item.tel}")
                                         span.input-group-btn
-                                            button.btn.btn-success.js-editBtn(type="submit") 确定
-                                        span.input-group-btn
-                                            button.btn.btn-default.js-editAbort(type="button") 取消
+                                            button.btn.btn-info(type="submit") 确定修改
+                                            button.btn.btn-default.js-editAbort(type="button" data-target="#{item._id}") 取消编辑
 
                             //td #{item.userName}
                             //    input.form-control(type="text" name="userName" value="#{item.userName}")
