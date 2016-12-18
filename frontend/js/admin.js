@@ -95,6 +95,8 @@ $(function () {
             // Modal.setModal($tipModal, res.messages);
             btn.button('reset');
             $.confirm({
+                animation:'top',
+                closeAnimation:'top',
                 title: d.messages.title,
                 content: d.messages.body,
                 buttons: {
@@ -118,7 +120,7 @@ $(function () {
             //confirm END
 
         }, function (e) {
-            $.alert({title: e.status, content: e.statusText});
+            $.alert({animation: 'top', closeAnimation: 'top', title: e.status, content: e.statusText});
             btn.button('reset');
         });
 
@@ -172,6 +174,8 @@ $(function () {
             // Modal.setTip($minTip, d.messages.body);
             btn.button('reset');
             $.confirm({
+                animation:'top',
+                closeAnimation:'top',
                 title: d.messages.title,
                 content: d.messages.body,
                 buttons: {
@@ -215,6 +219,8 @@ $(function () {
 
             btn.button('reset');
             $.confirm({
+                animation:'top',
+                closeAnimation:'top',
                 title: d.messages.title,
                 content: d.messages.body,
                 buttons: {
