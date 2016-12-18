@@ -6,6 +6,7 @@ const config = require('../../config.js');
 const db = require('../../model/db.server.model');
 const Promise = require('bluebird');
 const common = require('../../common');
+const md5 = require('crypto').createHash('md5');
 
 const adminCtl = {
     checkLogin: function (req, res, next) {
@@ -58,6 +59,10 @@ const adminCtl = {
                     }
                     res.json({error:300,messages:{title:'信息填写不完整',body:error.join(',')}});
                 }else{
+                    //处理数据，md5加密
+                    req.body.password = md5.update(req.body.password).digest('hex');
+
+                    if(config.debug) console.log(req.body);
                     //开始提交
                     db.createAdmin(req.body).then(function (d) {
                         res.json({error:0,messages:{title:'添加用户成功',body:'您已成功添加一个用户！'}});
@@ -192,37 +197,48 @@ const adminCtl = {
 
                 break;
             case 'POST':
-                /**
-                 * 添加文章
-                 * 处理 tags
-                 */
-                let pAr = [];
-                pAr.push(db.addArticle(req.body));
-
-                const tagAr = req.body.tags.split(',');
-
-                //若话题存在，则添加到话题 Documents
-                if (tagAr.length !== 0) {
-                    for (let i = 0; i < tagAr.length; i++) {
-
-                        if (config.debug) console.log(tagAr[i]);
-
-                        if (tagAr[i]) {
-                            db.checkTag({tag_name: tagAr[i]}).then(function (d) {
-                                if (!!d) {
-                                    pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num + 1}));
-                                } else {
-                                    pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
-                                }
-                            })
-                        }
-
+                req.assert('title','标题不能为空').notEmpty();
+                let errors = req.validationErrors();
+                if(errors && errors.length > 0){
+                    let error = [];
+                    for(let i = 0;i<errors.length;i++){
+                        error.push(errors[i].msg);
                     }
+                    res.json({error: 300, messages: {title: '信息不全', body: error.join(',')}});
+                }else{
+                    /**
+                     * 添加文章
+                     * 处理 tags
+                     */
+                    let pAr = [];
+                    pAr.push(db.addArticle(req.body));
+
+                    const tagAr = req.body.tags.split(',');
+
+                    //若话题存在，则添加到话题 Documents
+                    if (tagAr.length !== 0) {
+                        for (let i = 0; i < tagAr.length; i++) {
+
+                            if (config.debug) console.log(tagAr[i]);
+
+                            if (tagAr[i]) {
+                                db.checkTag({tag_name: tagAr[i]}).then(function (d) {
+                                    if (!!d) {
+                                        pAr.push(db.updateTag({tag_name: tagAr[i]}, {tag_num: d.tag_num + 1}));
+                                    } else {
+                                        pAr.push(db.addTag({tag_name: tagAr[i], tag_num: 1}));
+                                    }
+                                })
+                            }
+
+                        }
+                    }
+
+                    Promise.all(pAr).then(function (d) {
+                        res.json({error: 0, messages: {title: '操作成功', body: '文章发布成功！'}});
+                    });
                 }
 
-                Promise.all(pAr).then(function (d) {
-                    res.json({error: 0, messages: {title: '操作成功', body: '文章发布成功！'}});
-                });
 
                 break;
             default:

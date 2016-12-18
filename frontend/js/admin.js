@@ -144,19 +144,15 @@ $(function () {
         e.preventDefault();
         const data = $(this).serialize();
 
-        if(!data.title){
-            Modal.setModal($tipModal,{title:'操作失败',body:'文章标题不能为空'});
-            return false;
-        }
-
         Modal.setTip($minTip,'loading...');
         $.ajax({
             url:this.action,
             method:this.method,
             data:data
         }).then(function (d) {
-            Modal.setTip($minTip,d.messages.body);
+
             if(d.error === 0){
+                Modal.setTip($minTip,d.messages.body);
                 setTimeout(function () {
                     if(document.referrer){
                         window.location.href = document.referrer;
