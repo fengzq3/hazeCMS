@@ -75,6 +75,9 @@ module.exports = {
     editAdmin: function (query, data) {
         return admins.update(query,data).exec();
     },
+    getAdmin:function (query) {
+        return admins.findOne(query).exec();
+    },
     createAdmin: function (data) {
         let admin = new admins(data);
         return admin.save();

@@ -5,6 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+const session = require('express-session');
 
 const index = require('./routes/index');
 const admin = require('./routes/admin/users');
@@ -25,6 +26,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(expressValidator());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+    secret:'secret',
+    resave:true,
+    saveUninitialized:false,
+    Cookie:{
+        maxAge:1000*60*10 //过期时间10分钟（毫秒ms）
+    }
+}));
 
 app.use('/', index);
 app.use('/admin', admin);

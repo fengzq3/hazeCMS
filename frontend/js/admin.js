@@ -31,30 +31,47 @@ $(function () {
 
 
     //网站登录
-    // $loginForm.on('submit', function (e) {
-    //     e.stopPropagation();
-    //     e.preventDefault();
-    //     const action = this.action;
-    //     const method = this.method;
-    //     const data = $(this).serialize();
-    //     $(this).find('.btn').button('loading');
-    //
-    //     $.ajax({
-    //         url: action,
-    //         method: method,
-    //         data: data
-    //     }).then(function (res) {
-    //
-    //         if (res.error === 0) {
-    //             window.location.href = action;
-    //         } else {
-    //
-    //             if (res.error === 1) $(this).find('[name="userName"]').addClass('has-error');
-    //             if (res.error === 2) $(this).find('[name="userPassword"]').addClass('has-error');
-    //         }
-    //     });
-    //
-    // });
+    $loginForm.on('submit', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        const action = this.action;
+        const method = this.method;
+        const data = $(this).serialize();
+        const btn = $(this).find('.btn');
+
+        btn.button('loading');
+
+        $.ajax({
+            url: action,
+            method: method,
+            data: data
+        }).then(function (d) {
+            console.log(d);
+            $.alert({
+                animation: 'top',
+                closeAnimation: 'top',
+                title: d.messages.title,
+                content: d.messages.body,
+                buttons: {
+                    '确定': {
+                        key:'enter',
+                        btnClass:'btn-success',
+                        action:() => {
+
+                            if (d.error === 0) {
+                                document.location.href = '/admin';
+                            }else{
+                                btn.button('reset');
+                            }
+                        }
+                    }
+                }
+            });
+            //alert END
+
+        });
+
+    });
 
     //网站信息页
     $infoForm.on('submit', function (e) {
@@ -139,33 +156,32 @@ $(function () {
 
 
     //修改文章
-    $editArticle.on('submit',function (e) {
+    $editArticle.on('submit', function (e) {
         e.stopPropagation();
         e.preventDefault();
         const data = $(this).serialize();
 
-        Modal.setTip($minTip,'loading...');
+        Modal.setTip($minTip, 'loading...');
         $.ajax({
-            url:this.action,
-            method:this.method,
-            data:data
+            url: this.action,
+            method: this.method,
+            data: data
         }).then(function (d) {
 
-            if(d.error === 0){
-                Modal.setTip($minTip,d.messages.body);
+            if (d.error === 0) {
+                Modal.setTip($minTip, d.messages.body);
                 setTimeout(function () {
-                    if(document.referrer){
+                    if (document.referrer) {
                         window.location.href = document.referrer;
-                    }else{
+                    } else {
                         window.location.href = '/admin/articleList';
                     }
-                },1000);
-            }else{
-                Modal.setModal($tipModal,d.messages);
+                }, 1000);
+            } else {
+                Modal.setModal($tipModal, d.messages);
             }
         });
     });
-
 
 
 });

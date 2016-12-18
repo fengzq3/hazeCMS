@@ -192,6 +192,7 @@ $(function () {
         window.history.go(-1);
     });
 
+    //获取上一篇下一篇
     if ($prevNext.length !== 0) {
         setTimeout(function () {
             $.ajax({
