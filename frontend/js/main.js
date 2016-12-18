@@ -10,7 +10,6 @@ require('jquery-confirm');
 
 $(function () {
     //变量
-    const $minTip = $('#minTip'); //minTip
     const $dropDown = $('.js-dropdown');  //下拉
     const $search = $('#mainSearch'); //搜索
     const $mobSearchIco = $('.js-mobSearchIco'); //移动搜索图标
@@ -149,11 +148,11 @@ $(function () {
             buttons: {
                 "取消": {
                     btnClass: 'btn-default',
-                    key:'esc'
+                    keys:['esc']
                 },
                 '确定': {
                     btnClass: 'btn-success',
-                    key:'enter',
+                    keys:['enter'],
                     action: () => {
                         $.ajax({
                             url: $thisLink.attr('href'),

@@ -1,7 +1,6 @@
 /**
  * Created by feng on 2016/11/21.
  */
-const Modal = require('./tipModal');
 
 $(function () {
     $("[data-toggle='tooltip']").tooltip();
@@ -10,8 +9,6 @@ $(function () {
     const $menuSlide = $('.js-menuSlide');
     const $infoForm = $('.js-info-ajax');
     const $loginForm = $('.js-login-ajax');
-    const $tipModal = $('#tipModal');
-    const $minTip = $('#minTip');
     const $tagEdit = $('.js-tagEdit'), $tagEditForm = $('.js-editForm'), $tagEditAbort = $('.js-editAbort');
     const $addTagForm = $('.js-addTag-ajax');
     const $editArticle = $('.js-editArticle-ajax');
@@ -54,13 +51,19 @@ $(function () {
                 content: d.messages.body,
                 buttons: {
                     '确定': {
-                        key:'enter',
-                        btnClass:'btn-success',
-                        action:() => {
+                        keys: ['enter'],
+                        btnClass: 'btn-success',
+                        action: () => {
 
                             if (d.error === 0) {
-                                document.location.href = '/admin';
-                            }else{
+                                document.location.reload();
+                                // if(!document.referrer){
+                                //     document.location.href = '/admin';
+                                // }else{
+                                //     document.location.href = document.referrer;
+                                // }
+
+                            } else {
                                 btn.button('reset');
                             }
                         }
@@ -88,19 +91,34 @@ $(function () {
             url: action,
             method: method,
             data: data
-        }).then(function (res) {
-            Modal.setModal($tipModal, res.messages);
-
-            if (res.error === 0) {
-                setTimeout(function () {
-                    window.location.href = action;
-                }, 2000);
-            } else {
-                btn.button('reset');
-            }
+        }).then(function (d) {
+            // Modal.setModal($tipModal, res.messages);
+            btn.button('reset');
+            $.confirm({
+                title: d.messages.title,
+                content: d.messages.body,
+                buttons: {
+                    ok: {
+                        text: '确定',
+                        btnClass: 'btn-success',
+                        action: () => {
+                            if (d.error === 0) {
+                                window.location.href = action;
+                            }
+                            //跳转
+                            if (!!d.forward) {
+                                window.location.href = d.forward;
+                            }
+                            //end if
+                        }
+                    }
+                    //ok end
+                }
+            });
+            //confirm END
 
         }, function (e) {
-            Modal.setModal($tipModal, {title: e.status, body: e.statusText});
+            $.alert({title: e.status, content: e.statusText});
             btn.button('reset');
         });
 
@@ -118,14 +136,16 @@ $(function () {
         e.stopPropagation();
         e.preventDefault();
         const form = $(this);
+        const btn = $(this).find('[type="submit"]');
         let data = form.serialize();
 
+        btn.button('loading');
         $.ajax({
             url: this.action,
             method: this.method,
             data: data
-        }).then(function (res) {
-            console.log(res);
+        }).then(function (d) {
+            console.log(d);
             window.location.reload(); //刷新
         });
 
@@ -140,17 +160,40 @@ $(function () {
     $addTagForm.on('submit', function (e) {
         e.stopPropagation();
         e.preventDefault();
+        const btn = $(this).find('[type="submit"]');
         const data = $(this).serialize();
-        Modal.setTip($minTip, '正在提交...');
+        // Modal.setTip($minTip, '正在提交...');
+        btn.button('loading');
         $.ajax({
             url: this.action,
             method: this.method,
             data: data
         }).then(function (d) {
-            Modal.setTip($minTip, d.messages.body);
-            if (d.error === 0) {
-                setTimeout(window.location.reload());
-            }
+            // Modal.setTip($minTip, d.messages.body);
+            btn.button('reset');
+            $.confirm({
+                title: d.messages.title,
+                content: d.messages.body,
+                buttons: {
+                    ok: {
+                        text: '确定',
+                        btnClass: 'btn-success',
+                        action: () => {
+                            if (d.error === 0) {
+                                setTimeout(window.location.reload());
+                            }
+                            //跳转
+                            if (!!d.forward) {
+                                window.location.href = d.forward;
+                            }
+                            //end if
+                        }
+                    }
+                    //ok end
+                }
+            });
+            //confirm END
+
         });
     });
 
@@ -160,26 +203,55 @@ $(function () {
         e.stopPropagation();
         e.preventDefault();
         const data = $(this).serialize();
+        const btn = $(this).find('[type="submit"]');
 
-        Modal.setTip($minTip, 'loading...');
+        // Modal.setTip($minTip, 'loading...');
+        btn.button('loading');
         $.ajax({
             url: this.action,
             method: this.method,
             data: data
         }).then(function (d) {
 
-            if (d.error === 0) {
-                Modal.setTip($minTip, d.messages.body);
-                setTimeout(function () {
-                    if (document.referrer) {
-                        window.location.href = document.referrer;
-                    } else {
-                        window.location.href = '/admin/articleList';
+            btn.button('reset');
+            $.confirm({
+                title: d.messages.title,
+                content: d.messages.body,
+                buttons: {
+                    ok: {
+                        text: '确定',
+                        btnClass: 'btn-success',
+                        action: () => {
+                            if (d.error === 0) {
+                                if (!!document.referrer) {
+                                    window.location.href = document.referrer;
+                                } else {
+                                    window.location.href = '/admin/articleList';
+                                }
+                            }
+                            //跳转
+                            if (!!d.forward) {
+                                window.location.href = d.forward;
+                            }
+                            //end if
+                        }
                     }
-                }, 1000);
-            } else {
-                Modal.setModal($tipModal, d.messages);
-            }
+                    //ok end
+                }
+            });
+
+            // if (d.error === 0) {
+            //     Modal.setTip($minTip, d.messages.body);
+            //     setTimeout(function () {
+            //         if (!!document.referrer) {
+            //             window.location.href = document.referrer;
+            //         } else {
+            //             window.location.href = '/admin/articleList';
+            //         }
+            //     }, 1000);
+            // } else {
+            //     Modal.setModal($tipModal, d.messages);
+            // }
         });
     });
 

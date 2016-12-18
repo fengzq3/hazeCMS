@@ -28,7 +28,7 @@ app.use(expressValidator());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret:'secret',
+    secret:'hazeCMS',
     resave:true,
     saveUninitialized:false,
     Cookie:{

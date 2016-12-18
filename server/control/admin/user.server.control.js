@@ -16,12 +16,19 @@ const adminCtl = {
             console.log('baseUrl:' + req.baseUrl);
             console.log('path:' + req.path);
             console.log('session.user:' + req.session.user);
+            console.log('req.method:' + req.method);
         }
 
         if (req.session.user || req.path === '/login' || req.path === '/logout') {
             next();
         } else {
-            res.redirect(req.baseUrl + '/login');
+            if (req.method === 'GET') {
+                res.redirect(req.baseUrl + '/login');
+            } else {
+                res.json({error: 200, messages: {title: '请登陆', body: '请先登陆后再进行此操作'}, forward: req.baseUrl + '/login'});
+            }
+
+
         }
 
     },
@@ -31,9 +38,13 @@ const adminCtl = {
 
         Promise.all([siteP, navP]).then(function (d) {
             let data = {
+                link: {
+                    baseUrl: req.baseUrl,
+                    path: req.path
+                },
                 site: d[0],
                 nav: d[1],
-                user:req.session.user
+                user: req.session.user
             };
             res.render('admin/index', data);
         });
@@ -50,8 +61,13 @@ const adminCtl = {
 
                 Promise.all([siteP, navP]).then(function (d) {
                     let data = {
+                        link: {
+                            baseUrl: req.baseUrl,
+                            path: req.path
+                        },
                         site: d[0],
-                        nav: d[1]
+                        nav: d[1],
+                        user: req.session.user
                     };
                     res.render('admin/login', data);
                 });
@@ -71,7 +87,7 @@ const adminCtl = {
             } else {
                 //通过校验后比对用户密码
                 db.getAdmin({userName: req.body.userName}).then(function (d) {
-                    if (config.debug) console.log(d);
+                    // if (config.debug) console.log(d);
                     if (!!d) {
                         req.body.password = crypto.createHash('md5').update(req.body.password).digest('hex');
                         if (req.body.password === d.password) {
@@ -108,9 +124,14 @@ const adminCtl = {
 
                 Promise.all([siteP, navP, usersP]).then(function (d) {
                     let data = {
+                        link: {
+                            baseUrl: req.baseUrl,
+                            path: req.path
+                        },
                         site: d[0],
                         nav: d[1],
-                        content: d[2]
+                        content: d[2],
+                        user: req.session.user
                     };
                     res.render('admin/userList', data);
                 });
@@ -188,8 +209,13 @@ const adminCtl = {
                     let data;
                     if (d.length !== 0) {
                         data = {
+                            link: {
+                                baseUrl: req.baseUrl,
+                                path: req.path
+                            },
                             site: d[0],
-                            nav: d[1]
+                            nav: d[1],
+                            user: req.session.user
                         };
                     }
 
@@ -244,9 +270,14 @@ const adminCtl = {
         Promise.all([siteP, navP, listP]).then(function (d) {
 
             const data = {
+                link: {
+                    baseUrl: req.baseUrl,
+                    path: req.path
+                },
                 site: d[0],
                 nav: d[1],
-                content: d[2]
+                content: d[2],
+                user: req.session.user
             };
 
             res.render('admin/articleList', data);
@@ -261,6 +292,11 @@ const adminCtl = {
 
                 Promise.all([siteP, navP]).then(function (d) {
                     const data = {
+                        link: {
+                            baseUrl: req.baseUrl,
+                            path: req.path
+                        },
+                        user: req.session.user,
                         site: d[0],
                         nav: d[1]
                     };
@@ -369,6 +405,11 @@ const adminCtl = {
 
                 Promise.all([siteP, navP, detail]).then(function (d) {
                     const data = {
+                        link: {
+                            baseUrl: req.baseUrl,
+                            path: req.path
+                        },
+                        user: req.session.user,
                         site: d[0],
                         nav: d[1],
                         content: d[2]
@@ -444,6 +485,11 @@ const adminCtl = {
             case 'GET':
                 Promise.all([siteP, navP, tagsP]).then(function (d) {
                     const data = {
+                        link: {
+                            baseUrl: req.baseUrl,
+                            path: req.path
+                        },
+                        user: req.session.user,
                         site: d[0],
                         nav: d[1],
                         content: d[2]

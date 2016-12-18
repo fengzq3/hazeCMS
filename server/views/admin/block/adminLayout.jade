@@ -32,15 +32,16 @@ html
                                             a(href='/tags/#{item.tag_name}') #{item.tag_name}
 
 
-                    li.dropdown.js-dropdown
-                        a.dropdown-toggle.has-menu-icon(href='#', data-toggle='dropdown')
-                            | admin用户名
-                            b.caret
-                        ul.dropdown-menu
-                            li
-                                a.has-menu-icon.js-linkAjax(href='/admin/logout')
-                                    span.iconfont.icon-quit
-                                    | 退出
+                    if user
+                        li.dropdown.js-dropdown
+                            a.dropdown-toggle.has-menu-icon(href='#', data-toggle='dropdown')
+                                | #{user.userName}
+                                b.caret
+                            ul.dropdown-menu
+                                li
+                                    a.has-menu-icon.js-linkAjax(href='/admin/logout')
+                                        span.iconfont.icon-quit
+                                        | 退出
 
         block content
         //模态框
