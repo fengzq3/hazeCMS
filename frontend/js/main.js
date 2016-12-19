@@ -4,7 +4,7 @@
 "use strict";
 // require('./index.slide.js');
 //格式化时间
-const fTime = require('./date.format');
+require('./date.format');
 // const Model = require('./tipModal');
 require('jquery-confirm');
 
@@ -26,6 +26,7 @@ $(function () {
     const $linkAjax = $('.js-linkAjax'); //全局ajax link 标签
     const $back = $('.js-back'); //返回按钮
     const $prevNext = $('.js-prevNext'); //上一篇下一篇
+    const $navActive = $('.js-navActive'); //渲染active标记
 
     //dropdown
     $dropDown.hover(function () {
@@ -141,18 +142,18 @@ $(function () {
         let content = $thisLink.data('confirm') ? $thisLink.data('confirm') : "确定进行此操作吗？";
 
         $.confirm({
-            animation:'top',
-            closeAnimation:'top',
+            animation: 'top',
+            closeAnimation: 'top',
             title: '系统提示',
             content: content,
             buttons: {
                 "取消": {
                     btnClass: 'btn-default',
-                    keys:['esc']
+                    keys: ['esc']
                 },
                 '确定': {
                     btnClass: 'btn-success',
-                    keys:['enter'],
+                    keys: ['enter'],
                     action: () => {
                         $.ajax({
                             url: $thisLink.attr('href'),
@@ -160,12 +161,12 @@ $(function () {
                         }).then(function (d) {
                             // Model.setTip($minTip, d.messages.body);
                             $.alert({
-                                animation:'top',
-                                closeAnimation:'top',
+                                animation: 'top',
+                                closeAnimation: 'top',
                                 title: d.messages.title,
                                 content: d.messages.body,
-                                buttons:{
-                                    '确定':()=>{
+                                buttons: {
+                                    '确定': () => {
                                         if (d.error === 0) {
                                             setTimeout(window.location.reload());
                                         }
@@ -210,6 +211,18 @@ $(function () {
             });
         });
     }
+
+    //渲染当前导航 active
+    setTimeout(function () {
+        let thisLink = window.location.href;
+        let theLink = $navActive.find('li a');
+
+        theLink.each(function () {
+            if ($(this).attr('href') === thisLink || $(this).attr('href') + '/' === thisLink) {
+                $(this).parent().addClass('active').siblings('active').removeClass('active');
+            }
+        });
+    });
 
     //function END
 });

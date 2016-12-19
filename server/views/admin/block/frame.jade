@@ -7,7 +7,7 @@ block content
     .frame-con
         .frame-left
             .frame-layout
-                .admin-menu
+                .admin-menu.js-navActive
                     h4.admin-menu-title.js-mainMenu
                         b.iconfont.icon-shu
                     .slide-title.js-menuSlide
@@ -16,15 +16,15 @@ block content
                         span 主要功能
                     ul.slide-menu
                         li
-                            a(href='/admin')
+                            a(href='#{site.site_link}/admin')
                                 b.iconfont.icon-article(data-toggle="tooltip" data-placement="right" title="文章管理")
                                 span 用户中心
                         li
-                            a(href='/admin/articleList')
+                            a(href='#{site.site_link}/admin/articleList')
                                 b.iconfont.icon-article(data-toggle="tooltip" data-placement="right" title="文章管理")
                                 span 文章管理
                         li
-                            a(href='/admin/tagList')
+                            a(href='#{site.site_link}/admin/tagList')
                                 b.iconfont.icon-col(data-toggle="tooltip" data-placement="right" title="话题管理")
                                 span 话题管理
                         li
@@ -37,11 +37,11 @@ block content
                         span 系统设置
                     ul.slide-menu
                         li
-                            a(href='/admin/siteInfo')
+                            a(href='#{site.site_link}/admin/siteInfo')
                                 b.iconfont.icon-web(data-toggle="tooltip" data-placement="right" title="网站信息")
                                 span 网站信息
                         li
-                            a(href='/admin/userList')
+                            a(href='#{site.site_link}/admin/userList')
                                 b.iconfont.icon-admin(data-toggle="tooltip" data-placement="right" title="用户列表")
                                 span 用户列表
         .frame-right

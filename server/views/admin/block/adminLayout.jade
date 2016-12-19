@@ -2,8 +2,8 @@ doctype html
 html
     head
         include ../../block/head
-        link(rel='stylesheet', href='/stylesheets/admin.css')
-        script(src='/javascripts/admin.bundle.js')
+        link(rel='stylesheet', href='#{site.site_link}/stylesheets/admin.css')
+        script(src='#{site.site_link}/javascripts/admin.bundle.js')
         title= site.site_name
         meta(name='keywords' content='#{site.site_keyword}')
         meta(name='description' content='#{site.site_description}')
@@ -12,15 +12,15 @@ html
         header.admin-header
             nav.navbar.navbar-admin(role='navigation')
                 ul.nav.navbar-nav
-                    li.active
-                        a(href='/admin') 管理中心
+                    li
+                        a(href='#{site.site_link}/admin') 管理中心
                 ul.nav.navbar-nav.pull-right
                     li.active
-                        a(href='/') 首页
+                        a(href='#{site.site_link}') 首页
                     each item,key in nav
                         if key < 3
                             li
-                                a(href='/tags/#{item.tag_name}') #{item.tag_name}
+                                a(href='#{site.site_link}/tags/#{item.tag_name}') #{item.tag_name}
                     if nav.length > 4
                         li.dropdown.js-dropdown
                             a.dropdown-toggle(href='#', data-toggle='dropdown') 查看更多
@@ -29,7 +29,7 @@ html
                                 each item,key in nav
                                     if key > 3
                                         li
-                                            a(href='/tags/#{item.tag_name}') #{item.tag_name}
+                                            a(href='#{site.site_link}/tags/#{item.tag_name}') #{item.tag_name}
 
 
                     if user
@@ -39,7 +39,7 @@ html
                                 b.caret
                             ul.dropdown-menu
                                 li
-                                    a.has-menu-icon.js-linkAjax(href='/admin/logout')
+                                    a.has-menu-icon.js-linkAjax(href='#{site.site_link}/admin/logout')
                                         span.iconfont.icon-quit
                                         | 退出
 

@@ -18,7 +18,18 @@ const article = {
 
         Promise.all([siteP,navP,detail]).then(function (d) {
             const data = {
-                site: d[0],
+                link: {
+                    baseUrl: req.baseUrl,
+                    path: req.path
+                },
+                user: req.session.user,
+                site: {
+                    site_name: d[0].site_name,
+                    site_title: d[2].title + '_' + d[0].site_name,
+                    site_link:d[0].site_link,
+                    site_description:d[2].body.substr(0,160),
+                    site_keyword:d[2].tags
+                },
                 nav: d[1],
                 content: d[2]
             };
@@ -35,7 +46,7 @@ const article = {
          */
         let pn = db.prevNext({date:new Date(req.body.date)});
         Promise.all([pn.prev,pn.next]).then(function (d) {
-            if(config.debug) console.log(d);
+            // if(config.debug) console.log(d);
             res.json(d);
         });
     }

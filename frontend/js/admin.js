@@ -49,20 +49,14 @@ $(function () {
                 closeAnimation: 'top',
                 title: d.messages.title,
                 content: d.messages.body,
+                // backgroundDismiss:true,
                 buttons: {
                     '确定': {
-                        keys: ['enter'],
+                        // keys: ['enter'],
                         btnClass: 'btn-success',
                         action: () => {
-
                             if (d.error === 0) {
                                 document.location.reload();
-                                // if(!document.referrer){
-                                //     document.location.href = '/admin';
-                                // }else{
-                                //     document.location.href = document.referrer;
-                                // }
-
                             } else {
                                 btn.button('reset');
                             }

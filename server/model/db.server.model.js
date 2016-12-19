@@ -154,7 +154,13 @@ module.exports = {
         return tags.findOne(query).exec();
     },
 
-    //话题详情-文章列表
+    /**
+     * 话题详情-文章列表
+     * @param query 一个tag_name 查询所有包含此字段的内容
+     * @param num   查询数量
+     * @param skip  跳过数量
+     * @returns {Promise<T[][]>}
+     */
     getTagArticle: function (query, num, skip) {
         return article
             .find({tags: {$regex: query, $options: 'i'}})

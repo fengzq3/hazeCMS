@@ -10,7 +10,7 @@ const session = require('express-session');
 const index = require('./routes/index');
 const admin = require('./routes/admin/users');
 const article = require('./routes/article');
-
+const tags = require('./routes/tags');
 
 const app = express();
 
@@ -28,9 +28,9 @@ app.use(expressValidator());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret:'hazeCMS',
-    resave:true,
-    saveUninitialized:false,
+    secret:'hazeCMS', //用来加密的一个字符串
+    resave:true,    //是否允许session重新设置，要保证session有操作的时候必须设置这个属性为true
+    saveUninitialized:false, //是否设置session在存储容器中可以修改
     Cookie:{
         maxAge:1000*60*10 //过期时间10分钟（毫秒ms）
     }
@@ -39,6 +39,7 @@ app.use(session({
 app.use('/', index);
 app.use('/admin', admin);
 app.use('/article', article);
+app.use('/tags', tags);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
