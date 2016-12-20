@@ -9,6 +9,7 @@ require('./date.format');
 require('jquery-confirm');
 
 $(function () {
+    $("[data-toggle='tooltip']").tooltip(); //全局启动tooltip
     //变量
     const $dropDown = $('.js-dropdown');  //下拉
     const $search = $('#mainSearch'); //搜索
@@ -218,6 +219,8 @@ $(function () {
         let theLink = $navActive.find('li a');
 
         theLink.each(function () {
+            // console.log(thisLink === $(this).attr('href'),'|',thisLink,$(this).attr('href'));
+
             if ($(this).attr('href') === thisLink || $(this).attr('href') + '/' === thisLink) {
                 $(this).parent().addClass('active').siblings('active').removeClass('active');
             }

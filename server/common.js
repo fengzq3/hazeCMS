@@ -1,7 +1,10 @@
 /**
  * Created by feng on 2016/12/12.
- * 一个公告方法库，提取一些可能会重复用到的方法到独立文件
+ * 一个公共方法库，提取一些可能会重复用到的方法到独立文件
  */
+const config = require('./config');
+const _ = require('underscore');
+
 module.exports = {
     /**
      * 传入2个数组，返回2数组中的不同数据
@@ -24,5 +27,26 @@ module.exports = {
         }
 
         return newAr;
+    },
+    /**
+     * 数组合并去重
+     * 传入1个数组，去重后返回
+     * @param arr
+     * @returns {Array}
+     */
+    repeatArray: function (arr) {
+        let result = [];
+
+        //若arr不存在则返回空数组，为了兼容api格式
+        if (arr.length === 0) return [];
+
+        let resArr = arr.sort();
+        //循环去重
+        for (let i = 0; i < resArr.length; i++) {
+            if (JSON.stringify(resArr[i]) !== JSON.stringify(result[result.length - 1])) result.push(resArr[i]);
+        }
+
+        return result;
+
     }
 };

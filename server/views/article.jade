@@ -44,9 +44,12 @@ block content
                 .article-info-r.js-prevNext(data-date='#{content.date}')
 
         // 推荐部分
-        .article-relate
-            h3 相关推荐
-            .article-relate-con
-                .col-xs-4
-                    a(href='#')
-                        img(src='https://isux.tencent.com/wp-content/uploads/2016/03/20160303124431993.jpg', alt='标题标题')
+        if relate.length > 1
+            .article-relate
+                h3 相关推荐
+                .article-relate-con
+                    each item in relate
+                        if JSON.stringify(item) !== JSON.stringify(content)
+                            .col-xs-4
+                                a(href='#{site.site_link}#{link.baseUrl}/#{item._id}' data-toggle="tooltip" title="#{item.title}")
+                                    img(src='/upload/#{item.topPic}', alt='#{item.title}')

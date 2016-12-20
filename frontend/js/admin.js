@@ -3,7 +3,6 @@
  */
 
 $(function () {
-    $("[data-toggle='tooltip']").tooltip();
     //定义变量
     const $minMenu = $('.js-mainMenu');
     const $menuSlide = $('.js-menuSlide');
