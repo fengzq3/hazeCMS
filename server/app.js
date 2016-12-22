@@ -11,6 +11,7 @@ const index = require('./routes/index');
 const admin = require('./routes/admin/users');
 const article = require('./routes/article');
 const tags = require('./routes/tags');
+const files = require('./routes/admin/files');
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.use('/', index);
 app.use('/admin', admin);
 app.use('/article', article);
 app.use('/tags', tags);
+app.use('/files', files);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

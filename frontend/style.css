@@ -5385,11 +5385,11 @@ body[class*=jconfirm-no-scroll-] {
 
 @font-face {
     font-family: 'iconfont';  /* project id 123115 */
-    src: url('//at.alicdn.com/t/font_9s3jmjm85wtmaemi.eot');
-    src: url('//at.alicdn.com/t/font_9s3jmjm85wtmaemi.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_9s3jmjm85wtmaemi.woff') format('woff'),
-    url('//at.alicdn.com/t/font_9s3jmjm85wtmaemi.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_9s3jmjm85wtmaemi.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_yvb94etmgeva38fr.eot');
+    src: url('//at.alicdn.com/t/font_yvb94etmgeva38fr.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_yvb94etmgeva38fr.woff') format('woff'),
+    url('//at.alicdn.com/t/font_yvb94etmgeva38fr.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_yvb94etmgeva38fr.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -5426,6 +5426,7 @@ body[class*=jconfirm-no-scroll-] {
 .icon-error:before{content:"\e64d"}
 .icon-must:before{content:"\e652"}
 .icon-back:before{content:"\e67b"}
+.icon-user:before{content:"\e60c"}
 
 @media(min-width: 768px){
     .nav-search{margin:13px;width:215px;text-align: center;padding-left:13px;border-left:1px solid #3c3c3c;white-space: nowrap;overflow: hidden;display:block !important;float:right;}

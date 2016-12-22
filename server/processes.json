@@ -1,0 +1,20 @@
+{
+  "apps": [
+    {
+      "name": "hazeCMS",
+      "script": "./bin/www",
+      "cwd": "./",
+      "watch": [
+        "bin",
+        "control",
+        "install",
+        "model",
+        "routers",
+        "view"
+      ],
+      "error_file": "./logs/app-err.log",
+      "out_file": "./logs/app-out.log",
+      "log_date_format": "YYYY-MM-DD HH:mm Z"
+    }
+  ]
+}
