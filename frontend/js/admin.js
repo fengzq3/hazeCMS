@@ -1,6 +1,7 @@
 /**
  * Created by feng on 2016/11/21.
  */
+const uploader = require('./uploader');
 
 $(function () {
     //定义变量
@@ -11,6 +12,10 @@ $(function () {
     const $tagEdit = $('.js-tagEdit'), $tagEditForm = $('.js-editForm'), $tagEditAbort = $('.js-editAbort');
     const $addTagForm = $('.js-addTag-ajax');
     const $editArticle = $('.js-editArticle-ajax');
+    const $uploadFile = $('.js-uploadFile');
+
+    //文件上传组件
+    uploader('.js-uploadFile');
 
     //菜单min方法
     $minMenu.on('click', function () {
@@ -239,18 +244,7 @@ $(function () {
                 }
             });
 
-            // if (d.error === 0) {
-            //     Modal.setTip($minTip, d.messages.body);
-            //     setTimeout(function () {
-            //         if (!!document.referrer) {
-            //             window.location.href = document.referrer;
-            //         } else {
-            //             window.location.href = '/admin/articleList';
-            //         }
-            //     }, 1000);
-            // } else {
-            //     Modal.setModal($tipModal, d.messages);
-            // }
+
         });
     });
 

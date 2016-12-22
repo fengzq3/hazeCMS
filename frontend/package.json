@@ -25,6 +25,7 @@
     "moment": "^2.16.0",
     "style-loader": "^0.13.1",
     "wangeditor": "^2.1.22",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "webuploader": "^0.1.8"
   }
 }

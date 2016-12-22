@@ -723,3 +723,194 @@ req.method:GET
 2016-12-22 21:57 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m2.885 ms - -[0m
 [0mGET /javascripts/main.bundle.js [36m304 [0m2.653 ms - -[0m
 2016-12-22 21:57 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m2.515 ms - -[0m
+2016-12-22 21:59 +08:00: 检测登录
+originalUrl:/admin/articleList
+baseUrl:/admin
+path:/articleList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:59 +08:00: [0mGET /admin/articleList [32m200 [0m289.438 ms - 7562[0m
+2016-12-22 21:59 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.763 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m5.023 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m4.604 ms - -[0m
+2016-12-22 21:59 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m3.003 ms - -[0m
+2016-12-22 21:59 +08:00: [0mGET /stylesheets/admin.css [36m304 [0m8.987 ms - -[0m
+2016-12-22 21:59 +08:00: 检测登录
+originalUrl:/admin/editArticle/5856665e08a65f2c54253907
+baseUrl:/admin
+path:/editArticle/5856665e08a65f2c54253907
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:59 +08:00: [0mGET /admin/editArticle/5856665e08a65f2c54253907 [32m200 [0m213.899 ms - 5846[0m
+2016-12-22 21:59 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m3.388 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m3.238 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m2.847 ms - -[0m
+2016-12-22 21:59 +08:00: [0mGET /stylesheets/style.css [36m304 [0m7.490 ms - -[0m
+2016-12-22 21:59 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m1.864 ms - -[0m
+[0mGET /stylesheets/editor.css [36m304 [0m0.916 ms - -[0m
+2016-12-22 21:59 +08:00: [0mGET /javascripts/editor.bundle.js [36m304 [0m6.496 ms - -[0m
+2016-12-22 21:59 +08:00: [0mGET /upload/undefined [33m404 [0m21.180 ms - 2157[0m
+2016-12-22 22:00 +08:00: file checkLogin
+2016-12-22 22:00 +08:00: 文件类型：image/jpeg
+2016-12-22 22:00 +08:00: 文件名：7916535165599057.JPG
+文件大小：3460466
+文件保存路径：D:\webstom\hazeCMS\server\public\tmp\23bdca9276656205d28ca49fa84cc6fd
+2016-12-22 22:00 +08:00: { fieldname: 'wangEditorH5File',
+  originalname: '7916535165599057.JPG',
+  encoding: '7bit',
+  mimetype: 'image/jpeg',
+  destination: 'D:\\webstom\\hazeCMS\\server\\public\\tmp',
+  filename: '23bdca9276656205d28ca49fa84cc6fd',
+  path: 'D:\\webstom\\hazeCMS\\server\\public\\tmp\\23bdca9276656205d28ca49fa84cc6fd',
+  size: 3460466 }
+2016-12-22 22:00 +08:00: [0mPOST /files/singleFile [32m200 [0m131.170 ms - 28[0m
+2016-12-22 22:00 +08:00: [0mGET /upload/7916535165599057.JPG [32m200 [0m2.439 ms - 3460466[0m
+2016-12-22 22:00 +08:00: 检测登录
+2016-12-22 22:00 +08:00: originalUrl:/admin/editArticle/5856665e08a65f2c54253907
+baseUrl:/admin
+path:/editArticle/5856665e08a65f2c54253907
+session.user:[object Object]
+req.method:POST
+2016-12-22 22:00 +08:00: 777
+2016-12-22 22:00 +08:00: [ { n: 1, nModified: 1, ok: 1 } ]
+[0mPOST /admin/editArticle/5856665e08a65f2c54253907 [32m200 [0m27.116 ms - 84[0m
+2016-12-22 22:00 +08:00: 检测登录
+originalUrl:/admin/articleList
+baseUrl:/admin
+path:/articleList
+session.user:[object Object]
+req.method:GET
+2016-12-22 22:00 +08:00: [0mGET /admin/articleList [36m304 [0m283.896 ms - -[0m
+2016-12-22 22:00 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.388 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m2.464 ms - -[0m
+2016-12-22 22:00 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m2.667 ms - -[0m
+2016-12-22 22:00 +08:00: [0mGET /stylesheets/admin.css [36m304 [0m2.594 ms - -[0m
+2016-12-22 22:00 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m2.508 ms - -[0m
+2016-12-22 22:00 +08:00: { _id: 5856665e08a65f2c54253907,
+  title: '77777777777',
+  body: '<p>777777777777777</p><p><img src="/upload/7916535165599057.JPG" alt="DSC_0015" style="max-width:100%;"><br></p><p><br></p>',
+  author: 'feng',
+  __v: 0,
+  tags: '777',
+  date: 2016-12-18T10:29:48.755Z,
+  comments: [] }
+2016-12-22 22:00 +08:00: [ { _id: 5856665e08a65f2c54253907,
+    title: '77777777777',
+    body: '<p>777777777777777</p><p><img src="/upload/7916535165599057.JPG" alt="DSC_0015" style="max-width:100%;"><br></p><p><br></p>',
+    author: 'feng',
+    __v: 0,
+    tags: '777',
+    date: 2016-12-18T10:29:48.755Z,
+    comments: [] } ]
+2016-12-22 22:00 +08:00: [0mGET /article/5856665e08a65f2c54253907 [32m200 [0m223.614 ms - 5782[0m
+2016-12-22 22:00 +08:00: [0mGET /stylesheets/style.css [36m304 [0m5.058 ms - -[0m
+2016-12-22 22:00 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m3.605 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m3.165 ms - -[0m
+2016-12-22 22:00 +08:00: [0mGET /upload/undefined [33m404 [0m22.945 ms - 2157[0m
+2016-12-22 22:00 +08:00: [0mGET /upload/7916535165599057.JPG [36m304 [0m0.555 ms - -[0m
+2016-12-22 22:00 +08:00: [0mPOST /article/prevNext [32m200 [0m9.648 ms - 572[0m
+2016-12-22 22:01 +08:00: [0mGET / [36m304 [0m218.750 ms - -[0m
+2016-12-22 22:01 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.245 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m2.178 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m2.044 ms - -[0m
+2016-12-22 22:01 +08:00: [0mGET /upload/undefined [33m404 [0m20.600 ms - 2157[0m
+2016-12-22 22:01 +08:00: [0mGET /upload/ [33m404 [0m22.130 ms - 2157[0m
+2016-12-22 22:01 +08:00: [0mGET /tags/%E6%80%80%E8%83%8E1 [32m200 [0m393.789 ms - 5123[0m
+2016-12-22 22:01 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.689 ms - -[0m
+2016-12-22 22:01 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m4.612 ms - -[0m
+2016-12-22 22:01 +08:00: [0mGET /upload/ [33m404 [0m24.521 ms - 2157[0m
+2016-12-22 22:01 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m26.632 ms - -[0m
+2016-12-22 22:02 +08:00: [0mGET / [36m304 [0m126.291 ms - -[0m
+2016-12-22 22:02 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.238 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m2.182 ms - -[0m
+2016-12-22 22:02 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m2.844 ms - -[0m
+2016-12-22 22:02 +08:00: [0mGET /upload/undefined [33m404 [0m27.490 ms - 2157[0m
+2016-12-22 22:02 +08:00: [0mGET /upload/ [33m404 [0m16.981 ms - 2157[0m
+2016-12-22 22:04 +08:00: 检测登录
+originalUrl:/admin/articleList
+baseUrl:/admin
+path:/articleList
+session.user:[object Object]
+req.method:GET
+2016-12-22 22:04 +08:00: [0mGET /admin/articleList [36m304 [0m327.397 ms - -[0m
+2016-12-22 22:04 +08:00: [0mGET /stylesheets/style.css [36m304 [0m6.262 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m4.152 ms - -[0m
+2016-12-22 22:04 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m3.979 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m2.204 ms - -[0m
+[0mGET /javascripts/admin.bundle.js [36m304 [0m2.057 ms - -[0m
+2016-12-22 22:04 +08:00: 检测登录
+originalUrl:/admin/addArticle
+baseUrl:/admin
+path:/addArticle
+session.user:[object Object]
+req.method:GET
+2016-12-22 22:04 +08:00: [0mGET /admin/addArticle [32m200 [0m165.963 ms - 5949[0m
+2016-12-22 22:04 +08:00: [0mGET /stylesheets/style.css [36m304 [0m4.154 ms - -[0m
+2016-12-22 22:04 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m5.222 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m5.235 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m5.197 ms - -[0m
+[0mGET /javascripts/admin.bundle.js [36m304 [0m5.098 ms - -[0m
+[0mGET /stylesheets/editor.css [36m304 [0m4.062 ms - -[0m
+2016-12-22 22:04 +08:00: [0mGET /javascripts/editor.bundle.js [36m304 [0m11.192 ms - -[0m
+2016-12-22 22:04 +08:00: 检测登录
+originalUrl:/admin/addArticle
+baseUrl:/admin
+path:/addArticle
+session.user:[object Object]
+req.method:GET
+2016-12-22 22:04 +08:00: [0mGET /admin/addArticle [32m200 [0m141.035 ms - 5949[0m
+2016-12-22 22:04 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.560 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m2.431 ms - -[0m
+2016-12-22 22:04 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m3.572 ms - -[0m
+2016-12-22 22:04 +08:00: [0mGET /stylesheets/editor.css [36m304 [0m3.815 ms - -[0m
+2016-12-22 22:04 +08:00: [0mGET /stylesheets/admin.css [36m304 [0m9.280 ms - -[0m
+2016-12-22 22:04 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m13.349 ms - -[0m
+2016-12-22 22:04 +08:00: [0mGET /javascripts/editor.bundle.js [36m304 [0m17.261 ms - -[0m
+2016-12-22 22:05 +08:00: [0mGET /stylesheets/style.css [36m304 [0m13.048 ms - -[0m
+2016-12-22 22:05 +08:00: [0mGET /stylesheets/admin.css [36m304 [0m2.475 ms - -[0m
+[0mGET /stylesheets/editor.css [36m304 [0m2.018 ms - -[0m
+2016-12-22 22:05 +08:00: 检测登录
+originalUrl:/admin/addArticle
+baseUrl:/admin
+path:/addArticle
+session.user:[object Object]
+req.method:GET
+2016-12-22 22:05 +08:00: [0mGET /admin/addArticle [32m200 [0m195.965 ms - 5949[0m
+2016-12-22 22:05 +08:00: [0mGET /javascripts/main.bundle.js [32m200 [0m4.269 ms - 21572[0m
+2016-12-22 22:05 +08:00: [0mGET /stylesheets/admin.css [32m200 [0m4.976 ms - 4384[0m
+2016-12-22 22:05 +08:00: [0mGET /javascripts/admin.bundle.js [32m200 [0m4.718 ms - 3091[0m
+[0mGET /stylesheets/editor.css [32m200 [0m4.504 ms - 15063[0m
+2016-12-22 22:05 +08:00: [0mGET /javascripts/common.bundle.js [32m200 [0m4.466 ms - 108883[0m
+2016-12-22 22:05 +08:00: [0mGET /stylesheets/style.css [32m200 [0m9.351 ms - 102291[0m
+2016-12-22 22:05 +08:00: [0mGET /javascripts/editor.bundle.js [32m200 [0m37.846 ms - 442529[0m
+2016-12-22 22:05 +08:00: [0mGET /fonts/icomoon.ttf [32m200 [0m1.685 ms - 15484[0m
+2016-12-22 22:15 +08:00: 检测登录
+originalUrl:/admin/addArticle
+baseUrl:/admin
+path:/addArticle
+session.user:[object Object]
+req.method:GET
+2016-12-22 22:15 +08:00: [0mGET /admin/addArticle [32m200 [0m194.114 ms - 6067[0m
+2016-12-22 22:15 +08:00: [0mGET /stylesheets/admin.css [32m200 [0m7.484 ms - 4384[0m
+[0mGET /stylesheets/editor.css [32m200 [0m7.497 ms - 15063[0m
+[0mGET /javascripts/main.bundle.js [32m200 [0m7.103 ms - 21572[0m
+[0mGET /javascripts/admin.bundle.js [32m200 [0m6.924 ms - 3091[0m
+2016-12-22 22:15 +08:00: [0mGET /javascripts/common.bundle.js [32m200 [0m7.340 ms - 108883[0m
+2016-12-22 22:15 +08:00: [0mGET /stylesheets/style.css [32m200 [0m11.740 ms - 102291[0m
+2016-12-22 22:15 +08:00: [0mGET /javascripts/editor.bundle.js [32m200 [0m3.257 ms - 442529[0m
+2016-12-22 22:15 +08:00: [0mGET /fonts/icomoon.ttf [32m200 [0m0.706 ms - 15484[0m
+2016-12-22 22:40 +08:00: 检测登录
+2016-12-22 22:40 +08:00: originalUrl:/admin/addArticle
+baseUrl:/admin
+path:/addArticle
+session.user:[object Object]
+req.method:GET
+2016-12-22 22:40 +08:00: [0mGET /admin/addArticle [32m200 [0m117.223 ms - 6067[0m
+2016-12-22 22:40 +08:00: [0mGET /stylesheets/admin.css [32m200 [0m5.858 ms - 4384[0m
+2016-12-22 22:40 +08:00: [0mGET /stylesheets/editor.css [32m200 [0m5.459 ms - 15063[0m
+2016-12-22 22:40 +08:00: [0mGET /javascripts/main.bundle.js [32m200 [0m1.934 ms - 21572[0m
+2016-12-22 22:40 +08:00: [0mGET /javascripts/common.bundle.js [32m200 [0m2.109 ms - 108885[0m
+2016-12-22 22:40 +08:00: [0mGET /stylesheets/style.css [32m200 [0m12.303 ms - 102291[0m
+2016-12-22 22:40 +08:00: [0mGET /javascripts/admin.bundle.js [32m200 [0m3.315 ms - 75243[0m
+2016-12-22 22:40 +08:00: [0mGET /javascripts/editor.bundle.js [32m200 [0m8.713 ms - 442641[0m
+2016-12-22 22:40 +08:00: [0mGET /fonts/icomoon.ttf [32m200 [0m5.498 ms - 15484[0m

@@ -28,6 +28,11 @@ block adminContent
                                 p 文章标题
                         hr
                         .input-group
+                            label.input-group-addon.control-label 主图:
+                            input.form-control(name="topPic" type="text" placeholder="上传封面图")
+                            span.input-group-btn
+                                button.btn.btn-primary.js-uploadFile(type="button") 上传主图
+                        .input-group
                             label.input-group-addon.control-label 话题:
                             input.form-control(name="tags" type="text" placeholder="输入话题，多个以‘,’隔开")
 
