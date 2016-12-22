@@ -393,3 +393,333 @@ req.method:GET
 [0mGET /javascripts/common.bundle.js [36m304 [0m1.151 ms - -[0m
 [0mGET /javascripts/main.bundle.js [36m304 [0m1.169 ms - -[0m
 2016-12-22 10:19 +08:00: [0mGET /upload/undefined [33m404 [0m10.871 ms - 2301[0m
+2016-12-22 21:53 +08:00: [0mGET /favicon.ico [33m404 [0m465.049 ms - 2570[0m
+2016-12-22 21:53 +08:00: [0mGET / [32m200 [0m299.963 ms - 7464[0m
+2016-12-22 21:53 +08:00: [0mGET /javascripts/main.bundle.js [32m200 [0m9.041 ms - 21572[0m
+2016-12-22 21:53 +08:00: [0mGET /javascripts/common.bundle.js [32m200 [0m7.848 ms - 108883[0m
+2016-12-22 21:53 +08:00: [0mGET /stylesheets/style.css [32m200 [0m15.188 ms - 102291[0m
+2016-12-22 21:53 +08:00: [0mGET /upload/undefined [33m404 [0m29.139 ms - 2570[0m
+2016-12-22 21:53 +08:00: [0mGET /upload/ [33m404 [0m47.512 ms - 2570[0m
+2016-12-22 21:53 +08:00: [0mGET /favicon.ico [33m404 [0m16.176 ms - 2570[0m
+2016-12-22 21:53 +08:00: [0mGET //tags/11111 [33m404 [0m39.578 ms - 2570[0m
+2016-12-22 21:53 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.571 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m2.472 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m1.823 ms - -[0m
+2016-12-22 21:53 +08:00: 检测登录
+originalUrl:/admin
+baseUrl:/admin
+path:/
+2016-12-22 21:53 +08:00: session.user:undefined
+req.method:GET
+2016-12-22 21:53 +08:00: [0mGET /admin [36m302 [0m25.213 ms - 68[0m
+2016-12-22 21:53 +08:00: 检测登录
+originalUrl:/admin/login
+baseUrl:/admin
+path:/login
+session.user:undefined
+req.method:GET
+2016-12-22 21:53 +08:00: [0mGET /admin/login [32m200 [0m96.330 ms - 2500[0m
+2016-12-22 21:53 +08:00: [0mGET /stylesheets/style.css [36m304 [0m8.927 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m4.353 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m4.321 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET //stylesheets/admin.css [32m200 [0m5.033 ms - 4384[0m
+[0mGET //javascripts/admin.bundle.js [32m200 [0m5.461 ms - 3091[0m
+2016-12-22 21:53 +08:00: 检测登录
+originalUrl:/admin/login
+baseUrl:/admin
+path:/login
+session.user:undefined
+req.method:POST
+2016-12-22 21:53 +08:00: [0mPOST /admin/login [32m200 [0m37.507 ms - 93[0m
+2016-12-22 21:53 +08:00: 检测登录
+originalUrl:/admin/login
+baseUrl:/admin
+path:/login
+session.user:[object Object]
+req.method:GET
+[0mGET /admin/login [36m302 [0m3.957 ms - 56[0m
+2016-12-22 21:53 +08:00: 检测登录
+originalUrl:/admin
+baseUrl:/admin
+path:/
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:53 +08:00: [0mGET /admin [32m200 [0m376.347 ms - 4198[0m
+2016-12-22 21:53 +08:00: [0mGET /stylesheets/style.css [36m304 [0m3.300 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m2.652 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m6.014 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET //stylesheets/admin.css [36m304 [0m6.535 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET //javascripts/admin.bundle.js [36m304 [0m6.553 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET //admin/siteInfo [33m404 [0m26.356 ms - 2157[0m
+2016-12-22 21:53 +08:00: [0mGET /stylesheets/style.css [36m304 [0m7.162 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m5.780 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m3.149 ms - -[0m
+2016-12-22 21:53 +08:00: 检测登录
+originalUrl:/admin/siteInfo
+baseUrl:/admin
+path:/siteInfo
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:53 +08:00: [ { _id: 58425da2bb07071b2895474d,
+    site_name: 'hazeCMS系统',
+    site_link: 'http://localhost:3000/',
+    site_description: '23423423',
+    site_keyword: '23423432',
+    __v: 0 },
+  [ { _id: 5852a303884cad1524e8c246,
+      tag_name: '11111',
+      __v: 0,
+      tag_keyword: '12312',
+      tag_description: '123',
+      date: 2016-12-15T14:02:51.249Z,
+      tag_num: 1,
+      tag_nav: true },
+    { _id: 585653ea1ae3322128bf86c4,
+      tag_name: 'session',
+      __v: 0,
+      tag_keyword: '',
+      tag_description: '',
+      date: 2016-12-18T09:14:26.643Z,
+      tag_num: 1,
+      tag_nav: true } ] ]
+2016-12-22 21:53 +08:00: [0mGET /admin/siteInfo [32m200 [0m200.387 ms - 6755[0m
+2016-12-22 21:53 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.475 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m2.438 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m2.332 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET //stylesheets/admin.css [36m304 [0m5.014 ms - -[0m
+[0mGET //javascripts/admin.bundle.js [36m304 [0m4.826 ms - -[0m
+2016-12-22 21:53 +08:00: 检测登录
+originalUrl:/admin/siteInfo
+baseUrl:/admin
+path:/siteInfo
+2016-12-22 21:53 +08:00: session.user:[object Object]
+req.method:POST
+2016-12-22 21:53 +08:00: [0mPOST /admin/siteInfo [32m200 [0m61.237 ms - 81[0m
+2016-12-22 21:53 +08:00: 检测登录
+originalUrl:/admin/siteInfo
+baseUrl:/admin
+path:/siteInfo
+session.user:[object Object]
+2016-12-22 21:53 +08:00: req.method:GET
+2016-12-22 21:53 +08:00: [ { _id: 58425da2bb07071b2895474d,
+    site_name: 'hazeCMS系统',
+    site_link: 'http://localhost:3000',
+    site_description: ' 23423423',
+    site_keyword: ' 23423423',
+    __v: 0 },
+  [ { _id: 5852a303884cad1524e8c246,
+      tag_name: '11111',
+      __v: 0,
+      tag_keyword: '12312',
+      tag_description: '123',
+      date: 2016-12-15T14:02:51.249Z,
+      tag_num: 1,
+      tag_nav: true },
+    { _id: 585653ea1ae3322128bf86c4,
+      tag_name: 'session',
+      __v: 0,
+      tag_keyword: '',
+      tag_description: '',
+      date: 2016-12-18T09:14:26.643Z,
+      tag_num: 1,
+      tag_nav: true } ] ]
+2016-12-22 21:53 +08:00: [0mGET /admin/siteInfo [32m200 [0m175.806 ms - 6746[0m
+2016-12-22 21:53 +08:00: [0mGET /stylesheets/style.css [36m304 [0m5.822 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m6.103 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m5.053 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET /stylesheets/admin.css [32m200 [0m10.038 ms - 4384[0m
+[0mGET /javascripts/admin.bundle.js [32m200 [0m10.339 ms - 3091[0m
+2016-12-22 21:53 +08:00: 检测登录
+originalUrl:/admin/userList
+baseUrl:/admin
+path:/userList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:53 +08:00: [0mGET /admin/userList [32m200 [0m168.238 ms - 14449[0m
+2016-12-22 21:53 +08:00: [0mGET /stylesheets/style.css [36m304 [0m4.976 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m5.102 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m5.241 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m5.259 ms - -[0m
+[0mGET /javascripts/admin.bundle.js [36m304 [0m4.705 ms - -[0m
+2016-12-22 21:53 +08:00: 检测登录
+originalUrl:/admin/tagList
+baseUrl:/admin
+path:/tagList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:53 +08:00: [0mGET /admin/tagList [32m200 [0m189.400 ms - 25457[0m
+2016-12-22 21:53 +08:00: [0mGET /stylesheets/style.css [36m304 [0m10.178 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m9.831 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m9.139 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m6.685 ms - -[0m
+2016-12-22 21:53 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m6.352 ms - -[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin/articleList
+baseUrl:/admin
+path:/articleList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin/articleList [32m200 [0m145.729 ms - 7250[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.021 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m1.803 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m1.739 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m1.850 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m2.622 ms - -[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin
+baseUrl:/admin
+path:/
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin [32m200 [0m86.416 ms - 4188[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m4.824 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m2.373 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m1.731 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m1.553 ms - -[0m
+[0mGET /javascripts/admin.bundle.js [36m304 [0m1.685 ms - -[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin/addArticle
+baseUrl:/admin
+path:/addArticle
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin/addArticle [32m200 [0m85.254 ms - 5460[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m4.824 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m5.033 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m4.995 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/admin.css [36m304 [0m4.780 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m4.682 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/editor.css [32m200 [0m6.278 ms - 15063[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/editor.bundle.js [32m200 [0m3.812 ms - 442529[0m
+2016-12-22 21:54 +08:00: [0mGET /fonts/icomoon.ttf [32m200 [0m1.301 ms - 15484[0m
+2016-12-22 21:54 +08:00: 检测登录
+2016-12-22 21:54 +08:00: originalUrl:/admin/articleList
+baseUrl:/admin
+path:/articleList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin/articleList [36m304 [0m156.758 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m3.721 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m6.560 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m6.176 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/admin.css [36m304 [0m7.948 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m7.483 ms - -[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin/tagList
+baseUrl:/admin
+path:/tagList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin/tagList [36m304 [0m385.771 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m5.201 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m4.653 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m3.871 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m3.184 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m3.061 ms - -[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin/editTag/584d15f6cb10ae2a043f6d3b
+baseUrl:/admin
+path:/editTag/584d15f6cb10ae2a043f6d3b
+session.user:[object Object]
+req.method:POST
+2016-12-22 21:54 +08:00: { n: 1, nModified: 1, ok: 1 }
+2016-12-22 21:54 +08:00: [0mPOST /admin/editTag/584d15f6cb10ae2a043f6d3b [32m200 [0m39.109 ms - 78[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin/tagList
+2016-12-22 21:54 +08:00: baseUrl:/admin
+path:/tagList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin/tagList [32m200 [0m134.951 ms - 25533[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m3.072 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m2.834 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m2.796 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m2.993 ms - -[0m
+[0mGET /javascripts/admin.bundle.js [36m304 [0m3.060 ms - -[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin/editTag/584c0acca850442f88562f08
+baseUrl:/admin
+path:/editTag/584c0acca850442f88562f08
+session.user:[object Object]
+req.method:POST
+2016-12-22 21:54 +08:00: { n: 1, nModified: 1, ok: 1 }
+2016-12-22 21:54 +08:00: [0mPOST /admin/editTag/584c0acca850442f88562f08 [32m200 [0m21.431 ms - 78[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin/tagList
+baseUrl:/admin
+path:/tagList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin/tagList [32m200 [0m166.954 ms - 25548[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m4.784 ms - -[0m
+[0mGET /javascripts/common.bundle.js [36m304 [0m3.572 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m3.125 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/admin.css [36m304 [0m2.776 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m3.372 ms - -[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin
+baseUrl:/admin
+path:/
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin [32m200 [0m95.107 ms - 4249[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m3.060 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m2.124 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m1.917 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/admin.css [36m304 [0m1.638 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m2.795 ms - -[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin
+baseUrl:/admin
+path:/
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin [36m304 [0m98.561 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.240 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m2.847 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m16.890 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m17.288 ms - -[0m
+[0mGET /javascripts/admin.bundle.js [36m304 [0m17.975 ms - -[0m
+2016-12-22 21:54 +08:00: 检测登录
+2016-12-22 21:54 +08:00: originalUrl:/admin/articleList
+baseUrl:/admin
+path:/articleList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin/articleList [32m200 [0m122.946 ms - 7311[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m6.181 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m4.896 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m9.070 ms - -[0m
+[0mGET /stylesheets/admin.css [36m304 [0m6.827 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m6.249 ms - -[0m
+2016-12-22 21:54 +08:00: 检测登录
+originalUrl:/admin/tagList
+baseUrl:/admin
+path:/tagList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:54 +08:00: [0mGET /admin/tagList [36m304 [0m160.231 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/style.css [36m304 [0m2.493 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m2.009 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m1.685 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /stylesheets/admin.css [36m304 [0m1.550 ms - -[0m
+2016-12-22 21:54 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m1.463 ms - -[0m
+2016-12-22 21:55 +08:00: [0mGET / [32m200 [0m441.519 ms - 7769[0m
+2016-12-22 21:55 +08:00: [0mGET /stylesheets/style.css [36m304 [0m3.815 ms - -[0m
+2016-12-22 21:55 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m1.462 ms - -[0m
+2016-12-22 21:55 +08:00: [0mGET /javascripts/main.bundle.js [36m304 [0m3.865 ms - -[0m
+2016-12-22 21:55 +08:00: [0mGET /upload/undefined [33m404 [0m33.755 ms - 2157[0m
+2016-12-22 21:55 +08:00: [0mGET /upload/ [33m404 [0m20.187 ms - 2157[0m
+2016-12-22 21:55 +08:00: [0mGET /upload/undefined [33m404 [0m19.130 ms - 2157[0m
+2016-12-22 21:57 +08:00: 检测登录
+originalUrl:/admin/tagList
+baseUrl:/admin
+path:/tagList
+session.user:[object Object]
+req.method:GET
+2016-12-22 21:57 +08:00: [0mGET /admin/tagList [32m200 [0m322.404 ms - 25799[0m
+2016-12-22 21:57 +08:00: [0mGET /stylesheets/style.css [36m304 [0m5.295 ms - -[0m
+2016-12-22 21:57 +08:00: [0mGET /stylesheets/admin.css [36m304 [0m3.057 ms - -[0m
+2016-12-22 21:57 +08:00: [0mGET /javascripts/common.bundle.js [36m304 [0m2.885 ms - -[0m
+[0mGET /javascripts/main.bundle.js [36m304 [0m2.653 ms - -[0m
+2016-12-22 21:57 +08:00: [0mGET /javascripts/admin.bundle.js [36m304 [0m2.515 ms - -[0m
