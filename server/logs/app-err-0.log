@@ -75,3 +75,23 @@
     at emitNone (events.js:86:13)
     at Socket.emit (events.js:185:7)
     at Socket._onTimeout (net.js:333:8)
+2016-12-23 18:26 +08:00: connection error: { DisconnectedError: Ran out of retries trying to reconnect to "localhost:27017". Try setting `server.reconnectTries` and `server.reconnectInterval` to something higher.
+    at MongooseError.DisconnectedError (D:\WebstormProjects\hazeCMS\server\node_modules\mongoose\lib\error\disconnected.js:21:11)
+    at .<anonymous> (D:\WebstormProjects\hazeCMS\server\node_modules\mongoose\lib\drivers\node-mongodb-native\connection.js:64:31)
+    at emitOne (events.js:101:20)
+    at emit (events.js:188:7)
+    at .<anonymous> (D:\WebstormProjects\hazeCMS\server\node_modules\mongodb-core\lib\topologies\server.js:316:16)
+    at emitOne (events.js:96:13)
+    at emit (events.js:188:7)
+    at .<anonymous> (D:\WebstormProjects\hazeCMS\server\node_modules\mongodb-core\lib\connection\pool.js:305:16)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\WebstormProjects\hazeCMS\server\node_modules\mongodb-core\lib\connection\connection.js:173:49)
+    at Socket.g (events.js:286:16)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1272:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+  message: 'Ran out of retries trying to reconnect to "localhost:27017". Try setting `server.reconnectTries` and `server.reconnectInterval` to something higher.',
+  name: 'DisconnectedError' }
