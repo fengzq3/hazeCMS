@@ -1,3 +1,4 @@
+@import "webuploader.css";
 body{overflow:hidden;}
 /*后台frame*/
 .frame-con{position:absolute;top:50px;bottom:0;left:0;right:0;}

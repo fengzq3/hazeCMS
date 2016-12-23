@@ -15,5 +15,7 @@ router.use(files.checkLogin);
 
 //file POST
 router.post('/singleFile', upload.single('wangEditorH5File'), files.singleFile);
+//主图上传地址
+router.post('/topPicFile', upload.single('file'), files.topPicFile);
 
 module.exports = router;

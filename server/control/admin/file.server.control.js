@@ -24,8 +24,21 @@ module.exports = {
             console.log(file);
         }
 
-        fs.renameSync(file.path, path.join(config.root, '/public/upload/', req.file.originalname));
+        fs.renameSync(file.path, path.join(config.root, '/public/upload/', file.originalname));
 
         res.send('/upload/' + file.originalname);
+    },
+    //用来接收webuploader 上传的图片
+    topPicFile: function (req, res, next) {
+        if (config.debug) console.log(req.file);
+
+        const file = req.file;
+        //需要对中文文件名重命名
+        const fileType = /\.[^\.]+/.exec(file.originalname);
+
+        fs.renameSync(file.path, path.join(config.root, '/public/upload/', file.filename + fileType));
+
+        res.send('/upload/' + file.filename + fileType);
     }
+
 };

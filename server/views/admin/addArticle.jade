@@ -24,14 +24,13 @@ block adminContent
                         h4 图文预览
                         ul.edit-right-pic
                             li
-                                //img(src="#{content.topPic}") 这里应该显示一个默认图片
+                                img(src="#")
                                 p 文章标题
+                        button.js-uploadFile(type="button") 上传封面
                         hr
                         .input-group
-                            label.input-group-addon.control-label 主图:
-                            input.form-control(name="topPic" type="text" placeholder="上传封面图")
-                            span.input-group-btn
-                                button.btn.btn-primary.js-uploadFile(type="button") 上传主图
+                            label.input-group-addon.control-label 封面:
+                            input.form-control.js-getTopPic(name="topPic" type="text" placeholder="填写封面图地址")
                         .input-group
                             label.input-group-addon.control-label 话题:
                             input.form-control(name="tags" type="text" placeholder="输入话题，多个以‘,’隔开")

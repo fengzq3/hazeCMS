@@ -6,7 +6,7 @@
       "cwd": "./",
       "watch": [
         "bin",
-        "control",
+        "control/*",
         "install",
         "model",
         "routers",

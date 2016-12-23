@@ -16,6 +16,9 @@ $(function () {
 
     //文件上传组件
     uploader('.js-uploadFile');
+    // $uploadFile.on('click',function (e) {
+    //     console.log(e);
+    // });
 
     //菜单min方法
     $minMenu.on('click', function () {

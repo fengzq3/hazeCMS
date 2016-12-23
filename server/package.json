@@ -4,22 +4,23 @@
   "private": true,
   "scripts": {
     "dev": "supervisor ./bin/www",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "pm2": "pm2 start processes.json"
   },
   "dependencies": {
-    "bluebird": "^3.4.6",
+    "bluebird": "^3.4.7",
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
+    "debug": "^2.5.1",
     "express": "~4.14.0",
     "express-session": "^1.14.2",
-    "express-validator": "^3.1.0",
+    "express-validator": "^3.1.1",
     "jade": "~1.11.0",
-    "moment": "^2.15.2",
-    "mongoose": "^4.6.6",
+    "moment": "^2.17.1",
+    "mongoose": "^4.7.4",
     "morgan": "~1.7.0",
     "multer": "^1.2.1",
-    "serve-favicon": "~2.3.0",
+    "serve-favicon": "^2.3.2",
     "underscore": "^1.8.3"
   }
 }
