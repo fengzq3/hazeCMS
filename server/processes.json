@@ -12,8 +12,8 @@
         "routers",
         "view"
       ],
-      "error_file": "./logs/app-err.log",
-      "out_file": "./logs/app-out.log",
+      "error_file": "../logs/app-err.log",
+      "out_file": "../logs/app-out.log",
       "log_date_format": "YYYY-MM-DD HH:mm Z"
     }
   ]
