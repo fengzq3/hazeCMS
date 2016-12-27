@@ -1,13 +1,12 @@
 @import "custom.css";
 @import "jquery-confirm.css";
-
 @font-face {
     font-family: 'iconfont';  /* project id 123115 */
-    src: url('//at.alicdn.com/t/font_yvb94etmgeva38fr.eot');
-    src: url('//at.alicdn.com/t/font_yvb94etmgeva38fr.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_yvb94etmgeva38fr.woff') format('woff'),
-    url('//at.alicdn.com/t/font_yvb94etmgeva38fr.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_yvb94etmgeva38fr.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_dlo6wmuqim86w29.eot');
+    src: url('//at.alicdn.com/t/font_dlo6wmuqim86w29.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_dlo6wmuqim86w29.woff') format('woff'),
+    url('//at.alicdn.com/t/font_dlo6wmuqim86w29.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_dlo6wmuqim86w29.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -45,6 +44,7 @@
 .icon-must:before{content:'\e652'}
 .icon-back:before{content:'\e67b'}
 .icon-user:before{content:'\e60c'}
+.icon-img:before{content:'\e60d'}
 
 @media(min-width: 768px){
     .nav-search{margin:13px;width:215px;text-align: center;padding-left:13px;border-left:1px solid #3c3c3c;white-space: nowrap;overflow: hidden;display:block !important;float:right;}

@@ -5,6 +5,7 @@
 const config = require('../config');
 const db = require('../model/db.server.model');
 const Promise = require('bluebird');
+const common = require('../common');
 
 const tags = {
     index: function (req, res, next) {
@@ -22,9 +23,17 @@ const tags = {
         let siteP = db.readSiteInfo();
         let navP = db.getNav();
         let tagArP = db.getTagArticle(req.params.name, 20, 0);
-        let tagP = db.checkTag({tag_name:req.params.name});
+        let tagP = db.checkTag({tag_name: req.params.name});
 
         Promise.all([siteP, navP, tagArP, tagP]).then(function (d) {
+            //check topPic 是否存在，不存在则添加一个随机的
+            d[2].forEach(function (e) {
+                if (!e.topPic) {
+                    e.topPic = '/images/topPic/' + common.getTopPic();
+                }
+            });
+
+            //最终data
             let data = {
                 link: {
                     baseUrl: req.baseUrl,
@@ -35,9 +44,9 @@ const tags = {
                 site: {
                     site_name: d[0].site_name,
                     site_title: req.params.name + '_' + d[0].site_name,
-                    site_link:d[0].site_link,
-                    site_description:d[3].tag_description,
-                    site_keyword:d[3].tag_keyword
+                    site_link: d[0].site_link,
+                    site_description: d[3].tag_description ? d[3].tag_description : '',
+                    site_keyword: d[3].tag_keyword ? d[3].tag_keyword : ''
                 },
                 nav: d[1],
                 content: d[2]

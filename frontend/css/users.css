@@ -93,5 +93,10 @@ body{overflow:hidden;}
 .edit-article-right h4{margin-top:0;}
 .edit-right-pic{list-style:none;padding-left:0;}
 .edit-right-pic>li{position:relative;padding-top:60%;background-color:#ccc;}
-.edit-right-pic>li>p{position:absolute;bottom:0;margin:0;padding:10px;background:rgba(0,0,0,.8);width:100%;color:#fff;}
+.edit-right-pic>li>img{position:absolute;top:0;left:0;width:100%;height:100%;}
+.edit-right-pic>li>p{position:absolute;bottom:0;margin:0;padding:10px;background:rgba(0,0,0,.8);width:100%;color:#fff;overflow:hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;}
 .edit-right-con .input-group{margin-bottom:10px;}
+
+.edit-right-pic>li .process{position:absolute;top:0;width:100%;text-align: center;}

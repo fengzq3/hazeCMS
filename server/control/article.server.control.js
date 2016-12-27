@@ -32,6 +32,11 @@ const article = {
                 articleAr.push(db.getTagArticle(tgAr[i], 3, 0));
             }
 
+            //check topPic 是否存在，不存在则添加一个随机的
+            if (!dt.topPic) {
+                dt.topPic = '/images/topPic/' + common.getTopPic();
+            }
+
             //最终渲染
             Promise.all(articleAr).then(function (d) {
                 //处理相关文章数据
@@ -44,8 +49,16 @@ const article = {
                 //相关文章数组去重
                 const relates = common.repeatArray(relatesArr);
 
+                //处理相关文章的topPic
+                relates.forEach(function (e) {
+                    if (!e.topPic) {
+                        e.topPic = '/images/topPic/' + common.getTopPic();
+                    }
+                });
+
                 if (config.debug) console.log(relates);
 
+                //最终渲染数据
                 const data = {
                     link: {
                         baseUrl: req.baseUrl,

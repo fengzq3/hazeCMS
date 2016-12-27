@@ -12,13 +12,17 @@ $(function () {
     const $tagEdit = $('.js-tagEdit'), $tagEditForm = $('.js-editForm'), $tagEditAbort = $('.js-editAbort');
     const $addTagForm = $('.js-addTag-ajax');
     const $editArticle = $('.js-editArticle-ajax');
-    const $uploadFile = $('.js-uploadFile');
+    const $title = $('.js-title'),$bindTitle = $('.js-bindTitle');
 
     //文件上传组件
     uploader('.js-uploadFile');
-    // $uploadFile.on('click',function (e) {
-    //     console.log(e);
-    // });
+
+    //title 数据同步输入绑定
+    $title.on('input',function () {
+        let text = $(this).val();
+        $bindTitle.text(text);
+    });
+
 
     //菜单min方法
     $minMenu.on('click', function () {

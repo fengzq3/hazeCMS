@@ -6,7 +6,7 @@ block content
 
     // banner
     .article-title
-        img(src='/upload/#{content.topPic}', alt='#{content.title}')
+        img(src='#{content.topPic}', alt='#{content.title}')
         .article-des
             // 内层
             .container
@@ -52,4 +52,4 @@ block content
                         if JSON.stringify(item) !== JSON.stringify(content)
                             .col-xs-4
                                 a(href='#{site.site_link}#{link.baseUrl}/#{item._id}' data-toggle="tooltip" title="#{item.title}")
-                                    img(src='/upload/#{item.topPic}', alt='#{item.title}')
+                                    img(src='#{item.topPic}', alt='#{item.title}')

@@ -3,7 +3,8 @@
  * 一个公共方法库，提取一些可能会重复用到的方法到独立文件
  */
 const config = require('./config');
-const _ = require('underscore');
+const path = require('path');
+const fs = require('fs');
 
 module.exports = {
     /**
@@ -48,5 +49,21 @@ module.exports = {
 
         return result;
 
+    },
+    /**
+     * 获取随机topPic
+     * @returns {*}
+     */
+    getTopPic: function () {
+        //读取files
+        const files = fs.readdirSync(path.join(config.root, '/public/images/topPic'));
+        if (config.debug) {
+            console.log(typeof files);
+            console.log(files);
+        }
+
+        const index = Math.round((files.length - 1) * Math.random());
+
+        return files[index];
     }
 };

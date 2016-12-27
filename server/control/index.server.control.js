@@ -4,7 +4,7 @@
  */
 const db = require('../model/db.server.model');
 const Promise = require('bluebird');
-
+const common = require('../common');
 
 const index = {
     index: function (req, res, next) {
@@ -16,7 +16,14 @@ const index = {
         let navP = db.getNav();
         let listP = db.showList(13, 0);
         Promise.all([siteP, navP, listP]).then(function (d) {
+            //check topPic 是否存在，不存在则添加一个随机的
+            d[2].forEach(function (e) {
+                if (!e.topPic) {
+                    e.topPic = '/images/topPic/' + common.getTopPic();
+                }
+            });
 
+            //最终data
             const data = {
                 site: d[0],
                 nav: d[1],

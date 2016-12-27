@@ -10,7 +10,8 @@
         "install",
         "model",
         "routers",
-        "view"
+        "view",
+        "./*.js"
       ],
       "error_file": "../logs/app-err.log",
       "out_file": "../logs/app-out.log",

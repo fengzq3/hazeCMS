@@ -16,7 +16,7 @@ block content
                 .col-lg-3.col-md-4.col-sm-6
                     a.main-list-item(href='/article/#{item.id}')
                         .list-img
-                            img(src='/upload/#{item.topPic}', alt='#{item.title}')
+                            img(src='#{item.topPic}', alt='#{item.title}')
                         .list-con
                             h3 #{item.title}
                             p.list-con-des
@@ -28,4 +28,4 @@ block content
 
         // row END page navigation 开始
         .page-more
-            a.btn.btn-block.btn-lg.btn-default(href='#') 下一页
+            //a.btn.btn-block.btn-lg.btn-default(href='#') 下一页

@@ -15,7 +15,7 @@ block adminContent
                 .col-sm-9.edit-article-left
                     .edit-textarea
                         .form-group.form-group-lg.js-checkInput
-                            input.form-control.must(name="title" type="text" placeholder="输入标题")
+                            input.form-control.must.js-title(name="title" type="text" placeholder="输入标题")
                             p.help-block
                                 span
                         textarea#textArea.form-control.js-textArea.js-autoHeight(name="body")
@@ -24,9 +24,10 @@ block adminContent
                         h4 图文预览
                         ul.edit-right-pic
                             li
-                                img(src="#")
-                                p 文章标题
-                        button.js-uploadFile(type="button") 上传封面
+                                h3.process.js-processFile
+                                img.js-showTopPic(src="#")
+                                p.js-bindTitle 文章标题
+                        .js-uploadFile 上传封面
                         hr
                         .input-group
                             label.input-group-addon.control-label 封面:
