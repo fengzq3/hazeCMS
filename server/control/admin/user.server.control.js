@@ -416,6 +416,8 @@ const adminCtl = {
                     };
 
                     res.render('admin/editArticle', data);
+                },function (e) {
+                    next(e);
                 });
                 break;
             case 'POST':

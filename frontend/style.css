@@ -5627,11 +5627,14 @@ transition: all .3s;bottom:0;}
 
 /*\76F8\5173\63A8\8350*/
 .article-relate{overflow:hidden;border-top:1px solid #ddd;}
-.article-relate-con{margin-left:-15px;margin-right:-15px;margin-bottom:20px;overflow:hidden;}
-.article-relate-con a{position: relative;display:block;background-color:#ccc;padding-bottom:57%;-webkit-transition: all .3s ease-in-out;
+.article-relate-con{margin-left:-15px;margin-right:-15px;margin-bottom:20px;}
+.article-relate-con a{position: relative;display:block;background-color: #d4d4d4;-webkit-transition: all .3s ease-in-out;
 -moz-transition: all .3s ease-in-out;
 transition: all .3s ease-in-out;}
-.article-relate-con a:hover,.article-relate-con a:focus{-webkit-transform: translate(0,-2px); transform: translate(0,-2px);}
+.article-relate-con a h4{color:#000;overflow:hidden;white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;}
+.article-relate-con a:hover,.article-relate-con a:focus{-webkit-transform: translate(0,-2px); transform: translate(0,-2px);text-decoration: none;}
 .article-relate-con img{width:100%;height:100%;position: absolute;top:0;left:0;}
 
 /*tag page*/

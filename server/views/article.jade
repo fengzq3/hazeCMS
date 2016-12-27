@@ -47,9 +47,18 @@ block content
         if relate.length > 1
             .article-relate
                 h3 相关推荐
-                .article-relate-con
+                .article-relate-con.row
                     each item in relate
                         if JSON.stringify(item) !== JSON.stringify(content)
                             .col-xs-4
-                                a(href='#{site.site_link}#{link.baseUrl}/#{item._id}' data-toggle="tooltip" title="#{item.title}")
-                                    img(src='#{item.topPic}', alt='#{item.title}')
+                                a(href='#{site.site_link}#{link.baseUrl}/#{item._id}' title="#{item.title}")
+                                    .list-img
+                                        img(src='#{item.topPic}', alt='#{item.title}')
+                                    .list-con
+                                        h4 #{item.title}
+                                        p.list-con-des
+                                            small
+                                                span.iconfont.icon-date.js-date(date='#{item.date}')
+                                            small
+                                                span.iconfont.icon-discuss
+                                                | #{item.comments.length}

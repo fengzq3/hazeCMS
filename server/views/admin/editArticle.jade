@@ -18,16 +18,24 @@ block adminContent
                 .col-sm-9.edit-article-left
                     .edit-textarea
                         .form-group.form-group-lg.js-checkInput
-                            input.form-control.must(name="title" type="text" value="#{content.title}" placeholder="输入标题")
+                            input.form-control.must.js-title(name="title" type="text" value="#{content.title}" placeholder="输入标题")
                         textarea#textArea.form-control.js-textArea.js-autoHeight(name="body") #{content.body}
                 .col-sm-3.edit-article-right
                     .edit-right-con
                         h4 图文预览
                         ul.edit-right-pic
                             li
-                                img(src="/upload/#{content.topPic}")
-                                p #{content.title}
+                                h3.process.js-processFile
+                                if content.topPic
+                                    img.js-showTopPic(src="#{content.topPic}")
+                                else
+                                    img.js-showTopPic
+                                p.js-bindTitle 文章标题
+                        .js-uploadFile 上传封面
                         hr
+                        .input-group
+                            label.input-group-addon.control-label 封面:
+                            input.form-control.js-getTopPic(name="topPic" type="text" placeholder="填写封面图地址")
                         .input-group
                             label.input-group-addon.control-label 话题:
                             input.form-control(name="tags" type="text" value="#{content.tags}")
