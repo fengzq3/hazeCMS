@@ -3,7 +3,7 @@
  */
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/blog');
+mongoose.connect('mongodb://localhost:27017/test1');
 mongoose.Promise = require('bluebird');
 
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
@@ -119,7 +119,7 @@ module.exports = {
         };
     },
     /**
-     * todo 导航
+     * 导航
      * 导航由话题中提取，详见readme
      * 导航使用tag list
      */

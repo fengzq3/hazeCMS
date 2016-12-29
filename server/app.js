@@ -13,6 +13,10 @@ const article = require('./routes/article');
 const tags = require('./routes/tags');
 const files = require('./routes/admin/files');
 
+//install
+const install = require('./install/install');
+
+//初始化app
 const app = express();
 
 // view engine setup
@@ -42,6 +46,8 @@ app.use('/admin', admin);
 app.use('/article', article);
 app.use('/tags', tags);
 app.use('/files', files);
+//install
+app.use('/install', install);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
