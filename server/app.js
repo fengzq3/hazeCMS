@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const session = require('express-session');
-const config = require('./config');
 
 const index = require('./routes/index');
 const admin = require('./routes/admin/users');
@@ -65,7 +64,7 @@ app.use(function (err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    if(config.debug) res.render('error');
+    res.render('error');
 });
 
 module.exports = app;
