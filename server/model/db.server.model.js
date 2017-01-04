@@ -3,7 +3,7 @@
  */
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/test1');
+mongoose.connect('mongodb://localhost:27017/blog');
 mongoose.Promise = require('bluebird');
 
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
