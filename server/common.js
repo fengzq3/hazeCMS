@@ -5,6 +5,7 @@
 const config = require('./config');
 const path = require('path');
 const fs = require('fs');
+const _ = require('underscore');
 
 module.exports = {
     /**
@@ -41,7 +42,7 @@ module.exports = {
         //若arr不存在则返回空数组，为了兼容api格式
         if (arr.length === 0) return [];
 
-        let resArr = arr.sort();
+        let resArr = _.uniq(arr);
         //循环去重
         for (let i = 0; i < resArr.length; i++) {
             if (JSON.stringify(resArr[i]) !== JSON.stringify(result[result.length - 1])) result.push(resArr[i]);
