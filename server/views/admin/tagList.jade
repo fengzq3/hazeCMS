@@ -38,13 +38,13 @@ block adminContent
                                 else
                                     | 不显示
                             td
-                                a.js-linkAjax(href="/admin/delTag/#{item._id}") 删除
+                                a.js-linkAjax(href="/feng/delTag/#{item._id}") 删除
                                 button.btn-link.js-tagEdit(type='button' data-target='#{item._id}') 编辑
                         //编辑话题
                         tr.tag-edit(id="#{item._id}")
                             td ##{item.tag_name}#
                             td(colspan="5")
-                                form.form-horizontal.js-editForm(method="post" action="/admin/editTag/#{item._id}")
+                                form.form-horizontal.js-editForm(method="post" action="/feng/editTag/#{item._id}")
                                     .input-group
                                         input.form-control(type="hidden" name="tag_name" value="#{item.tag_name}")
                                         label.control-label.input-group-addon 描述信息
@@ -71,7 +71,7 @@ block adminContent
 
             .clearfix
             //添加话题
-            form.form-horizontal.js-addTag-ajax(method='post' action='/admin/tagList')
+            form.form-horizontal.js-addTag-ajax(method='post' action='/feng/tagList')
                 .input-group
                     label.control-label.input-group-addon 话题名称：
                     input.form-control(type="text" name="tag_name" placeholder="输入话题名称")

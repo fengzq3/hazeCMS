@@ -42,7 +42,7 @@ app.use(session({
 }));
 
 app.use('/', index);
-app.use('/admin', admin);
+app.use('/feng', admin);
 app.use('/article', article);
 app.use('/tags', tags);
 app.use('/files', files);

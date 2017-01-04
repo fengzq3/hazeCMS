@@ -31,7 +31,7 @@ block adminContent
                         //编辑话题
                         tr.tag-edit(id="#{item._id}")
                             td(colspan="6")
-                                form.form-horizontal.js-editForm(method="post" action="/admin/editUser/#{item._id}")
+                                form.form-horizontal.js-editForm(method="post" action="/feng/editUser/#{item._id}")
                                     .input-group
                                         label.control-label.input-group-addon 用户名：
                                         input.form-control(type="text" name="userName" value="#{item.userName}")
@@ -54,29 +54,9 @@ block adminContent
                                             button.btn.btn-info(type="submit") 确定修改
                                             button.btn.btn-default.js-editAbort(type="button" data-target="#{item._id}") 取消编辑
 
-                            //td #{item.userName}
-                            //    input.form-control(type="text" name="userName" value="#{item.userName}")
-                            //td #{item.password}
-                            //    input.form-control(type="password" name="password")
-                            //td
-                            //    if item.description === undefined
-                            //        input.form-control(type="text" name="description" placeholder="输入描述")
-                            //    else
-                            //        input.form-control(type="text" name="description" placeholder="输入描述" value="#{item.description}")
-                            //td
-                            //    if item.tel === undefined
-                            //        input.form-control(type="text" name="tel" placeholder="联系电话")
-                            //    else
-                            //        input.form-control(type="text" name="tel" placeholder="联系电话" value="#{item.tel}")
-                            //td
-                            //td
-                            //    button.btn.btn-success.js-editBtn(type="button" data-target='#{item._id}') 确定
-                            //    |  &nbsp;or&nbsp;
-                            //    button.btn.btn-default.js-editAbort(type="button" data-target='#{item._id}') 取消
-
             .clearfix
             //添加话题
-            form.form-horizontal.js-addTag-ajax(method='post' action='/admin/userList')
+            form.form-horizontal.js-addTag-ajax(method='post' action='/feng/userList')
                 .input-group
                     label.control-label.input-group-addon 用户名：
                     input.form-control(type="text" name="userName" placeholder="用户名")
