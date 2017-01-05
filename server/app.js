@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const session = require('express-session');
+const config = require('./config');
 
 const index = require('./routes/index');
 const admin = require('./routes/admin/users');
@@ -15,6 +16,9 @@ const files = require('./routes/admin/files');
 
 //install
 const install = require('./install/install');
+
+//生产模式
+if(!config.debug) process.env.NODE_ENV = 'production';
 
 //初始化app
 const app = express();
