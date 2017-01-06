@@ -106,6 +106,9 @@ module.exports = {
             .findOne(query)
             .exec();
     },
+    getpages:function () {
+        //todo 获取总页数
+    },
     /**
      * 上一篇下一篇查询
      * 传入query，返回一个object，里面含有两个 promise

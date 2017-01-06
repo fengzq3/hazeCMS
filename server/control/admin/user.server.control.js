@@ -91,7 +91,7 @@ const adminCtl = {
                     if (!!d) {
                         req.body.password = crypto.createHash('md5').update(req.body.password).digest('hex');
                         if (req.body.password === d.password) {
-                            //todo 登陆成功，处理 session
+                            //登陆成功，处理 session
                             req.session.user = req.body;
 
                             res.json({error: 0, messages: {title: '登陆成功', body: `登陆成功，${d.userName} 欢迎回来！`}});
@@ -416,7 +416,7 @@ const adminCtl = {
                     };
 
                     res.render('admin/editArticle', data);
-                },function (e) {
+                }, function (e) {
                     next(e);
                 });
                 break;
@@ -479,9 +479,15 @@ const adminCtl = {
     //话题列表
     tagList: function (req, res, next) {
         //todo 分页 && 序列化 tags
+        const page = req.query.page > 1 ? parseInt(req.query.page) : 1;
+
+        if (config.debug) console.log(page);
+
         const siteP = db.readSiteInfo();
         const navP = db.getNav();
-        const tagsP = db.getTagList(20, 0);
+        const tagsP = db.getTagList(20, 20 * (page - 1));
+        //总page页面
+        const navigation = db.getpages();
 
         switch (req.method) {
             case 'GET':
@@ -503,7 +509,7 @@ const adminCtl = {
             case 'POST':
                 //话题添加
 
-                //todo 处理话题已存在
+                //处理话题已存在
                 if (req.body.tag_name !== '') {
                     db.addTag(req.body).then(function (d) {
                         res.json({error: 0, messages: {title: '添加成功', body: '话题添加成功！'}});
