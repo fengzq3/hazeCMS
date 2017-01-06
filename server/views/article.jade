@@ -25,6 +25,15 @@ block content
         .article-con
             != content.body
             .clearfix
+            blockquote
+                p 欢迎转载，转载请注明原文链接和出处，或联系微信：semfeng
+                p.article-powerby © 著作权归作者所有
+            .article-foot
+                button.js-dialog.btn.btn-success(data-content="<img src='/images/wechat.png'>" title="微信扫一扫，打赏喝茶" ) ￥微信打赏￥
+                button.js-dialog.btn.btn-primary(data-content="<img src='/images/alipay.png'>" title="支付宝扫一扫，打赏喝咖啡" ) ￥支付宝打赏￥
+                p
+                    small 您的支持，就是我的动力！
+
             hr
             .article-info.js-fixed
                 .article-info-l
@@ -49,7 +58,7 @@ block content
                 h3 相关推荐
                 .article-relate-con.row
                     each item in relate
-                        if JSON.stringify(item) !== JSON.stringify(content)
+                        if JSON.stringify(item._id) !== JSON.stringify(content._id)
                             .col-xs-4
                                 a(href='#{site.site_link}#{link.baseUrl}/#{item._id}' title="#{item.title}")
                                     .list-img

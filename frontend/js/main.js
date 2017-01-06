@@ -28,6 +28,22 @@ $(function () {
     const $back = $('.js-back'); //返回按钮
     const $prevNext = $('.js-prevNext'); //上一篇下一篇
     const $navActive = $('.js-navActive'); //渲染active标记
+    const $dialog = $('.js-dialog'); //定义dialog
+
+    //一个简单的dialog
+    $dialog.on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        let content = $(this).data('content');
+        let title = $(this).attr('title');
+        $.dialog({
+            animation: 'top',
+            closeAnimation: 'top',
+            title: title,
+            columnClass:'medium',
+            content: content
+        });
+    });
 
     //dropdown
     $dropDown.hover(function () {

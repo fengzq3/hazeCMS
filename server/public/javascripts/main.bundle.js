@@ -34,6 +34,22 @@ webpackJsonp([3],{
 	    var $back = $('.js-back'); //返回按钮
 	    var $prevNext = $('.js-prevNext'); //上一篇下一篇
 	    var $navActive = $('.js-navActive'); //渲染active标记
+	    var $dialog = $('.js-dialog'); //定义dialog
+
+	    //一个简单的dialog
+	    $dialog.on('click', function (e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	        var content = $(this).data('content');
+	        var title = $(this).attr('title');
+	        $.dialog({
+	            animation: 'top',
+	            closeAnimation: 'top',
+	            title: title,
+	            columnClass: 'medium',
+	            content: content
+	        });
+	    });
 
 	    //dropdown
 	    $dropDown.hover(function () {

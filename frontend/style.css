@@ -688,7 +688,6 @@ abbr[data-original-title] {
 blockquote {
   padding: 10px 20px;
   margin: 0 0 20px;
-  font-size: 17.5px;
   border-left: 5px solid #eeeeee;
 }
 blockquote p:last-child,
@@ -5628,7 +5627,7 @@ transition: all .3s;bottom:0;}
 /*\76F8\5173\63A8\8350*/
 .article-relate{overflow:hidden;border-top:1px solid #ddd;}
 .article-relate-con{margin-left:-15px;margin-right:-15px;margin-bottom:20px;}
-.article-relate-con a{position: relative;display:block;background-color: #d4d4d4;-webkit-transition: all .3s ease-in-out;
+.article-relate-con a{position: relative;display:block;background-color: #E0E0E0;-webkit-transition: all .3s ease-in-out;
 -moz-transition: all .3s ease-in-out;
 transition: all .3s ease-in-out;}
 .article-relate-con a h4{color:#000;overflow:hidden;white-space: nowrap;
@@ -5636,6 +5635,8 @@ transition: all .3s ease-in-out;}
     text-overflow: ellipsis;}
 .article-relate-con a:hover,.article-relate-con a:focus{-webkit-transform: translate(0,-2px); transform: translate(0,-2px);text-decoration: none;}
 .article-relate-con img{width:100%;height:100%;position: absolute;top:0;left:0;}
+.article-foot{text-align: center;}
+.article-foot p{color:#A4A4A4;margin-top:10px;}
 
 /*tag page*/
 .tag-page{padding:15px;}
@@ -5694,3 +5695,5 @@ transition: all .3s ease-in-out;}
 
 .w-p10{width:10%;}
 .w-p20{width:20%;}
+
+blockquote{background-color:#E0E0E0;border-left:6px solid #b4b4b4;}
