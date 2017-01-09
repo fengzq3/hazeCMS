@@ -21,9 +21,9 @@ const siteSchema = new mongoose.Schema({
 const adminSchema = new mongoose.Schema({
     userName: String,
     password: String,
-    description:String,
-    tel:String,
-    date:{type:Date,default:Date.now()}
+    description: String,
+    tel: String,
+    date: {type: Date, default: Date.now()}
 
 });
 
@@ -32,8 +32,8 @@ const tagsSchema = new mongoose.Schema({
     tag_name: String,
     tag_description: String,
     tag_keyword: String,
-    tag_nav:{type:Boolean,default:0},
-    tag_num: {type:Number,default:0},
+    tag_nav: {type: Boolean, default: 0},
+    tag_num: {type: Number, default: 0},
     date: {type: Date, default: Date.now()}
 });
 
@@ -47,7 +47,7 @@ const articleSchema = new mongoose.Schema({
     body: String,
     comments: [{body: String, date: Date}],
     date: {type: Date, default: Date.now()},
-    tags: {type:String,default:'tags'},  //定义一个默认tags，便于后期用tag组织文章
+    tags: {type: String, default: 'tags'},  //定义一个默认tags，便于后期用tag组织文章
     topPic: String
 });
 
@@ -62,7 +62,7 @@ module.exports = {
         return webSite.findOne().exec();
     },
     editSiteInfo: function (query, data) {
-        return webSite.update(query,data).exec();
+        return webSite.update(query, data).exec();
     },
     createSiteInfo: function (data) {
         let site = new webSite(data);
@@ -73,9 +73,9 @@ module.exports = {
         return admins.find().skip(skip).limit(num).exec();
     },
     editAdmin: function (query, data) {
-        return admins.update(query,data).exec();
+        return admins.update(query, data).exec();
     },
-    getAdmin:function (query) {
+    getAdmin: function (query) {
         return admins.findOne(query).exec();
     },
     createAdmin: function (data) {
@@ -87,16 +87,16 @@ module.exports = {
         let art = new article(data);
         return art.save();
     },
-    updateArticle: function (query,data) {
-        return article.update(query,data);
+    updateArticle: function (query, data) {
+        return article.update(query, data);
     },
-    removeArticle:function (query) {
+    removeArticle: function (query) {
         return article.remove(query);
     },
     showList: function (num, skip) {
         return article
             .find()
-            .sort({date:-1})
+            .sort({date: -1})
             .skip(skip)
             .limit(num)
             .exec();
@@ -106,19 +106,20 @@ module.exports = {
             .findOne(query)
             .exec();
     },
-    getpages:function () {
-        //todo 获取总页数
+    getArticleCont: function () {
+        //获取文章总页数
+        return article.count({});
     },
     /**
      * 上一篇下一篇查询
      * 传入query，返回一个object，里面含有两个 promise
      */
 
-    prevNext:function (query) {
+    prevNext: function (query) {
         let thisDate = query.date;
         return {
-            prev:article.find({date:{$lt:thisDate}}).sort({date:-1}).limit(1).exec(),
-            next:article.find({date:{$gt:thisDate}}).sort({date:1}).skip(1).limit(1).exec()
+            prev: article.find({date: {$lt: thisDate}}).sort({date: -1}).limit(1).exec(),
+            next: article.find({date: {$gt: thisDate}}).sort({date: 1}).skip(1).limit(1).exec()
         };
     },
     /**
@@ -129,32 +130,40 @@ module.exports = {
 
     getNav: function () {
         return tags
-            .find({tag_nav:true})
+            .find({tag_nav: true})
             .exec();
     },
 
     //话题列表
-    getTagList: function (num,skip) {
+    getTagList: function (num, skip) {
         return tags
             .find()
-            .sort({date:-1})
+            .sort({date: -1})
             .skip(skip)
             .limit(num)
             .exec();
     },
-    addTag:function (data) {
+    addTag: function (data) {
         let tag = new tags(data);
         return tag.save();
     },
-    removeTag:function (query) {
+    removeTag: function (query) {
         return tags.remove(query);
     },
-    updateTag:function (query,data) {
-        return tags.update(query,data).exec();
+    updateTag: function (query, data) {
+        return tags.update(query, data).exec();
     },
     checkTag: function (query) {
         //用于手动添加tag时检测是否重复
         return tags.findOne(query).exec();
+    },
+    /**
+     * 获取tag总页数
+     * @param query 一个类：{} 用来查询
+     * 返回 Promise then后获得数量
+     */
+    getTagCont:function (query) {
+        return tags.count(query);
     },
 
     /**

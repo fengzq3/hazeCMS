@@ -263,11 +263,17 @@ const adminCtl = {
     },
     //文章列表
     articleList: function (req, res, next) {
+        const page = req.query.page > 0 ? parseInt(req.query.page) : 1;
         //与index 中相似调用
         let siteP = db.readSiteInfo();
         let navP = db.getNav();
-        let listP = db.showList(0, 0);
-        Promise.all([siteP, navP, listP]).then(function (d) {
+        let listP = db.showList(config.adminPageSize, config.adminPageSize * (page - 1));
+        //总文章数
+        let articleCont = db.getArticleCont({});
+
+        Promise.all([siteP, navP, listP, articleCont]).then(function (d) {
+
+            let pages = Math.ceil(d[3] / config.adminPageSize);
 
             const data = {
                 link: {
@@ -277,7 +283,12 @@ const adminCtl = {
                 site: d[0],
                 nav: d[1],
                 content: d[2],
-                user: req.session.user
+                user: req.session.user,
+                pages: {
+                    cont: d[3],
+                    allPage: pages,
+                    page: page
+                }
             };
 
             res.render('admin/articleList', data);
@@ -478,20 +489,25 @@ const adminCtl = {
 
     //话题列表
     tagList: function (req, res, next) {
-        //todo 分页 && 序列化 tags
-        const page = req.query.page > 1 ? parseInt(req.query.page) : 1;
+        //分页 && 序列化 tags
+        const page = req.query.page > 0 ? parseInt(req.query.page) : 1;
 
         if (config.debug) console.log(page);
 
         const siteP = db.readSiteInfo();
         const navP = db.getNav();
-        const tagsP = db.getTagList(20, 20 * (page - 1));
-        //总page页面
-        const navigation = db.getpages();
+        const tagsP = db.getTagList(config.adminPageSize, config.adminPageSize * (page - 1));
+        //总文章数
+        const tagCont = db.getTagCont({});
+
 
         switch (req.method) {
             case 'GET':
-                Promise.all([siteP, navP, tagsP]).then(function (d) {
+                Promise.all([siteP, navP, tagsP, tagCont]).then(function (d) {
+
+                    if (config.debug) console.log(d[3]);
+
+                    const pages = Math.ceil(d[3] / config.adminPageSize);
                     const data = {
                         link: {
                             baseUrl: req.baseUrl,
@@ -500,7 +516,12 @@ const adminCtl = {
                         user: req.session.user,
                         site: d[0],
                         nav: d[1],
-                        content: d[2]
+                        content: d[2],
+                        pages: {
+                            cont: d[3],
+                            allPage: pages,
+                            page: page
+                        }
                     };
                     res.render('admin/tagList', data);
                 });

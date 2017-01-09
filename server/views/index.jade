@@ -18,7 +18,7 @@ block content
                             em #{content[0].comments.length}
     // 主内容
     .container-fluid.main-list
-        .row
+        .row.js-listContent
             each item,key in content
                 if key !== 0
                     .col-lg-3.col-md-4.col-sm-6
@@ -35,4 +35,4 @@ block content
                                         | #{item.comments.length}
         // row END page navigation 开始
         .page-more
-            //a.btn.btn-block.btn-lg.btn-default(href='#') 下一页
+            a.btn.btn-block.btn-lg.btn-default.js-loadPage(href='/') 下一页

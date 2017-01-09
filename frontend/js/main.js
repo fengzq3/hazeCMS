@@ -29,6 +29,8 @@ $(function () {
     const $prevNext = $('.js-prevNext'); //上一篇下一篇
     const $navActive = $('.js-navActive'); //渲染active标记
     const $dialog = $('.js-dialog'); //定义dialog
+    const $loadPage = $('.js-loadPage'); //动态加载分页
+    const $listContent = $('.js-listContent'); //内容列表容器
 
     //一个简单的dialog
     $dialog.on('click', function (e) {
@@ -40,7 +42,7 @@ $(function () {
             animation: 'top',
             closeAnimation: 'top',
             title: title,
-            columnClass:'medium',
+            columnClass: 'medium',
             content: content
         });
     });
@@ -200,6 +202,27 @@ $(function () {
         });
 
 
+    });
+
+    //动态加载分页
+    $loadPage.on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        const $btn = $(this);
+        $btn.button('loading');
+
+        let page = $btn.data('page') > 1 ? $btn.data('page') : 2;
+        let url = $btn.attr('href') + '?ajax=1&page=' + page;
+        $.ajax({
+            url: url,
+            method: 'GET'
+        }).then(function (d) {
+
+            let data = d ? d : '没有更多了';
+
+            $btn.data('page', page).button('reset');
+            $listContent.append(data);
+        });
     });
 
     //全局返回按钮

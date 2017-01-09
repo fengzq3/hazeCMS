@@ -15,7 +15,7 @@ block adminContent
         hr
         .tag-list
             table.table.table-bordered.tags-table
-                caption 共查询到：#{content.length} 条话题记录
+                caption 当前页面有：#{content.length} 条话题记录
                 thead
                     tr
                         th.w-p20 话题名称
@@ -87,3 +87,25 @@ block adminContent
                         option(value='0' selected) 否
                     span.input-group-btn
                         button.btn.btn-success(type="submit") 添加新话题
+
+            .page-break
+                p.pull-left 系统共有：#{pages.cont} 条数据，#{pages.allPage} 页
+                ul.pagination
+                    if (pages.page - 1) > 0
+                        li
+                            a(href="/feng/tagList?page=#{pages.page - 1}") < 上一页
+                    else
+                        li.disabled
+                            span 第一页了
+                    li.active
+                        span #{pages.page}
+                    //li
+                    //    a(href="#") 2
+                    //li
+                    //    a(href="#") 3
+                    if pages.page < pages.allPage
+                        li
+                            a(href="/feng/tagList?page=#{pages.page + 1}") 下一页 >
+                    else
+                        li.disabled
+                            span 没有了

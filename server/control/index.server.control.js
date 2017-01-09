@@ -8,10 +8,9 @@ const common = require('../common');
 
 const index = {
     index: function (req, res, next) {
-        /**
-         * todo 分页机制
-         * todo 读取系统设置，调取导航
-         */
+        //分页机制 若为ajax获取分页，则输出api
+        let isAjax = req.params.ajax;
+        //读取系统设置，调取导航
         let siteP = db.readSiteInfo();
         let navP = db.getNav();
         let listP = db.showList(13, 0);
@@ -30,7 +29,13 @@ const index = {
                 content: d[2]
             };
 
-            res.render('index', data);
+            if(!isAjax){
+                res.render('index', data);
+            }else{
+                res.render('item',data);
+            }
+
+
         });
     },
 

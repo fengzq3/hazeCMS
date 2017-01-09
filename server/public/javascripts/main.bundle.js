@@ -35,6 +35,8 @@ webpackJsonp([3],{
 	    var $prevNext = $('.js-prevNext'); //上一篇下一篇
 	    var $navActive = $('.js-navActive'); //渲染active标记
 	    var $dialog = $('.js-dialog'); //定义dialog
+	    var $loadPage = $('.js-loadPage'); //动态加载分页
+	    var $listContent = $('.js-listContent'); //内容列表容器
 
 	    //一个简单的dialog
 	    $dialog.on('click', function (e) {
@@ -203,6 +205,27 @@ webpackJsonp([3],{
 	                }
 
 	            }
+	        });
+	    });
+
+	    //动态加载分页
+	    $loadPage.on('click', function (e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	        var $btn = $(this);
+	        $btn.button('loading');
+
+	        var page = $btn.data('page') > 1 ? $btn.data('page') : 2;
+	        var url = $btn.attr('href') + '?page=' + page;
+	        $.ajax({
+	            url: url,
+	            method: 'GET'
+	        }).then(function (d) {
+
+	            var data = d ? d : '没有更多了';
+
+	            $btn.data('page', page);
+	            $listContent.append(data);
 	        });
 	    });
 

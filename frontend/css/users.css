@@ -78,6 +78,7 @@ body{overflow:hidden;}
 /*文章列表*/
 .admin-list{margin-bottom:25px;}
 .article-list{margin-bottom:0;}
+.article-list caption{padding:8px;text-align: left;}
 .article-list>thead>tr>th{text-align: left;}
 .article-list>tbody>tr>td{border:0 !important;}
 .article-list>tbody>tr>td p{margin-bottom:0;margin-top:5px;visibility: hidden;}
