@@ -5,5 +5,5 @@ module.exports = {
     debug:true,
     root: __dirname,
     pageSize:20,
-    adminPageSize:3
+    adminPageSize:20
 };

@@ -20,9 +20,11 @@ const tags = {
          * 访问链接为：tags/tag_name
          * 读取tag_name，查询详情
          */
+        let isAjax = req.query.ajax, page = req.query.page > 0 ? parseInt(req.query.page) : 1;
+
         let siteP = db.readSiteInfo();
         let navP = db.getNav();
-        let tagArP = db.getTagArticle(req.params.name, 20, 0);
+        let tagArP = db.getTagArticle(req.params.name, config.pageSize, config.pageSize * (page - 1));
         let tagP = db.checkTag({tag_name: req.params.name});
 
         Promise.all([siteP, navP, tagArP, tagP]).then(function (d) {
@@ -51,7 +53,15 @@ const tags = {
                 nav: d[1],
                 content: d[2]
             };
-            res.render('tags', data);
+
+            if(config.debug) console.log(isAjax);
+
+            if (!isAjax) {
+                res.render('tags', data);
+            } else {
+                res.render('item', data);
+            }
+
         });
 
     }

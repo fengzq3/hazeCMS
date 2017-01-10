@@ -216,16 +216,18 @@ webpackJsonp([3],{
 	        $btn.button('loading');
 
 	        var page = $btn.data('page') > 1 ? $btn.data('page') : 2;
-	        var url = $btn.attr('href') + '?page=' + page;
+	        var url = $btn.attr('href') + '?ajax=1&page=' + page;
 	        $.ajax({
 	            url: url,
 	            method: 'GET'
 	        }).then(function (d) {
 
-	            var data = d ? d : '没有更多了';
-
-	            $btn.data('page', page);
-	            $listContent.append(data);
+	            if (d) {
+	                $listContent.append(d);
+	                $btn.data('page', page + 1).button('reset');
+	            } else {
+	                $btn.text('没有更多了');
+	            }
 	        });
 	    });
 

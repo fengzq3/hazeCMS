@@ -58,10 +58,10 @@ module.exports = {
     getTopPic: function () {
         //读取files
         const files = fs.readdirSync(path.join(config.root, '/public/images/topPic'));
-        if (config.debug) {
-            console.log(typeof files);
-            console.log(files);
-        }
+        // if (config.debug) {
+        //     console.log(typeof files);
+        //     console.log(files);
+        // }
 
         const index = Math.round((files.length - 1) * Math.random());
 

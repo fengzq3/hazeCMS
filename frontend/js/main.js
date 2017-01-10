@@ -218,10 +218,13 @@ $(function () {
             method: 'GET'
         }).then(function (d) {
 
-            let data = d ? d : '没有更多了';
+            if(d){
+                $listContent.append(d);
+                $btn.data('page', page + 1).button('reset');
+            }else{
+                $btn.text('没有更多了');
+            }
 
-            $btn.data('page', page).button('reset');
-            $listContent.append(data);
         });
     });
 

@@ -11,7 +11,7 @@ block content
                 li
                     a(href="#{link.baseUrl}#{link.path}") #{link.pageName}
             hr
-        .row
+        .row.js-listContent
             each item in content
                 .col-lg-3.col-md-4.col-sm-6
                     a.main-list-item(href='/article/#{item.id}')
