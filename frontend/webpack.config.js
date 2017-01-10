@@ -49,12 +49,12 @@ module.exports = {
         //提取js中的css
         new ExtractTextPlugin('stylesheets/editor.css'),
 
-        // new webpack.optimize.UglifyJsPlugin({
-        //    compress: {
-        //        drop_console: true,
-        //        warnings: false
-        //    }
-        // }),
+        new webpack.optimize.UglifyJsPlugin({
+           compress: {
+               drop_console: true,
+               warnings: false
+           }
+        }),
 
         //全局引入
         new webpack.ProvidePlugin({
