@@ -1,41 +1,25 @@
+[TOC]
+
 # hazeCMS
-a javascript cms
+node+express+mongodb 实现纯 javascript 博客
 
-## todo list
+### 文件目录
 
-### server 端
+```
+hazeCMS
+    |- frontend 前端开发目录
+        |- css  样式模块
+        |- js   js模块
+    |- server   服务端（实际运行目录）
+        |- bin  express脚本
+        |- control  控制器
+        |- model
+        |- public   静态文件目录
+        |- routes   路由
+        |- views    模板文件
+```
 
-1. 保持登录状态
+### 服务器搭
 
-2. 导航：
-    重新定义：直接读取带有nav标签的tag，sort by tag_num, view时超出数量的放入dropMenu
-
-3. 话题详情页面：url由中文组成，查询出具有此tag的文章列表
-
-4. 分页：分页两种想法，1是可以直接显示下一页，直接查询，2是，显示分页码，需要查询出总文档数量，然后根据页容量显示页码
-
-5. 读取、写入用户信息
-
-6. 登录、注销，保持登录
-
-7. 上传图片控件、富文本编辑器
-
-8. 定义一个默认tag，当tag未填写时使用
-
-9. mongodb 上一篇下一篇查询
-
-10. 默认随机显示特色图片（若无上传）
-
-11. install 文件，需要初始化所需文档， 在没有article等文档存在的时候打开首页会报错，需要用一个install文件检测，并初始化测试数据出来
-
-12. 修改文章tags时自动更新tags（增加/删除）
-
-13. 编辑文章是tag的处理思路：保存是对比原tag与修改后的tag，取出不同的tag，再进行check，若存在则-1，不存在则添加
-    对比tag array取出不同的tag
-    这里需要一个算法啊啊啊啊啊啊啊。。。。暂时想不到
-
-14. 全局保存数据时做安全性处理（去掉不必要的/危险的特殊字符）
-
-### client 端
-
-1. 通用tip框架
+推荐使用 nginx 反向代理
+node 采用 pm2 管理进程
