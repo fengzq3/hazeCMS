@@ -32,7 +32,9 @@ block adminContent
                                     a(href='editArticle/#{item._id}') 编辑
                             td #{item.author}
                             td #{item.tags}
-                            td #{item.comments.length}
+                            //td #{item.comments.length}
+                            td
+                                span.ds-thread-count(data-thread-key="#{item._id}" data-count-type="comments")
                             td.js-dateTime(date='#{item.date}')
             .page-break
                 p.pull-left 系统共有：#{pages.cont} 条数据，#{pages.allPage} 页

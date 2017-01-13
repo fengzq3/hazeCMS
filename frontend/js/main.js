@@ -32,6 +32,7 @@ $(function () {
     const $loadPage = $('.js-loadPage'); //动态加载分页
     const $listContent = $('.js-listContent'); //内容列表容器
     const $comment = $('.ds-thread'); //评论插件
+    const $commentCont = $('.ds-thread-count'); //评论计数
 
     //一个简单的dialog
     $dialog.on('click', function (e) {
@@ -271,7 +272,7 @@ $(function () {
     });
 
     //渲染评论
-    if ($comment.length !== 0) {
+    if ($comment.length !== 0 || $commentCont.length !== 0) {
         // const duoshuoQuery = {short_name:"fengzq"};
         let ds = document.createElement('script');
         ds.type = 'text/javascript';ds.async = true;

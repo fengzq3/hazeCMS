@@ -24,7 +24,8 @@ block content
                                     span.iconfont.icon-date.js-date(date='#{item.date}')
                                 small
                                     span.iconfont.icon-discuss
-                                    | #{item.comments.length}
+                                    //| #{item.comments.length}
+                                    span.ds-thread-count(data-thread-key="#{content._id}" data-count-type="comments")
 
         // row END page navigation 开始
         .page-more
