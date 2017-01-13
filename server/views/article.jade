@@ -73,4 +73,7 @@ block content
                                                 | #{item.comments.length}
         hr
         #comment.article-comment
-            #SOHUCS(sid="#{content._id}" data-appid="cysAnl283" data-conf="prod_15fad921131977b165e2c49718bf1758")
+            //#SOHUCS(sid="#{content._id}" data-appid="cysAnl283" data-conf="prod_15fad921131977b165e2c49718bf1758")
+            .ds-thread(data-thread-key="#{content._id}" data-title="#{content.title}" data-url="#{site.site_link}#{link.baseUrl}/#{content._id}")
+            script
+                | var duoshuoQuery = {short_name:"fengzq"};

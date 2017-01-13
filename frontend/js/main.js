@@ -31,7 +31,7 @@ $(function () {
     const $dialog = $('.js-dialog'); //定义dialog
     const $loadPage = $('.js-loadPage'); //动态加载分页
     const $listContent = $('.js-listContent'); //内容列表容器
-    const $comment = $('#SOHUCS'); //评论插件
+    const $comment = $('.ds-thread'); //评论插件
 
     //一个简单的dialog
     $dialog.on('click', function (e) {
@@ -272,39 +272,12 @@ $(function () {
 
     //渲染评论
     if ($comment.length !== 0) {
-        const appid = $comment.data('appid');
-        const conf = $comment.data('conf');
-        const width = window.innerWidth || document.documentElement.clientWidth;
-        const c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-        if (width < 960) {
-            const mobileJs = '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>';
-            $(c).append(mobileJs);
-        } else {
-            const loadJs = function (d, a) {
-
-                let b = document.createElement("script");
-                b.setAttribute("type", "text/javascript");
-                b.setAttribute("charset", "UTF-8");
-                b.setAttribute("src", d);
-                if (typeof a === "function") {
-                    if (window.attachEvent) {
-                        b.onreadystatechange = function () {
-                            let e = b.readyState;
-                            if (e === "loaded" || e === "complete") {
-                                b.onreadystatechange = null;
-                                a()
-                            }
-                        }
-                    } else {
-                        b.onload = a
-                    }
-                }
-                c.appendChild(b)
-            };
-            loadJs("http://changyan.sohu.com/upload/changyan.js", function () {
-                window.changyan.api.config({appid: appid, conf: conf})
-            });
-        }
+        // const duoshuoQuery = {short_name:"fengzq"};
+        let ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
     }
 
     //function END
