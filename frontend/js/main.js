@@ -275,11 +275,13 @@ $(function () {
         const appid = $comment.data('appid');
         const conf = $comment.data('conf');
         const width = window.innerWidth || document.documentElement.clientWidth;
+        const c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
         if (width < 960) {
-            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            const mobileJs = '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>';
+            $(c).append(mobileJs);
         } else {
             const loadJs = function (d, a) {
-                let c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+
                 let b = document.createElement("script");
                 b.setAttribute("type", "text/javascript");
                 b.setAttribute("charset", "UTF-8");
