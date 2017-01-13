@@ -15,7 +15,8 @@ block content
                             em.js-date(date='#{content[0].date}')
                         small
                             span.iconfont.icon-discuss
-                            em #{content[0].comments.length}
+                            //em #{content[0].comments.length}
+                            em.ds-thread-count(data-thread-key="#{content[0]._id}" data-count-type="comments")
     // 主内容
     .container-fluid.main-list
         .row.js-listContent

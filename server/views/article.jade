@@ -18,7 +18,8 @@ block content
                             em.js-date(date='#{content.date}')
                         small
                             span.iconfont.icon-discuss
-                            em #{content.comments.length}
+                            //em #{content.comments.length}
+                            em.ds-thread-count(data-thread-key="#{content._id}" data-count-type="comments")
     // 主内容
     .container
         // 内容部分
@@ -75,4 +76,4 @@ block content
         hr
         #comment.article-comment
             .ds-thread(data-thread-key="#{content._id}" data-title="#{content.title}" data-url="#{site.site_link}#{link.baseUrl}/#{content._id}")
-            
+
