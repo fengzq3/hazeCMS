@@ -273,7 +273,7 @@ $(function () {
     //渲染评论
     if ($comment.length !== 0) {
         const appid = $comment.data('appid');
-        const conf = 'prod_15fad921131977b165e2c49718bf1758';
+        const conf = $comment.data('conf');
         const width = window.innerWidth || document.documentElement.clientWidth;
         if (width < 960) {
             window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
