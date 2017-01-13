@@ -162,7 +162,7 @@ module.exports = {
      * @param query 一个类：{} 用来查询
      * 返回 Promise then后获得数量
      */
-    getTagCont:function (query) {
+    getTagCont: function (query) {
         return tags.count(query);
     },
 
@@ -176,6 +176,19 @@ module.exports = {
     getTagArticle: function (query, num, skip) {
         return article
             .find({tags: {$regex: query, $options: 'i'}})
+            .skip(skip)
+            .limit(num)
+            .exec();
+    },
+    /**
+     * search 方法
+     * @param query "{name: {$regex: keyword, $options: 'i'}}"
+     * @param num   查询数量
+     * @param skip  跳过数量
+     */
+    getSearch: function (query, num, skip) {
+        return article
+            .find(query)
             .skip(skip)
             .limit(num)
             .exec();

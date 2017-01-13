@@ -13,12 +13,13 @@ const admin = require('./routes/admin/users');
 const article = require('./routes/article');
 const tags = require('./routes/tags');
 const files = require('./routes/admin/files');
+const search = require('./routes/search');
 
 //install
 const install = require('./install/install');
 
 //生产模式
-if(!config.debug) process.env.NODE_ENV = 'production';
+if (!config.debug) process.env.NODE_ENV = 'production';
 
 //初始化app
 const app = express();
@@ -37,11 +38,11 @@ app.use(expressValidator());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret:'hazeCMS', //用来加密的一个字符串
-    resave:true,    //是否允许session重新设置，要保证session有操作的时候必须设置这个属性为true
-    saveUninitialized:false, //是否设置session在存储容器中可以修改
-    Cookie:{
-        maxAge:1000*60*10 //过期时间10分钟（毫秒ms）
+    secret: 'hazeCMS', //用来加密的一个字符串
+    resave: true,    //是否允许session重新设置，要保证session有操作的时候必须设置这个属性为true
+    saveUninitialized: false, //是否设置session在存储容器中可以修改
+    Cookie: {
+        maxAge: 1000 * 60 * 10 //过期时间10分钟（毫秒ms）
     }
 }));
 
@@ -50,6 +51,7 @@ app.use('/feng', admin);
 app.use('/article', article);
 app.use('/tags', tags);
 app.use('/files', files);
+app.use('/search', search);
 //install
 app.use('/install', install);
 

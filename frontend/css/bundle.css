@@ -115,18 +115,18 @@ transition: all .3s;}
 .nav-search{display:none;}
 .nav-search-form{position: relative;display:inline-block;}
 .nav-search-form .form-group{margin-bottom:0;}
-.nav-search-form .form-control{background:none;border-color:#9d9d9d;color:#fff;width:34px;visibility: hidden;
-    -webkit-transition: all .5s ease;
-    transition: all .5s ease;
+.nav-search-form .form-control{background:none;border:0;color:#fff;width:34px;visibility: hidden;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    opacity:0;
 }
-.nav-search-btn{position: absolute;right:0;top: 0;background:none;color:#9d9d9d;-webkit-transition: all .5s ease;
-transition: all .5s ease;
+.nav-search-btn{position: absolute;right:0;top: 0;background:#080808;color:#9d9d9d;
     border: 0;
     height: 34px;
     width: 34px;}
 
-.nav-search-form.active .form-control,.nav-search-form:hover .form-control,.nav-search-form:focus .form-control{width:200px;visibility: visible;border-color:#9d9d9d;background-color:#353535;}
-.nav-search-form.active .nav-search-btn,.nav-search-form:hover .nav-search-btn{border-left: 1px solid #9d9d9d;color:#fff;}
+.nav-search-form.active .form-control,.nav-search-form:hover .form-control,.nav-search-form:focus .form-control{width:200px;visibility: visible;background-color:#353535;  opacity:1;}
+.nav-search-form.active .nav-search-btn,.nav-search-form:hover .nav-search-btn{color:#fff;background-color:#353535;}
 
 .nav-search-share{display: inline-block;-webkit-transition: all .5s ease;border-radius: 4px;
 transition: all .5s ease;

@@ -18,15 +18,15 @@ html
                     a.navbar-brand(href='#{site.site_link}') #{site.site_name}
                 // search
                 .nav-search
-                    form#mainSearch.nav-search-form(role='form', method='POST', action='#')
+                    form#mainSearch.nav-search-form(role='form', method='POST', action='/search')
                         .form-group
-                            input.form-control(type='text', placeholder='输入搜索')
+                            input.form-control(type='text' name="keyword" placeholder='输入搜索')
                         button.nav-search-btn(type='submit')
                             span.iconfont.icon-fangdajing
-                    a.nav-search-share(href='#')
-                        span.iconfont.icon-qq
-                    a.nav-search-share(href='#')
-                        span.iconfont.icon-share
+                    //a.nav-search-share(href='#')
+                    //    span.iconfont.icon-qq
+                    //a.nav-search-share(href='#')
+                    //    span.iconfont.icon-share
                 // main nav
                 #feng-navbar-collapse.collapse.navbar-collapse.pull-right
                     ul.nav.navbar-nav.js-navActive
@@ -71,9 +71,9 @@ html
                 // 移动 search
                 .mobile-search.js-mobSearchIco
                     span.mob-search-ico.iconfont.icon-fangdajing
-                form.mobile-search-form.col-xs-8.col-xs-offset-2.js-mobSearch(action='#', method='POST')
+                form.mobile-search-form.col-xs-8.col-xs-offset-2.js-mobSearch(action='/search', method='POST')
                     .form-group
-                        input.form-control(type='text', placeholder='输入搜索')
+                        input.form-control(type='text' placeholder='输入搜索' name="keyword")
                     button.mobile-search-btn(type='submit')
                         span.iconfont.icon-fangdajing
                 // 移动 end
