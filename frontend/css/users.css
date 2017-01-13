@@ -12,11 +12,12 @@ body{overflow:hidden;}
 .has-icon .iconfont{padding-left:5px;}
 
 /*登录注册页面*/
-.login{position:absolute;width:100%;left:0;top:50px;bottom:0;text-align: center;}
+.login{position:absolute;width:100%;left:0;top:50px;bottom:0;text-align: center;background:url('../images/loginbg.png') no-repeat center;}
 .login:before{content:'';display:inline-block;height:100%;width:0;vertical-align: middle;}
 .login-panel{display:inline-block;vertical-align: middle;width:350px;margin-top:-50px;padding:15px;background-color:rgba(255,255,255,.5);}
 .login-panel .panel-title{margin-top:0;margin-bottom:15px;}
 .login-panel .panel-title small{display:block;margin-top:10px;}
+.login-form .form-control{background:rgba(255,255,255,.6);border-color:#5CB85C;}
 
 /*用户中心*/
 .admin-con{padding-left:15px;padding-right:15px;}

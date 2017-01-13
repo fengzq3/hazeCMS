@@ -76,7 +76,6 @@ module.exports = {
 
     },
     formCommit: function (req, res, next) {
-        console.log(req);
         res.redirect('/search/' + req.body.keyword);
     }
 };

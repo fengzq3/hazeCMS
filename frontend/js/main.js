@@ -31,6 +31,7 @@ $(function () {
     const $dialog = $('.js-dialog'); //定义dialog
     const $loadPage = $('.js-loadPage'); //动态加载分页
     const $listContent = $('.js-listContent'); //内容列表容器
+    const $comment = $('#SOHUCS'); //评论插件
 
     //一个简单的dialog
     $dialog.on('click', function (e) {
@@ -218,10 +219,10 @@ $(function () {
             method: 'GET'
         }).then(function (d) {
 
-            if(d){
+            if (d) {
                 $listContent.append(d);
                 $btn.data('page', page + 1).button('reset');
-            }else{
+            } else {
                 $btn.text('没有更多了');
             }
 
@@ -268,6 +269,41 @@ $(function () {
             }
         });
     });
+
+    //渲染评论
+    if ($comment.length !== 0) {
+        const appid = $comment.data('appid');
+        const conf = 'prod_15fad921131977b165e2c49718bf1758';
+        const width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+        } else {
+            const loadJs = function (d, a) {
+                let c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                let b = document.createElement("script");
+                b.setAttribute("type", "text/javascript");
+                b.setAttribute("charset", "UTF-8");
+                b.setAttribute("src", d);
+                if (typeof a === "function") {
+                    if (window.attachEvent) {
+                        b.onreadystatechange = function () {
+                            let e = b.readyState;
+                            if (e === "loaded" || e === "complete") {
+                                b.onreadystatechange = null;
+                                a()
+                            }
+                        }
+                    } else {
+                        b.onload = a
+                    }
+                }
+                c.appendChild(b)
+            };
+            loadJs("http://changyan.sohu.com/upload/changyan.js", function () {
+                window.changyan.api.config({appid: appid, conf: conf})
+            });
+        }
+    }
 
     //function END
 });

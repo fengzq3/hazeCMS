@@ -47,7 +47,7 @@ block content
                                 if tag
                                     a(href='/tags/#{tag}') #{tag}
                     p.pull-right
-                        a(href='#')
+                        a(href='#comment')
                             span.iconfont.icon-discuss
                             | #{content.comments.length}
                 .article-info-r.js-prevNext(data-date='#{content.date}')
@@ -59,7 +59,7 @@ block content
                 .article-relate-con.row
                     each item in relate
                         if JSON.stringify(item._id) !== JSON.stringify(content._id)
-                            .col-xs-4
+                            .col-sm-4
                                 a(href='#{site.site_link}#{link.baseUrl}/#{item._id}' title="#{item.title}")
                                     .list-img
                                         img(src='#{item.topPic}', alt='#{item.title}')
@@ -71,3 +71,6 @@ block content
                                             small
                                                 span.iconfont.icon-discuss
                                                 | #{item.comments.length}
+        hr
+        #comment.article-comment
+            #SOHUCS(sid="#{content._id}" data-appid="cysAnl283")
