@@ -11,6 +11,7 @@ mongoose.connection.on('error', console.error.bind(console, 'connection error:')
 //全局设置项
 const siteSchema = new mongoose.Schema({
     site_name: String,
+    site_seoTitle:String,
     site_link: String,
     site_description: String,
     site_keyword: String

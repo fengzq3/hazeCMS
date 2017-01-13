@@ -25,7 +25,13 @@ const index = {
 
             //最终data
             const data = {
-                site: d[0],
+                site: {
+                    site_name: d[0].site_name,
+                    site_title: d[0].site_seoTitle ? d[0].site_name + '_' + d[0].site_seoTitle : d[0].site_name,
+                    site_link: d[0].site_link,
+                    site_description: d[0].site_description ? d[0].site_description : '',
+                    site_keyword: d[0].site_keyword ? d[0].site_keyword : ''
+                },
                 nav: d[1],
                 content: d[2]
             };

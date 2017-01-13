@@ -21,6 +21,11 @@ block adminContent
                     .site-info-con #{site.site_name}
                 .clearfix
                 .col-sm-2
+                    .site-info-label SEO标题：
+                .col-sm-10
+                    .site-info-con #{site.site_seoTitle}
+                .clearfix
+                .col-sm-2
                     .site-info-label 网站连接：
                 .col-sm-10
                     .site-info-con #{site.site_link}
@@ -46,6 +51,16 @@ block adminContent
                     p.help-block
                         i.iconfont.icon-dui
                         span 请输入网站名称
+            .form-group.js-checkInput
+                label.col-sm-2.control-label
+                    em.iconfont.icon-must
+                    | SEO网站标题
+                .col-sm-5
+                    input.form-control.must(name="site_seoTitle" type="text" placeholder="输入网站seo标题")
+                .col-sm-5
+                    p.help-block
+                        i.iconfont.icon-dui
+                        span 输入网站seo标题
             .form-group.js-checkInput
                 label.col-sm-2.control-label
                     em.iconfont.icon-must
