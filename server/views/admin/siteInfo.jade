@@ -46,7 +46,7 @@ block adminContent
                     em.iconfont.icon-must
                     | 网站名称
                 .col-sm-5
-                    input.form-control.must(name="site_name" type="text" placeholder="输入网站名称")
+                    input.form-control.must(name="site_name" type="text" placeholder="输入网站名称" value="#{site.site_name}")
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
@@ -56,7 +56,7 @@ block adminContent
                     em.iconfont.icon-must
                     | SEO网站标题
                 .col-sm-5
-                    input.form-control.must(name="site_seoTitle" type="text" placeholder="输入网站seo标题")
+                    input.form-control.must(name="site_seoTitle" type="text" placeholder="输入网站seo标题" value="#{site.site_seoTitle}")
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
@@ -66,7 +66,7 @@ block adminContent
                     em.iconfont.icon-must
                     | 网站URL
                 .col-sm-5
-                    input.form-control.must(name="site_link" type="text" placeholder="输入程序网址")
+                    input.form-control.must(name="site_link" type="text" placeholder="输入程序网址" value="#{site.site_link}")
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
@@ -74,7 +74,7 @@ block adminContent
             .form-group.js-checkInput
                 label.col-sm-2.control-label 描述
                 .col-sm-5
-                    input.form-control(name='site_description' type="text" placeholder="输入网站SEO描述信息")
+                    input.form-control(name='site_description' type="text" placeholder="输入网站SEO描述信息" value="#{site.site_description}")
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
@@ -82,7 +82,7 @@ block adminContent
             .form-group.js-checkInput
                 label.col-sm-2.control-label 关键词
                 .col-sm-5
-                    input.form-control(name='site_keyword' type="text" placeholder="输入网站SEO关键词")
+                    input.form-control(name='site_keyword' type="text" placeholder="输入网站SEO关键词" value="#{site.site_keyword}")
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
@@ -94,7 +94,7 @@ block adminContent
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
-                        span 请输入网站关键词
+                        span 请输入站长QQ
             .form-group
                 .col-sm-5.col-sm-offset-2
                     button.btn.btn-success(type='submit' data-loading-text="Loading...") 提交

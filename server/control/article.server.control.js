@@ -18,10 +18,10 @@ const article = {
 
 
         detail.then(function (dt) {
-            if (config.debug) console.log(dt);
+            // if (config.debug) console.log(dt);
 
             //判断空id
-            if(dt === null) return next();
+            if (dt === null) return next();
             //获取tag列表
             let tgAr = dt.tags ? dt.tags.split(',') : [];
             let articleAr = [];
@@ -42,12 +42,26 @@ const article = {
                 //处理相关文章数据
                 let relatesArr = [];
                 if (tgAr.length > 0) {
+                    // relatesArr = tgAr.forEach(function (ar,i) {
+                    //     return [].concat(d[i],relatesArr);
+                    // });
+
                     for (let i = 2; i < tgAr.length + 2; i++) {
-                        relatesArr = relatesArr.concat(d[i]);
+                        relatesArr = relatesArr.concat(d[i], relatesArr);
                     }
+                    // if (config.debug) {
+                    //     console.log('合并后数组：');
+                    //     console.log(relatesArr);
+                    // }
+
                 }
                 //相关文章数组去重
                 const relates = common.repeatArray(relatesArr);
+
+                // if (config.debug) {
+                //     console.log('处理后；');
+                //     console.log(relates);
+                // }
 
                 //处理相关文章的topPic
                 relates.forEach(function (e) {
@@ -56,7 +70,7 @@ const article = {
                     }
                 });
 
-                if (config.debug) console.log(relates);
+                // if (config.debug) console.log(relates);
 
                 //最终渲染数据
                 const data = {

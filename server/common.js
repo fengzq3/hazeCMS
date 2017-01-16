@@ -5,7 +5,7 @@
 const config = require('./config');
 const path = require('path');
 const fs = require('fs');
-const _ = require('underscore');
+// const _ = require('lodash');
 
 module.exports = {
     /**
@@ -33,20 +33,32 @@ module.exports = {
     /**
      * 数组合并去重
      * 传入1个数组，去重后返回
+     *
+     * 思路：
+     * 映射一个id数组，用来对比重复项，由于objectId 无法对比，全部转换成string
+     *
      * @param arr
      * @returns {Array}
      */
     repeatArray: function (arr) {
         let result = [];
+        let resId = [];
 
         //若arr不存在则返回空数组，为了兼容api格式
         if (arr.length === 0) return [];
 
-        let resArr = _.uniq(arr);
         //循环去重
-        for (let i = 0; i < resArr.length; i++) {
-            if (JSON.stringify(resArr[i]) !== JSON.stringify(result[result.length - 1])) result.push(resArr[i]);
+        for (let i = 0; i < arr.length; i++) {
+            if (resId.indexOf(JSON.stringify(arr[i]._id)) < 0) {
+                resId.push(JSON.stringify(arr[i]._id));
+                result.push(arr[i]);
+            }
         }
+
+        // if (config.debug) {
+        //     console.log(result);
+        //     console.log(resId);
+        // }
 
         return result;
 
