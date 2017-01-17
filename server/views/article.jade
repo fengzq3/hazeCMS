@@ -73,7 +73,8 @@ block content
                                                 span.iconfont.icon-date.js-date(date='#{item.date}')
                                             small
                                                 span.iconfont.icon-discuss
-                                                | #{item.comments.length}
+                                                //| #{item.comments.length}
+                                                span.ds-thread-count(data-thread-key="#{item._id}" data-count-type="comments")
         hr
         #comment.article-comment
             .ds-thread(data-thread-key="#{content._id}" data-title="#{content.title}" data-url="#{site.site_link}#{link.baseUrl}/#{content._id}")

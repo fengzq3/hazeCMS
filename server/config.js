@@ -2,8 +2,13 @@
  * Created by feng on 2016/11/18.
  */
 module.exports = {
-    debug:false,
+    db: {
+        server: 'localhost',
+        port: '27017',
+        dbName: 'blog'
+    },
+    debug: false,
     root: __dirname,
-    pageSize:20,
-    adminPageSize:20
+    pageSize: 20,
+    adminPageSize: 20
 };

@@ -325,6 +325,9 @@ const adminCtl = {
                     }
                     res.json({error: 300, messages: {title: '信息不全', body: error.join(',')}});
                 } else {
+                    //处理添加时间
+                    req.body.date = Date.now();
+
                     /**
                      * 添加文章
                      * 处理 tags
@@ -432,6 +435,8 @@ const adminCtl = {
                 });
                 break;
             case 'POST':
+                //处理修改时间
+                req.body.date = Date.now();
                 //处理tag
                 let pAr = [];
                 pAr.push(db.updateArticle({_id: req.params.id}, req.body));

@@ -20,21 +20,21 @@ block content
     // 主内容
     .container-fluid.main-list
         .row.js-listContent
-            each item,key in content
-                if key !== 0
-                    .col-lg-3.col-md-4.col-sm-6
-                        a.main-list-item(href='/article/#{item.id}')
-                            .list-img
-                                img(src='#{item.topPic}', alt='#{item.title}')
-                            .list-con
-                                h3 #{item.title}
-                                p.list-con-des
-                                    small
-                                        span.iconfont.icon-date.js-date(date='#{item.date}')
-                                    small
-                                        span.iconfont.icon-discuss
-                                        //| #{item.comments.length}
-                                        span.ds-thread-count(data-thread-key="#{item._id}" data-count-type="comments")
+            each item in content
+                .col-lg-3.col-md-4.col-sm-6
+                    a.main-list-item(href='/article/#{item.id}')
+                        .list-img
+                            img(src='#{item.topPic}', alt='#{item.title}')
+                        .list-con
+                            h3 #{item.title}
+                            p.list-con-des
+                                small
+                                    span.iconfont.icon-date.js-date(date='#{item.date}')
+                                small
+                                    span.iconfont.icon-discuss
+                                    //| #{item.comments.length}
+                                    span.ds-thread-count(data-thread-key="#{item._id}" data-count-type="comments")
+
         // row END page navigation 开始
         .page-more
             a.btn.btn-block.btn-lg.btn-default.js-loadPage(href='/') 下一页

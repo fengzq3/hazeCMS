@@ -3,15 +3,22 @@
  */
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/blog');
+const config = require('../config');
+// mongoose.connect('mongodb://localhost:27017/blog');
+mongoose.connect(`mongodb://${config.db.server}:${config.db.port}/${config.db.dbName}`);
 mongoose.Promise = require('bluebird');
 
-mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+const mdb = mongoose.connection;
+
+mdb.on('error', console.error.bind(console, 'connection error:'));
+mdb.once('open', function () {
+    if (config.debug) console.log('mongoose打开连接成功');
+});
 
 //全局设置项
 const siteSchema = new mongoose.Schema({
     site_name: String,
-    site_seoTitle:String,
+    site_seoTitle: String,
     site_link: String,
     site_description: String,
     site_keyword: String
