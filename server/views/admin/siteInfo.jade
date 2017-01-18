@@ -13,33 +13,33 @@ block adminContent
             //li
             //    a(href='#') 实例2
         hr
-        .site-info
-            .row
-                .col-sm-2
-                    .site-info-label 网站名称：
-                .col-sm-10
-                    .site-info-con #{site.site_name}
-                .clearfix
-                .col-sm-2
-                    .site-info-label SEO标题：
-                .col-sm-10
-                    .site-info-con #{site.site_seoTitle}
-                .clearfix
-                .col-sm-2
-                    .site-info-label 网站连接：
-                .col-sm-10
-                    .site-info-con #{site.site_link}
-                .clearfix
-                .col-sm-2
-                    .site-info-label 描述信息：
-                .col-sm-10
-                    .site-info-con #{site.site_description}
-                .clearfix
-                .col-sm-2
-                    .site-info-label 关键词：
-                .col-sm-10
-                    .site-info-con #{site.site_keyword}
-        hr
+        //.site-info
+        //    .row
+        //        .col-sm-2
+        //            .site-info-label 网站名称：
+        //        .col-sm-10
+        //            .site-info-con #{site.site_name}
+        //        .clearfix
+        //        .col-sm-2
+        //            .site-info-label SEO标题：
+        //        .col-sm-10
+        //            .site-info-con #{site.site_seoTitle}
+        //        .clearfix
+        //        .col-sm-2
+        //            .site-info-label 网站连接：
+        //        .col-sm-10
+        //            .site-info-con #{site.site_link}
+        //        .clearfix
+        //        .col-sm-2
+        //            .site-info-label 描述信息：
+        //        .col-sm-10
+        //            .site-info-con #{site.site_description}
+        //        .clearfix
+        //        .col-sm-2
+        //            .site-info-label 关键词：
+        //        .col-sm-10
+        //            .site-info-con #{site.site_keyword}
+        //hr
         form.form-horizontal.add-form.js-info-ajax(role='form' method='post' action='/feng/siteInfo')
             .form-group.js-checkInput
                 label.col-sm-2.control-label
@@ -90,11 +90,27 @@ block adminContent
             .form-group.js-checkInput
                 label.col-sm-2.control-label QQ:
                 .col-sm-5
-                    input.form-control(name='site_keyword' type="text" placeholder="联系QQ号")
+                    input.form-control(name='site_qq' type="text" placeholder="联系QQ号" value="#{site.site_qq}")
                 .col-sm-5
                     p.help-block
                         i.iconfont.icon-dui
                         span 请输入站长QQ
+            .form-group.js-checkInput
+                label.col-sm-2.control-label 统计代码:
+                .col-sm-5
+                    textarea.form-control(name='foot_info') #{site.foot_info}
+                .col-sm-5
+                    p.help-block
+                        i.iconfont.icon-dui
+                        span 请填入站长统计代码
+            .form-group.js-checkInput
+                label.col-sm-2.control-label ICP备案号:
+                .col-sm-5
+                    input.form-control(name='foot_icp' type="text" placeholder="网址ICP备案" value="#{site.foot_icp}")
+                .col-sm-5
+                    p.help-block
+                        i.iconfont.icon-dui
+                        span 请填入网址ICP备案号
             .form-group
                 .col-sm-5.col-sm-offset-2
                     button.btn.btn-success(type='submit' data-loading-text="Loading...") 提交

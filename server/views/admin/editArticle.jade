@@ -33,9 +33,9 @@ block adminContent
                                 p.js-bindTitle 文章标题
                         .js-uploadFile 上传封面
                         hr
-                        .input-group
-                            label.input-group-addon.control-label 封面:
-                            input.form-control.js-getTopPic(name="topPic" type="text" placeholder="填写封面图地址")
+                        //.input-group
+                            //label.input-group-addon.control-label 封面:
+                        input.form-control.js-getTopPic(name="topPic" type="hidden" placeholder="填写封面图地址")
                         .input-group
                             label.input-group-addon.control-label 话题:
                             input.form-control(name="tags" type="text" value="#{content.tags}")
@@ -43,6 +43,14 @@ block adminContent
                         .input-group
                             label.input-group-addon.control-label 作者:
                             input.form-control(name="author" type="text" value="#{content.author}")
+                        .input-group
+                            label.input-group-addon.control-label 设置:
+                            select.form-control(name="flag")
+                                option(value="0")
+                                option(value="1") 推荐
+                                option(value="2") 置顶
+                                option(value="3") 头条
+                        hr
                         button.btn.btn-block.btn-success(type="submit") 保存/发布
                         button.btn.btn-block.btn-default.js-back(type="reset") 取消/重置
 

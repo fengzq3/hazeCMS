@@ -38,7 +38,7 @@ html
                             if key < 1
                                 li
                                     a(href='#{site.site_link}/tags/#{encodeURIComponent(item.tag_name)}') #{item.tag_name}
-                        if nav.length >= 1
+                        if nav.length > 1
                             li.dropdown.js-dropdown
                                 a.dropdown-toggle(href='#', data-toggle='dropdown') 查看更多
                                     b.caret

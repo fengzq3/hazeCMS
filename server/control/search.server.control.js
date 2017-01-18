@@ -46,6 +46,10 @@ module.exports = {
                     e.topPic = '/images/topPic/' + common.getTopPic();
                 }
             });
+            //处理site信息
+            d[0].site_title = keyword + '_' + d[0].site_name;
+            d[0].site_description= keyword;
+            d[0].site_keyword= keyword;
 
             //最终data
             let data = {
@@ -54,13 +58,7 @@ module.exports = {
                     path: req.path,
                     pageName: keyword
                 },
-                site: {
-                    site_name: d[0].site_name,
-                    site_title: keyword + '_' + d[0].site_name,
-                    site_link: d[0].site_link,
-                    site_description: keyword,
-                    site_keyword: keyword
-                },
+                site: d[0],
                 nav: d[1],
                 content: articles
             };

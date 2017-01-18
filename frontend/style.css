@@ -5696,4 +5696,11 @@ transition: all .3s ease-in-out;}
 .w-p10{width:10%;}
 .w-p20{width:20%;}
 
-blockquote{background-color:#E0E0E0;border-left:6px solid #b4b4b4;}
+blockquote{background-color:#E9F0F5;border-left:6px solid #B0D4EA;}
+.index-tag{position:absolute !important;right:0;bottom:-5px;}
+.index-tag span{display:inline-block;padding:5px;border:1px solid #e6e6e6;height:40px;width:40px;text-align: center;margin-left:5px;line-height:30px;color:#ccc !important;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    text-transform: capitalize;
+}

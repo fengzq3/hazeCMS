@@ -71,6 +71,10 @@ const article = {
                 });
 
                 // if (config.debug) console.log(relates);
+                //处理site信息
+                d[0].site_title= dt.title + '_' + d[0].site_name;
+                d[0].site_description= dt.body.substr(0, 160);
+                d[0].site_keyword= dt.tags;
 
                 //最终渲染数据
                 const data = {
@@ -79,13 +83,7 @@ const article = {
                         path: req.path
                     },
                     user: req.session.user,
-                    site: {
-                        site_name: d[0].site_name,
-                        site_title: dt.title + '_' + d[0].site_name,
-                        site_link: d[0].site_link,
-                        site_description: dt.body.substr(0, 160),
-                        site_keyword: dt.tags
-                    },
+                    site:d[0],
                     nav: d[1],
                     content: dt,
                     relate: relates

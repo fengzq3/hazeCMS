@@ -533,9 +533,9 @@ const adminCtl = {
 
                 break;
             case 'POST':
-                //话题添加
-
-                //处理话题已存在
+                //话题添加时间
+                req.body.date = Date.now();
+                //处理话题添加
                 if (req.body.tag_name !== '') {
                     db.addTag(req.body).then(function (d) {
                         res.json({error: 0, messages: {title: '添加成功', body: '话题添加成功！'}});
@@ -545,7 +545,6 @@ const adminCtl = {
                 } else {
                     res.json({error: 200, messages: {title: '添加失败', body: '话题名称不能为空！'}});
                 }
-
 
                 break;
             default:

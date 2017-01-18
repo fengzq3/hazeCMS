@@ -34,6 +34,10 @@ const tags = {
                     e.topPic = '/images/topPic/' + common.getTopPic();
                 }
             });
+            //处理site信息
+            d[0].site_title = req.params.name + '_' + d[0].site_name;
+            d[0].site_description = d[3].tag_description ? d[3].tag_description : '';
+            d[0].site_keyword = d[3].tag_keyword ? d[3].tag_keyword : '';
 
             //最终data
             let data = {
@@ -43,18 +47,12 @@ const tags = {
                     pageName: req.params.name
                 },
                 user: req.session.user,
-                site: {
-                    site_name: d[0].site_name,
-                    site_title: req.params.name + '_' + d[0].site_name,
-                    site_link: d[0].site_link,
-                    site_description: d[3].tag_description ? d[3].tag_description : '',
-                    site_keyword: d[3].tag_keyword ? d[3].tag_keyword : ''
-                },
+                site:d[0],
                 nav: d[1],
                 content: d[2]
             };
 
-            if(config.debug) console.log(isAjax);
+            if (config.debug) console.log(isAjax);
 
             if (!isAjax) {
                 res.render('tags', data);

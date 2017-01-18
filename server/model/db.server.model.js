@@ -21,7 +21,10 @@ const siteSchema = new mongoose.Schema({
     site_seoTitle: String,
     site_link: String,
     site_description: String,
-    site_keyword: String
+    site_keyword: String,
+    site_qq: String,
+    foot_info:String,
+    foot_icp:String
 
 });
 
@@ -56,7 +59,8 @@ const articleSchema = new mongoose.Schema({
     comments: [{body: String, date: Date}],
     date: {type: Date, default: Date.now()},
     tags: {type: String, default: 'tags'},  //定义一个默认tags，便于后期用tag组织文章
-    topPic: String
+    topPic: String,
+    flag:String //0正常，1推荐，2置顶，3头条
 });
 
 const webSite = mongoose.model('blog', siteSchema);
