@@ -26,6 +26,10 @@ block content
                                     span.iconfont.icon-discuss
                                     //| #{item.comments.length}
                                     span.ds-thread-count(data-thread-key="#{content._id}" data-count-type="comments")
+                                if item.newTag
+                                    small.index-tag
+                                        each tag in item.newTag
+                                            span #{tag}
 
         // row END page navigation 开始
         .page-more
