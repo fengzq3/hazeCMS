@@ -7,7 +7,12 @@ each item in content
                 h3 #{item.title}
                 p.list-con-des
                     small
-                        span.iconfont.icon-date.js-date(date='#{item.date}')
+                        span.iconfont.icon-date(date='#{item.date}') #{item.fDate}
                     small
                         span.iconfont.icon-discuss
-                        | #{item.comments.length}
+                        //| #{item.comments.length}
+                        span.ds-thread-count(data-thread-key="#{item._id}" data-count-type="comments")
+                    if item.newTag
+                        small.index-tag
+                            each tag in item.newTag
+                                span #{tag}

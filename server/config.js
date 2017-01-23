@@ -7,7 +7,7 @@ module.exports = {
         port: '27017',
         dbName: 'blog'
     },
-    debug: false,
+    debug: true,
     root: __dirname,
     pageSize: 20,
     adminPageSize: 20

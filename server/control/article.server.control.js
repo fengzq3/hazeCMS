@@ -6,6 +6,8 @@ const config = require('../config');
 const db = require('../model/db.server.model');
 const Promise = require('bluebird');
 const common = require('../common');
+const moment = require('moment');
+moment.locale('zh-cn');
 
 const article = {
     articleDetail: function (req, res, next) {
@@ -36,6 +38,8 @@ const article = {
             if (!dt.topPic) {
                 dt.topPic = '/images/topPic/' + common.getTopPic();
             }
+            //格式化文章发布时间
+            dt.fDateTime = moment(dt.date).format('YYYY-MMM-Do h:mm:ss');
 
             //最终渲染
             Promise.all(articleAr).then(function (d) {
@@ -56,7 +60,7 @@ const article = {
 
                 }
                 //相关文章数组去重
-                const relates = common.repeatArray(relatesArr);
+                let relates = common.repeatArray(relatesArr);
 
                 // if (config.debug) {
                 //     console.log('处理后；');
@@ -64,17 +68,13 @@ const article = {
                 // }
 
                 //处理相关文章的topPic
-                relates.forEach(function (e) {
-                    if (!e.topPic) {
-                        e.topPic = '/images/topPic/' + common.getTopPic();
-                    }
-                });
+                relates = common.setArticleList(relates);
 
                 // if (config.debug) console.log(relates);
                 //处理site信息
-                d[0].site_title= dt.title + '_' + d[0].site_name;
-                d[0].site_description= dt.body.substr(0, 160);
-                d[0].site_keyword= dt.tags;
+                d[0].site_title = dt.title + '_' + d[0].site_name;
+                d[0].site_description = dt.body.substr(0, 160);
+                d[0].site_keyword = dt.tags;
 
                 //最终渲染数据
                 const data = {
@@ -83,7 +83,7 @@ const article = {
                         path: req.path
                     },
                     user: req.session.user,
-                    site:d[0],
+                    site: d[0],
                     nav: d[1],
                     content: dt,
                     relate: relates

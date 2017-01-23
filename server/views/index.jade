@@ -12,7 +12,7 @@ block content
                     p
                         small
                             span.iconfont.icon-rili
-                            em.js-date(date='#{content[0].date}')
+                            em(date='#{content[0].date}') #{content[0].fDate}
                         small
                             span.iconfont.icon-discuss
                             //em #{content[0].comments.length}
@@ -20,26 +20,7 @@ block content
     // 主内容
     .container-fluid.main-list
         .row.js-listContent
-            each item in content
-                .col-lg-3.col-md-4.col-sm-6
-                    a.main-list-item(href='/article/#{item.id}')
-                        .list-img
-                            img(src='#{item.topPic}', alt='#{item.title}')
-                        .list-con
-                            h3 #{item.title}
-                            p.list-con-des
-                                small
-                                    span.iconfont.icon-date.js-date(date='#{item.date}')
-                                small
-                                    span.iconfont.icon-discuss
-                                    //| #{item.comments.length}
-                                    span.ds-thread-count(data-thread-key="#{item._id}" data-count-type="comments")
-                                if item.newTag
-                                    small.index-tag
-                                        each tag in item.newTag
-                                            span #{tag}
-
-
+            include item
 
         // row END page navigation 开始
         .page-more

@@ -6,8 +6,10 @@ const config = require('./config');
 const path = require('path');
 const fs = require('fs');
 // const _ = require('lodash');
+const moment = require('moment');
+moment.locale('zh-cn');
 
-module.exports = {
+const common = {
     /**
      * 传入2个数组，返回2数组中的不同数据
      * @param ar1
@@ -78,5 +80,48 @@ module.exports = {
         const index = Math.round((files.length - 1) * Math.random());
 
         return files[index];
+    },
+    /**
+     * 处理文章列表的一些格式，使其更友好，更易读
+     * @param arr
+     * @returns {*}
+     */
+    setArticleList:function (arr) {
+        //check topPic 是否存在，不存在则添加一个随机的
+        arr.forEach(function (e, key) {
+            //处理空topPic
+            if (!e.topPic) {
+                e.topPic = '/images/topPic/' + common.getTopPic();
+            }
+            //处理tag
+            if (!!e.tags) {
+                let tagsAr = e.tags.split(',');
+                e.newTag = [];
+
+                //只取前2个tag
+                if (tagsAr.length > 2) {
+                    e.newTag.push(tagsAr[0].substr(0, 1));
+                    e.newTag.push(tagsAr[1].substr(0, 1));
+                } else {
+                    e.newTag.push(tagsAr[0].substr(0, 1));
+                }
+            }
+            //处理content date
+            if (key > 2) {
+                e.fDate = moment(e.date).format("YYYY-MM-D");
+            } else {
+                e.fDate = moment(e.date, "YYYY-MM-D").fromNow();
+            }
+
+
+            if (config.debug) {
+                console.log(e.fDate);
+            }
+
+        });
+
+        return arr;
     }
 };
+
+module.exports = common;

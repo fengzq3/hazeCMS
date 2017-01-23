@@ -12,24 +12,25 @@ block content
                     a(href="#{link.baseUrl}#{link.path}") #{link.pageName}
             hr
         .row.js-listContent
-            each item in content
-                .col-lg-3.col-md-4.col-sm-6
-                    a.main-list-item(href='/article/#{item.id}')
-                        .list-img
-                            img(src='#{item.topPic}', alt='#{item.title}')
-                        .list-con
-                            h3 #{item.title}
-                            p.list-con-des
-                                small
-                                    span.iconfont.icon-date.js-date(date='#{item.date}')
-                                small
-                                    span.iconfont.icon-discuss
-                                    //| #{item.comments.length}
-                                    span.ds-thread-count(data-thread-key="#{content._id}" data-count-type="comments")
-                                if item.newTag
-                                    small.index-tag
-                                        each tag in item.newTag
-                                            span #{tag}
+            include item
+            //each item in content
+            //    .col-lg-3.col-md-4.col-sm-6
+            //        a.main-list-item(href='/article/#{item.id}')
+            //            .list-img
+            //                img(src='#{item.topPic}', alt='#{item.title}')
+            //            .list-con
+            //                h3 #{item.title}
+            //                p.list-con-des
+            //                    small
+            //                        span.iconfont.icon-date(date='#{item.date}') #{item.fDate}
+            //                    small
+            //                        span.iconfont.icon-discuss
+            //                        //| #{item.comments.length}
+            //                        span.ds-thread-count(data-thread-key="#{content._id}" data-count-type="comments")
+            //                    if item.newTag
+            //                        small.index-tag
+            //                            each tag in item.newTag
+            //                                span #{tag}
 
         // row END page navigation 开始
         .page-more

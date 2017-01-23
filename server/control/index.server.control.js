@@ -17,31 +17,7 @@ const index = {
         let listP = db.showList(config.pageSize, config.pageSize * (page - 1));
         Promise.all([siteP, navP, listP]).then(function (d) {
             //check topPic 是否存在，不存在则添加一个随机的
-            d[2].forEach(function (e) {
-                //处理空topPic
-                if (!e.topPic) {
-                    e.topPic = '/images/topPic/' + common.getTopPic();
-                }
-                //处理tag
-                if (!!e.tags) {
-                    let tagsAr = e.tags.split(',');
-                    e.newTag = [];
-
-                    //只取前2个tag
-                    if (tagsAr.length > 2) {
-                        e.newTag.push(tagsAr[0].substr(0, 1));
-                        e.newTag.push(tagsAr[1].substr(0, 1));
-                    } else {
-                        e.newTag.push(tagsAr[0].substr(0, 1));
-                    }
-
-                    // tagsAr.forEach(tag => {
-                    //     e.newTag.push(tag.substr(0, 1));
-                    // });
-
-                }
-
-            });
+            d[2] = common.setArticleList(d[2]);
             //处理site信息
             d[0].site_title = d[0].site_seoTitle ? d[0].site_name + '_' + d[0].site_seoTitle : d[0].site_name;
             d[0].site_description = d[0].site_description ? d[0].site_description : '';
@@ -49,12 +25,12 @@ const index = {
 
             //最终data
             const data = {
-                site:d[0],
+                site: d[0],
                 nav: d[1],
                 content: d[2]
             };
 
-            if (config.debug) console.log(isAjax);
+            if (config.debug) console.log('isAjax=', isAjax);
 
             if (!isAjax) {
                 res.render('index', data);

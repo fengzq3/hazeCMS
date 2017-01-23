@@ -29,11 +29,7 @@ const tags = {
 
         Promise.all([siteP, navP, tagArP, tagP]).then(function (d) {
             //check topPic 是否存在，不存在则添加一个随机的
-            d[2].forEach(function (e) {
-                if (!e.topPic) {
-                    e.topPic = '/images/topPic/' + common.getTopPic();
-                }
-            });
+            d[2]=common.setArticleList(d[2]);
             //处理site信息
             d[0].site_title = req.params.name + '_' + d[0].site_name;
             d[0].site_description = d[3].tag_description ? d[3].tag_description : '';

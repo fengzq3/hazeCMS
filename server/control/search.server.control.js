@@ -41,15 +41,11 @@ module.exports = {
             if (config.debug) console.log(articles);
 
             //check topPic 是否存在，不存在则添加一个随机的
-            articles.forEach(function (e) {
-                if (!e.topPic) {
-                    e.topPic = '/images/topPic/' + common.getTopPic();
-                }
-            });
+            articles = common.setArticleList(articles);
             //处理site信息
             d[0].site_title = keyword + '_' + d[0].site_name;
-            d[0].site_description= keyword;
-            d[0].site_keyword= keyword;
+            d[0].site_description = keyword;
+            d[0].site_keyword = keyword;
 
             //最终data
             let data = {

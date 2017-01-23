@@ -4,7 +4,7 @@
 "use strict";
 // require('./index.slide.js');
 //格式化时间
-require('./date.format');
+// require('./date.format');
 // const Model = require('./tipModal');
 require('jquery-confirm');
 
@@ -21,8 +21,8 @@ $(function () {
     const width = window.innerWidth;  //窗口宽度
     const height = window.innerHeight;  //窗口高度
     const $fixed = $('.js-fixed');    //pin功能，固定底部
-    const $date = $('.js-date');  //date
-    const $dateTime = $('.js-dateTime');  //date time
+    // const $date = $('.js-date');  //date
+    // const $dateTime = $('.js-dateTime');  //date time
     const $checkInput = $('.js-checkInput'); //通用input检测
     const $linkAjax = $('.js-linkAjax'); //全局ajax link 标签
     const $back = $('.js-back'); //返回按钮
@@ -122,14 +122,14 @@ $(function () {
     }
 
     //格式化时间
-    $date.each(function () {
-        const thisDate = (new Date($(this).attr('date'))).format('yyyy-MM-dd');
-        $(this).text(thisDate);
-    });
-    $dateTime.each(function () {
-        const thisDate = (new Date($(this).attr('date'))).format('yyyy-MM-dd hh:mm:ss');
-        $(this).text(thisDate);
-    });
+    // $date.each(function () {
+    //     const thisDate = (new Date($(this).attr('date'))).format('yyyy-MM-dd');
+    //     $(this).text(thisDate);
+    // });
+    // $dateTime.each(function () {
+    //     const thisDate = (new Date($(this).attr('date'))).format('yyyy-MM-dd hh:mm:ss');
+    //     $(this).text(thisDate);
+    // });
 
     /**
      * input检测

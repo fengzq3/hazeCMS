@@ -16,7 +16,7 @@ block content
                     p
                         small
                             span.iconfont.icon-rili
-                            em.js-date(date='#{content.date}')
+                            em(date='#{content.date}') #{content.fDateTime}
                         small
                             span.iconfont.icon-discuss
                             //em #{content.comments.length}
@@ -41,7 +41,7 @@ block content
                 .article-info-l
                     p
                         span.iconfont.icon-riqi
-                        span.js-dateTime(date='#{content.date}')
+                        span(date='#{content.date}') #{content.fDateTime}
                     if !!content.tags
                         p.article-tag
                             span.iconfont.icon-tag
@@ -70,7 +70,7 @@ block content
                                         h4 #{item.title}
                                         p.list-con-des
                                             small
-                                                span.iconfont.icon-date.js-date(date='#{item.date}')
+                                                span.iconfont.icon-date(date='#{item.date}') #{item.fDate}
                                             small
                                                 span.iconfont.icon-discuss
                                                 //| #{item.comments.length}
